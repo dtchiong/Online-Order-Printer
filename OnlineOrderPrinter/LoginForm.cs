@@ -9,9 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OnlineOrderPrinter {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class LoginForm : Form {
+        public LoginForm() {
             InitializeComponent();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e) {
+
         }
     }
 }
