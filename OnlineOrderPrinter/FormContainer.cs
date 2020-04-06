@@ -27,9 +27,9 @@ namespace OnlineOrderPrinter {
         }
 
         public void PrintSup() {
-            UserControlMain userControlMain = new UserControlMain();
-            Controls.Add(userControlMain);
-            userControlMain.Show();
+            UserControlMainPage UserControlMainPage = new UserControlMainPage();
+            Controls.Add(UserControlMainPage);
+            UserControlMainPage.Show();
             Debug.WriteLine(Controls[ControlNames.LoginPage]);
         }
 

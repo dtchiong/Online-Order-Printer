@@ -76,11 +76,11 @@
     <Compile Include="UserControlLoginPage.Designer.cs">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMain.cs">
+    <Compile Include="UserControlMainPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain.Designer.cs">
-      <DependentUpon>UserControlMain.cs</DependentUpon>
+    <Compile Include="UserControlMainPage.Designer.cs">
+      <DependentUpon>UserControlMainPage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
@@ -106,8 +106,8 @@
     <EmbeddedResource Include="UserControlLoginPage.resx">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMain.resx">
-      <DependentUpon>UserControlMain.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlMainPage.resx">
+      <DependentUpon>UserControlMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

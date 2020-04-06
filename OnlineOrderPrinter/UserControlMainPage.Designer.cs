@@ -1,5 +1,5 @@
 ﻿namespace OnlineOrderPrinter {
-    partial class UserControlMain {
+    partial class UserControlMainPage {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -25,11 +25,11 @@
         private void InitializeComponent() {
             this.SuspendLayout();
             // 
-            // UserControlMain
+            // UserControlMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "UserControlMain";
+            this.Name = "UserControlMainPage";
             this.Size = new System.Drawing.Size(1115, 578);
             this.Load += new System.EventHandler(this.UserControlMain_Load);
             this.ResumeLayout(false);

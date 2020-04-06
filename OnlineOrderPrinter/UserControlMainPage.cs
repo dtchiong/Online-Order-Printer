@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OnlineOrderPrinter {
-    public partial class UserControlMain : UserControl {
-        public UserControlMain() {
+    public partial class UserControlMainPage : UserControl {
+        public UserControlMainPage() {
             InitializeComponent();
         }
 
