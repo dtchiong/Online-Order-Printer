@@ -19,15 +19,8 @@ namespace OnlineOrderPrinter {
             string email = textBox1.Text;
             string password = textBox2.Text;
 
-            //FormMain formMain = new FormMain();
-            //formMain.Show();
-            //ParentForm.Hide();
-            //FindForm().Hide();
-            //Debug.WriteLine(FindForm());
             FormContainer formContainer = (FormContainer)FindForm();
-            //Debug.WriteLine(formContainer);
-            formContainer.PrintSup();
-
+            formContainer.NavigateToMainPage();
         }
     }
 }
