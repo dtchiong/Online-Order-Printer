@@ -14,7 +14,7 @@ namespace OnlineOrderPrinter {
 
     public static class ControlNames {
         public const string LoginPage = "userControlLoginPage1";
-        public const string Mainpage = "userControlMainPage";
+        public const string MainPage = "userControlMainPage";
     }
 
     public partial class FormContainer : Form {
@@ -27,7 +27,7 @@ namespace OnlineOrderPrinter {
         }
 
         public void NavigateToMainPage() {
-            NavigateToPage(ControlNames.Mainpage);
+            NavigateToPage(ControlNames.MainPage);
         }
 
         public void NavigateToLoginPage() {
@@ -55,7 +55,7 @@ namespace OnlineOrderPrinter {
 
         private Control NewControl(string controlName) {
             switch (controlName) {
-                case ControlNames.Mainpage:
+                case ControlNames.MainPage:
                     return new UserControlMainPage();
                 case ControlNames.LoginPage:
                     return new UserControlLoginPage();
