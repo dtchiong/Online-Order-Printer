@@ -41,6 +41,21 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<FetchOrderResponse> FetchOrder(string restaurantId, string orderId, string bearerToken) {
+            ConfigureHttpClient(bearerToken);
+
+            Order order = null;
+            HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/orders/{orderId}");
+            if (response.IsSuccessStatusCode) {
+                order = JsonConvert.DeserializeObject<Order>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            }
+
+            return new FetchOrderResponse {
+                Order = order,
+                StatusCode = response.StatusCode
+            };
+        }
+
         public static async Task<SyncOrderPrintedResponse> SyncOrderPrinted(string restaurantId, string orderId, string bearerToken) {
             ConfigureHttpClient(bearerToken);
 

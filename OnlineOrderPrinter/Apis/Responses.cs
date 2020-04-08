@@ -1,5 +1,4 @@
 ﻿using OnlineOrderPrinter.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,11 @@ namespace OnlineOrderPrinter.Apis {
         }
 
         class SyncOrderPrintedResponse {
+            public HttpStatusCode StatusCode { get; set; }
+        }
+
+        class FetchOrderResponse {
+            public Order Order { get; set; }
             public HttpStatusCode StatusCode { get; set; }
         }
     }
