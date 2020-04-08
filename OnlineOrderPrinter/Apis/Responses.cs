@@ -13,5 +13,9 @@ namespace OnlineOrderPrinter.Apis {
             public User User { get; set; }
             public HttpStatusCode StatusCode { get; set; }
         }
+
+        class SyncOrderPrintedResponse {
+            public HttpStatusCode StatusCode { get; set; }
+        }
     }
 }

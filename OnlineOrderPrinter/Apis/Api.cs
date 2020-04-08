@@ -41,6 +41,16 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<SyncOrderPrintedResponse> SyncOrderPrinted(string restaurantId, string orderId, string bearerToken) {
+            ConfigureHttpClient(bearerToken);
+
+            HttpResponseMessage response = await client.PostAsync($"api/v1/restaurants/{restaurantId}/orders/{orderId}/print", null);
+
+            return new SyncOrderPrintedResponse() {
+                StatusCode = response.StatusCode
+            };
+        }
+
         private static Uri GetApiBaseUri() {
 #if DEBUG
             return DEV_API_BASE_URI;
