@@ -22,7 +22,7 @@ namespace OnlineOrderPrinter.Apis {
         static readonly HttpClient client = new HttpClient();
 
         public static async Task<AuthResponse> Authenticate(string email, string password) {
-            SetHttpClientBaseProperties();
+            ConfigureHttpClient();
 
             object data = new {
                 email,
@@ -41,13 +41,6 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
-        private static void SetHttpClientBaseProperties() {
-            if (client.BaseAddress == null) {
-                client.BaseAddress = GetApiBaseUri();
-                client.Timeout = TimeSpan.FromMinutes(1);
-            }
-        }
-
         private static Uri GetApiBaseUri() {
 #if DEBUG
             return DEV_API_BASE_URI;
@@ -63,6 +56,26 @@ namespace OnlineOrderPrinter.Apis {
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             return byteContent;
+        }
+
+        private static void ConfigureHttpClient(string bearerToken = null) {
+            SetHttpClientBaseProperties();
+            SetBearerToken(bearerToken);
+        }
+
+        private static void SetHttpClientBaseProperties() {
+            if (client.BaseAddress == null) {
+                client.BaseAddress = GetApiBaseUri();
+                client.Timeout = TimeSpan.FromMinutes(1);
+            }
+        }
+
+        private static void SetBearerToken(string bearerToken) {
+            if (bearerToken != null) {
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+            } else {
+                client.DefaultRequestHeaders.Remove("Authorization");
+            }
         }
     }
 }
