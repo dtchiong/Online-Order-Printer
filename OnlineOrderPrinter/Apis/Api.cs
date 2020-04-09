@@ -41,6 +41,21 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<FetchEventResponse> FetchEvent(string restaurantId, string eventId, string bearerToken) {
+            ConfigureHttpClient(bearerToken);
+
+            HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/events/{eventId}");
+            Event @event = null;
+            if (response.IsSuccessStatusCode) {
+                @event = JsonConvert.DeserializeObject<Event>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            }
+
+            return new FetchEventResponse {
+                Event = @event,
+                StatusCode = response.StatusCode
+            };
+        }
+
         public static async Task<FetchOrderResponse> FetchOrder(string restaurantId, string orderId, string bearerToken) {
             ConfigureHttpClient(bearerToken);
 
@@ -97,7 +112,9 @@ namespace OnlineOrderPrinter.Apis {
 
         private static void SetBearerToken(string bearerToken) {
             if (bearerToken != null) {
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+                if (!client.DefaultRequestHeaders.Contains("Authorization")) {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+                }
             } else {
                 client.DefaultRequestHeaders.Remove("Authorization");
             }
