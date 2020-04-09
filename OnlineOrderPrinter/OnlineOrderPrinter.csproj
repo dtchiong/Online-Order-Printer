@@ -55,6 +55,7 @@
     <Compile Include="FormContainer.Designer.cs">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderItemBase.cs" />
