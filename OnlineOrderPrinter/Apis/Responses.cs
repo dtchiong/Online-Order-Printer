@@ -17,6 +17,11 @@ namespace OnlineOrderPrinter.Apis {
             public HttpStatusCode StatusCode { get; set; }
         }
 
+        class FetchEventsResponse {
+            public Event[] Events { get; set; }
+            public HttpStatusCode StatusCode { get; set; }
+        }
+
         class FetchEventResponse {
             public Event Event { get; set; }
             public HttpStatusCode StatusCode { get; set; }

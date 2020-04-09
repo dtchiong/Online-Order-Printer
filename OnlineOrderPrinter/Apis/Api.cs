@@ -41,6 +41,33 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<FetchEventsResponse> FetchEvents(
+            string restaurantId,
+            string bearerToken,
+            string startEventId = null,
+            DateTime? startTime = null,
+            DateTime? endTime = null) {
+
+            ConfigureHttpClient(bearerToken);
+
+            string query = BuildQuery(new (string, string)[] {
+                ("start_event_id", startEventId),
+                ("start_time", startTime.ToString()),
+                ("end_time", endTime.ToString())
+            });
+
+            HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/events{query}");
+            Event[] events = null;
+            if (response.IsSuccessStatusCode) {
+                events = JsonConvert.DeserializeObject<Event[]>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            }
+
+            return new FetchEventsResponse() {
+                Events = events,
+                StatusCode = response.StatusCode
+            };
+        }
+
         public static async Task<FetchEventResponse> FetchEvent(string restaurantId, string eventId, string bearerToken) {
             ConfigureHttpClient(bearerToken);
 
@@ -79,6 +106,21 @@ namespace OnlineOrderPrinter.Apis {
             return new SyncOrderPrintedResponse() {
                 StatusCode = response.StatusCode
             };
+        }
+
+        private static string BuildQuery((string name, string val)[] paramList) {
+            StringBuilder builder = new StringBuilder("?");
+            bool appended = false;
+            foreach ((string name, string val) in paramList) {
+                if (!string.IsNullOrEmpty(val)) {
+                    if (appended) {
+                        builder.Append("&");
+                    }
+                    builder.Append($"{name}={val}");
+                    appended = true;
+                }
+            }
+            return appended ? builder.ToString() : "";
         }
 
         private static Uri GetApiBaseUri() {
