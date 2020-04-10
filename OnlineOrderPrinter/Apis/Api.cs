@@ -33,6 +33,8 @@ namespace OnlineOrderPrinter.Apis {
             User user = null;
             if (response.IsSuccessStatusCode) {
                 user = JsonConvert.DeserializeObject<User>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            } else {
+                Debug.WriteLine($"Failed to Authenticate - {response.StatusCode}");
             }
 
             return new AuthResponse() {
@@ -60,6 +62,8 @@ namespace OnlineOrderPrinter.Apis {
             Event[] events = null;
             if (response.IsSuccessStatusCode) {
                 events = JsonConvert.DeserializeObject<Event[]>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            } else {
+                Debug.WriteLine($"Failed to FetchEvents - {response.StatusCode}");
             }
 
             return new FetchEventsResponse() {
@@ -75,6 +79,8 @@ namespace OnlineOrderPrinter.Apis {
             Event @event = null;
             if (response.IsSuccessStatusCode) {
                 @event = JsonConvert.DeserializeObject<Event>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            } else {
+                Debug.WriteLine($"Failed to FetchEvent - {response.StatusCode}");
             }
 
             return new FetchEventResponse {
@@ -90,6 +96,8 @@ namespace OnlineOrderPrinter.Apis {
             HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/orders/{orderId}");
             if (response.IsSuccessStatusCode) {
                 order = JsonConvert.DeserializeObject<Order>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            } else {
+                Debug.WriteLine($"Failed to FetchOrder - {response.StatusCode}");
             }
 
             return new FetchOrderResponse {
@@ -102,6 +110,9 @@ namespace OnlineOrderPrinter.Apis {
             ConfigureHttpClient(bearerToken);
 
             HttpResponseMessage response = await client.PostAsync($"api/v1/restaurants/{restaurantId}/orders/{orderId}/print", null);
+            if (!response.IsSuccessStatusCode) {
+                Debug.WriteLine($"Failed to SyncOrderPrinted - {response.StatusCode}");
+            }
 
             return new SyncOrderPrintedResponse() {
                 StatusCode = response.StatusCode
