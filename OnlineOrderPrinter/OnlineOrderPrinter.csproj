@@ -63,6 +63,8 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sagas\EventSagas.cs" />
+    <Compile Include="State\AppState.cs" />
     <Compile Include="UserControlLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,5 +120,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
