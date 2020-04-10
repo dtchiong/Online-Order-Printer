@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.Apis;
+﻿using OnlineOrderPrinter.Actions;
+using OnlineOrderPrinter.Apis;
 using OnlineOrderPrinter.Apis.Responses;
 using OnlineOrderPrinter.State;
 using System;
@@ -20,6 +21,7 @@ namespace OnlineOrderPrinter.Sagas {
                     AuthResponse response = Api.Authenticate(email, password).Result;
                     if (response.IsSuccessStatusCode()) {
                         AppState.ReceiveUser(response.User);
+                        EventActions.FetchCurrentDayEvents();
                         AppState.FormContainer.NavigateToMainPage();
                     } else {
                         // TODO: Emit event to show an error on the login control?

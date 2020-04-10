@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\EventActions.cs" />
     <Compile Include="Apis\Api.cs" />
     <Compile Include="Apis\Responses.cs" />
     <Compile Include="FormContainer.cs" />
