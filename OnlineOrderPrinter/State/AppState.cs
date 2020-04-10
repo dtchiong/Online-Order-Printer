@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace OnlineOrderPrinter.State {
     class AppState {
         public static List<Event> Events { get; set; } = new List<Event>();
+        public static string LatestEventId { get; set; }
 
         public static User User { get; set; }
 
@@ -17,10 +18,17 @@ namespace OnlineOrderPrinter.State {
             foreach (Event @event in events) {
                 Events.Add(@event);
             }
+            SetLatestEventId(events);
         }
 
         public static void ReceiveUser(User user) {
             User = user;
+        }
+
+        private static void SetLatestEventId(Event[] events) {
+            if (events != null && events.Length > 0) {
+                LatestEventId = events[events.Length - 1].Id;
+            }
         }
     }
 }
