@@ -22,7 +22,7 @@ namespace OnlineOrderPrinter.Sagas {
                     if (response.IsSuccessStatusCode()) {
                         AppState.ReceiveUser(response.User);
                         EventActions.FetchCurrentDayEvents();
-                        AppState.FormContainer.NavigateToMainPage();
+                        NavigationActions.NavigateToMainPage();
                     } else {
                         // TODO: Emit event to show an error on the login control?
                     }

@@ -24,16 +24,16 @@ namespace OnlineOrderPrinter {
             AppState.FormContainer = this;
         }
 
-        public void NavigateToMainPage() {
+        /**
+         * Safely navigates to the specified control by checking if the navigate call
+         * needs to be delegated to the main thread.
+         */
+        public void NavigateToPageSafe(string controlName) {
             if (InvokeRequired) {
-                Invoke((MethodInvoker)delegate { NavigateToPage(ControlNames.MainPage); });
+                Invoke((MethodInvoker)delegate { NavigateToPage(controlName); });
             } else {
-                NavigateToPage(ControlNames.MainPage);
+                NavigateToPage(controlName);
             }
-        }
-
-        public void NavigateToLoginPage() {
-            NavigateToPage(ControlNames.LoginPage);
         }
 
         /**
