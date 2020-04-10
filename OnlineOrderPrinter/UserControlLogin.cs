@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineOrderPrinter.Sagas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -19,8 +20,7 @@ namespace OnlineOrderPrinter {
             string email = textBox1.Text;
             string password = textBox2.Text;
 
-            FormContainer formContainer = (FormContainer)FindForm();
-            formContainer.NavigateToMainPage();
+            AuthSagas.Authenticate(email, password);
         }
     }
 }
