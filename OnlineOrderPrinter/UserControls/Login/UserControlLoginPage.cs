@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
-using Timer = System.Windows.Forms.Timer;
-
 
 namespace OnlineOrderPrinter {
     public partial class UserControlLoginPage : UserControl {
