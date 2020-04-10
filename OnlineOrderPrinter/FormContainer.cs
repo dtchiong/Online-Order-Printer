@@ -14,11 +14,6 @@ using System.Windows.Forms;
 
 namespace OnlineOrderPrinter {
 
-    public static class ControlNames {
-        public const string LoginPage = "userControlLoginPage1";
-        public const string MainPage = "userControlMainPage";
-    }
-
     public partial class FormContainer : Form {
 
         public FormContainer() {
@@ -67,5 +62,10 @@ namespace OnlineOrderPrinter {
                     return null;
             }
         }
+    }
+
+    public static class ControlNames {
+        public const string LoginPage = "userControlLoginPage1";
+        public const string MainPage = "userControlMainPage";
     }
 }
