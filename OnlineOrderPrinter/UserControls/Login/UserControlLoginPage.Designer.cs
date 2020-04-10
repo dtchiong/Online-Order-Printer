@@ -1,4 +1,4 @@
-﻿namespace OnlineOrderPrinter {
+﻿namespace OnlineOrderPrinter.UserControls.Login {
     partial class UserControlLoginPage {
         /// <summary> 
         /// Required designer variable.
@@ -27,7 +27,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.userControlLogin1 = new OnlineOrderPrinter.UserControlLogin();
+            this.userControlLogin1 = new OnlineOrderPrinter.UserControls.Login.UserControlLogin();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();

@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.userControlLoginPage1 = new OnlineOrderPrinter.UserControlLoginPage();
+            this.userControlLoginPage1 = new OnlineOrderPrinter.UserControls.Login.UserControlLoginPage();
             this.SuspendLayout();
             // 
             // userControlLoginPage1
@@ -49,6 +49,6 @@
 
         #endregion
 
-        private UserControlLoginPage userControlLoginPage1;
+        private OnlineOrderPrinter.UserControls.Login.UserControlLoginPage userControlLoginPage1;
     }
 }

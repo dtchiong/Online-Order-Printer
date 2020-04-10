@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace OnlineOrderPrinter {
+namespace OnlineOrderPrinter.UserControls.Login {
     public partial class UserControlLogin : UserControl {
         public UserControlLogin() {
             InitializeComponent();

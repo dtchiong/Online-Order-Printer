@@ -1,4 +1,4 @@
-﻿namespace OnlineOrderPrinter {
+﻿namespace OnlineOrderPrinter.UserControls.Login {
     partial class UserControlLogin {
         /// <summary> 
         /// Required designer variable.
