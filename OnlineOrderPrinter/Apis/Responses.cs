@@ -8,28 +8,32 @@ using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Apis {
     namespace Responses {
-        class AuthResponse {
+        abstract class Response {
+            public HttpStatusCode StatusCode { get; set; }
+
+            public bool IsSuccessStatusCode() {
+                int code = (int)StatusCode;
+                return (code >= 200 && code < 300);
+            }
+        }
+
+        class AuthResponse : Response {
             public User User { get; set; }
-            public HttpStatusCode StatusCode { get; set; }
         }
 
-        class SyncOrderPrintedResponse {
-            public HttpStatusCode StatusCode { get; set; }
-        }
-
-        class FetchEventsResponse {
+        class FetchEventsResponse : Response {
             public Event[] Events { get; set; }
-            public HttpStatusCode StatusCode { get; set; }
         }
 
-        class FetchEventResponse {
+        class FetchEventResponse : Response {
             public Event Event { get; set; }
-            public HttpStatusCode StatusCode { get; set; }
         }
 
-        class FetchOrderResponse {
+        class FetchOrderResponse : Response {
             public Order Order { get; set; }
-            public HttpStatusCode StatusCode { get; set; }
+        }
+
+        class SyncOrderPrintedResponse : Response {
         }
     }
 }

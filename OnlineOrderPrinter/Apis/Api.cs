@@ -44,9 +44,9 @@ namespace OnlineOrderPrinter.Apis {
         public static async Task<FetchEventsResponse> FetchEvents(
             string restaurantId,
             string bearerToken,
-            string startEventId = null,
-            DateTime? startTime = null,
-            DateTime? endTime = null) {
+            string startEventId,
+            DateTime? startTime,
+            DateTime? endTime) {
 
             ConfigureHttpClient(bearerToken);
 
