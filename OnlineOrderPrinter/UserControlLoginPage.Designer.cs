@@ -102,7 +102,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1023, 572);
             this.tableLayoutPanel2.TabIndex = 0;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // userControlLogin1
             // 
@@ -112,7 +111,6 @@
             this.userControlLogin1.Name = "userControlLogin1";
             this.userControlLogin1.Size = new System.Drawing.Size(505, 486);
             this.userControlLogin1.TabIndex = 0;
-            this.userControlLogin1.Load += new System.EventHandler(this.userControlLogin1_Load);
             // 
             // UserControlLoginPage
             // 

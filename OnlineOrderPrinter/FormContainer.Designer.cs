@@ -34,7 +34,6 @@
             this.userControlLoginPage1.Name = "userControlLoginPage1";
             this.userControlLoginPage1.Size = new System.Drawing.Size(1007, 656);
             this.userControlLoginPage1.TabIndex = 0;
-            this.userControlLoginPage1.Load += new System.EventHandler(this.userControlLoginPage1_Load);
             // 
             // FormContainer
             // 

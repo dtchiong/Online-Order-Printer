@@ -13,13 +13,5 @@ namespace OnlineOrderPrinter {
         public UserControlLoginPage() {
             InitializeComponent();
         }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e) {
-
-        }
-
-        private void userControlLogin1_Load(object sender, EventArgs e) {
-
-        }
     }
 }
