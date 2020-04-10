@@ -54,7 +54,9 @@
     <Compile Include="Actions\NavigationActions.cs" />
     <Compile Include="Apis\Api.cs" />
     <Compile Include="Apis\Responses.cs" />
-    <Compile Include="FormContainer.cs" />
+    <Compile Include="FormContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormContainer.Designer.cs">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </Compile>
@@ -87,6 +89,12 @@
     <Compile Include="UserControls\Main\UserControlMainPage.Designer.cs">
       <DependentUpon>UserControlMainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Main\UserControlTabSideBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Main\UserControlTabSideBar.Designer.cs">
+      <DependentUpon>UserControlTabSideBar.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Main\UserControlMainPage.resx">
       <DependentUpon>UserControlMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Main\UserControlTabSideBar.resx">
+      <DependentUpon>UserControlTabSideBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

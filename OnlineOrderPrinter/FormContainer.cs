@@ -66,6 +66,6 @@ namespace OnlineOrderPrinter {
 
     public static class ControlNames {
         public const string LoginPage = "userControlLoginPage1";
-        public const string MainPage = "userControlMainPage";
+        public const string MainPage = "userControlMainPage1";
     }
 }

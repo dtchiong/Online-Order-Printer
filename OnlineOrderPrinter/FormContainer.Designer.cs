@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.userControlLoginPage1 = new OnlineOrderPrinter.UserControls.Login.UserControlLoginPage();
+            this.userControlMainPage1 = new OnlineOrderPrinter.UserControls.Main.UserControlMainPage();
             this.SuspendLayout();
             // 
             // userControlLoginPage1
@@ -35,12 +36,21 @@
             this.userControlLoginPage1.Size = new System.Drawing.Size(1007, 656);
             this.userControlLoginPage1.TabIndex = 0;
             // 
+            // userControlMainPage1
+            // 
+            this.userControlMainPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlMainPage1.Location = new System.Drawing.Point(0, 0);
+            this.userControlMainPage1.Name = "userControlMainPage1";
+            this.userControlMainPage1.Size = new System.Drawing.Size(1007, 656);
+            this.userControlMainPage1.TabIndex = 1;
+            // 
             // FormContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1007, 656);
             this.Controls.Add(this.userControlLoginPage1);
+            this.Controls.Add(this.userControlMainPage1);
             this.Name = "FormContainer";
             this.Text = "FormContainer";
             this.ResumeLayout(false);
@@ -50,5 +60,6 @@
         #endregion
 
         private OnlineOrderPrinter.UserControls.Login.UserControlLoginPage userControlLoginPage1;
+        private UserControls.Main.UserControlMainPage userControlMainPage1;
     }
 }
