@@ -20,6 +20,7 @@ namespace OnlineOrderPrinter.Sagas {
                     AuthResponse response = Api.Authenticate(email, password).Result;
                     if (response.IsSuccessStatusCode()) {
                         AppState.ReceiveUser(response.User);
+                        AppState.FormContainer.NavigateToMainPage();
                     } else {
                         // TODO: Emit event to show an error on the login control?
                     }

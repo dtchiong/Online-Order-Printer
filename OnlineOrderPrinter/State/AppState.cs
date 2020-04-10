@@ -11,6 +11,8 @@ namespace OnlineOrderPrinter.State {
 
         public static User User { get; set; }
 
+        public static FormContainer FormContainer { get; set; }
+
         public static void ReceiveEvents(Event[] events) {
             foreach (Event @event in events) {
                 Events.Add(@event);

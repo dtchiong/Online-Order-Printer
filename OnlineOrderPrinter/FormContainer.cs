@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineOrderPrinter.State;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,23 +12,24 @@ using System.Windows.Forms;
 
 namespace OnlineOrderPrinter {
 
-
     public static class ControlNames {
         public const string LoginPage = "userControlLoginPage1";
         public const string MainPage = "userControlMainPage";
     }
 
     public partial class FormContainer : Form {
+
         public FormContainer() {
             InitializeComponent();
-        }
-
-        private void userControlLoginPage1_Load(object sender, EventArgs e) {
-
+            AppState.FormContainer = this;
         }
 
         public void NavigateToMainPage() {
-            NavigateToPage(ControlNames.MainPage);
+            if (InvokeRequired) {
+                Invoke((MethodInvoker)delegate { NavigateToPage(ControlNames.MainPage); });
+            } else {
+                NavigateToPage(ControlNames.MainPage);
+            }
         }
 
         public void NavigateToLoginPage() {
