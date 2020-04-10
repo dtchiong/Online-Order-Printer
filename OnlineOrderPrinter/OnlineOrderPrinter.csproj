@@ -69,22 +69,22 @@
     <Compile Include="Sagas\AuthSagas.cs" />
     <Compile Include="Sagas\EventSagas.cs" />
     <Compile Include="State\AppState.cs" />
-    <Compile Include="UserControlLogin.cs">
+    <Compile Include="UserControls\Login\UserControlLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlLogin.Designer.cs">
+    <Compile Include="UserControls\Login\UserControlLogin.Designer.cs">
       <DependentUpon>UserControlLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlLoginPage.cs">
+    <Compile Include="UserControls\Login\UserControlLoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlLoginPage.Designer.cs">
+    <Compile Include="UserControls\Login\UserControlLoginPage.Designer.cs">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMainPage.cs">
+    <Compile Include="UserControls\Main\UserControlMainPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMainPage.Designer.cs">
+    <Compile Include="UserControls\Main\UserControlMainPage.Designer.cs">
       <DependentUpon>UserControlMainPage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormContainer.resx">
@@ -99,13 +99,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControlLogin.resx">
+    <EmbeddedResource Include="UserControls\Login\UserControlLogin.resx">
       <DependentUpon>UserControlLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlLoginPage.resx">
+    <EmbeddedResource Include="UserControls\Login\UserControlLoginPage.resx">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMainPage.resx">
+    <EmbeddedResource Include="UserControls\Main\UserControlMainPage.resx">
       <DependentUpon>UserControlMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
