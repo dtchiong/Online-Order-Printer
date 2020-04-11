@@ -37,6 +37,7 @@
             this.buttonLogout.TabIndex = 0;
             this.buttonLogout.Text = "Log Out";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // UserControlSettingsTab
             // 

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\AppActions.cs" />
     <Compile Include="Actions\AuthActions.cs" />
     <Compile Include="Actions\EventActions.cs" />
     <Compile Include="Actions\NavigationActions.cs" />

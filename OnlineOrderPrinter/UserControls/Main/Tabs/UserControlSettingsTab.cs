@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineOrderPrinter.Actions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,6 +13,11 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs {
     public partial class UserControlSettingsTab : UserControl {
         public UserControlSettingsTab() {
             InitializeComponent();
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e) {
+            NavigationActions.NavigateToLoginPage();
+            AppActions.ClearState();
         }
     }
 }

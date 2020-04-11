@@ -38,5 +38,9 @@ namespace OnlineOrderPrinter.Actions {
         public static void SetLatestEventId(string latestEventId) {
             AppState.LatestEventId = latestEventId;
         }
+
+        public static void ClearEvents() {
+            AppState.Events.Clear();
+        }
     }
 }
