@@ -13,5 +13,9 @@ namespace OnlineOrderPrinter.UserControls.Main {
         public UserControlTabSideBar() {
             InitializeComponent();
         }
+
+        private void buttonOrdersTab_Click(object sender, EventArgs e) {
+
+        }
     }
 }
