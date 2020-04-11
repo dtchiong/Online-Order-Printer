@@ -15,6 +15,7 @@ namespace OnlineOrderPrinter.UserControls.Main {
 
         private List<Button> TabButtons;
         private Button ActiveTabButton;
+        private string ActiveTabButtonName = TabButtonNames.Orders;
 
         public UserControlTabSideBar() {
             InitializeComponent();
@@ -31,27 +32,27 @@ namespace OnlineOrderPrinter.UserControls.Main {
         }
 
         private void buttonTab_Click(object sender, EventArgs e) {
-            ChangeActiveButton((Button)sender);
-            CallNavigateToTabAction((Button)sender);
+            ChangeActiveButton(((Button)sender).Name);
+            CallNavigateToTabAction(((Button)sender).Name);
         }
 
-        private void ChangeActiveButton(Button nextButton) {
-            if (ActiveTabButton.Name == nextButton.Name) {
+        private void ChangeActiveButton(string nextButtonName) {
+            if (ActiveTabButtonName == nextButtonName) {
                 return;
             }
 
             foreach (Button button in TabButtons) {
-                if (nextButton.Name == button.Name) {
+                if (nextButtonName == button.Name) {
                     button.BackColor = Color.FromArgb(255, 23, 21, 22);
                 } else {
                     button.BackColor = Color.Transparent;
                 }
             }
-            ActiveTabButton = nextButton;
+            ActiveTabButtonName = nextButtonName;
         }
 
-        private void CallNavigateToTabAction(Button button) {
-            switch (button.Name) {
+        private void CallNavigateToTabAction(string buttonName) {
+            switch (buttonName) {
                 case TabButtonNames.Orders:
                     NavigationActions.NavigateToOrdersTab();
                     break;
@@ -62,7 +63,7 @@ namespace OnlineOrderPrinter.UserControls.Main {
                     NavigationActions.NavigateToAboutTab();
                     break;
                 default:
-                    Debug.WriteLine($"Failed to navigate to tab corresponding to button name: {button.Name}");
+                    Debug.WriteLine($"Failed to navigate to tab corresponding to button name: {buttonName}");
                     break;
             }
         }

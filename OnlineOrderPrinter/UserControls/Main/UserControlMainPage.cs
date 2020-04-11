@@ -22,10 +22,6 @@ namespace OnlineOrderPrinter.UserControls.Main {
             SetTabRefs();
         }
 
-        private void UserControlMain_Load(object sender, EventArgs e) {
-
-        }
-
         private void SetTabRefs() {
             Tabs = new List<Control> {
                 userControlOrdersTab1,
@@ -38,6 +34,7 @@ namespace OnlineOrderPrinter.UserControls.Main {
             if (nextTabName == ActiveTabName) {
                 return;
             }
+
             foreach (Control tab in Tabs) {
                 if (nextTabName == tab.Name) {
                     tab.Show();

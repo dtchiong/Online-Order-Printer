@@ -142,7 +142,6 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "UserControlMainPage";
             this.Size = new System.Drawing.Size(1023, 695);
-            this.Load += new System.EventHandler(this.UserControlMain_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
