@@ -23,12 +23,26 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.Red;
+            this.buttonLogout.FlatAppearance.BorderSize = 0;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogout.Location = new System.Drawing.Point(467, 357);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(104, 88);
+            this.buttonLogout.TabIndex = 0;
+            this.buttonLogout.Text = "Log Out";
+            this.buttonLogout.UseVisualStyleBackColor = false;
             // 
             // UserControlSettingsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonLogout);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserControlSettingsTab";
@@ -38,5 +52,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonLogout;
     }
 }
