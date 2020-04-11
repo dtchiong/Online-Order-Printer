@@ -33,14 +33,15 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.userControlTabSideBar1);
-            this.splitContainer1.Size = new System.Drawing.Size(1115, 578);
-            this.splitContainer1.SplitterDistance = 222;
+            this.splitContainer1.Size = new System.Drawing.Size(1023, 695);
+            this.splitContainer1.SplitterDistance = 160;
             this.splitContainer1.TabIndex = 0;
             // 
             // userControlTabSideBar1
@@ -49,7 +50,7 @@
             this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
             this.userControlTabSideBar1.Name = "userControlTabSideBar1";
-            this.userControlTabSideBar1.Size = new System.Drawing.Size(222, 578);
+            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 695);
             this.userControlTabSideBar1.TabIndex = 0;
             // 
             // UserControlMainPage
@@ -58,7 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "UserControlMainPage";
-            this.Size = new System.Drawing.Size(1115, 578);
+            this.Size = new System.Drawing.Size(1023, 695);
             this.Load += new System.EventHandler(this.UserControlMain_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -68,8 +69,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private UserControlTabSideBar userControlTabSideBar1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
