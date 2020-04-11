@@ -66,6 +66,7 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderItemBase.cs" />
     <Compile Include="Models\OrderItemModifier.cs" />
+    <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
