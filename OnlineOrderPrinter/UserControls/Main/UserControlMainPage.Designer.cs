@@ -24,12 +24,12 @@
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.labelTabName = new System.Windows.Forms.Label();
-            this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
-            this.userControlAboutTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlAboutTab();
-            this.userControlSettingsTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlSettingsTab();
             this.userControlOrdersTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlOrdersTab();
+            this.userControlSettingsTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlSettingsTab();
+            this.userControlAboutTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlAboutTab();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +57,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(1023, 695);
             this.splitContainer1.SplitterDistance = 160;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // userControlTabSideBar1
+            // 
+            this.userControlTabSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
+            this.userControlTabSideBar1.Name = "userControlTabSideBar1";
+            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 695);
+            this.userControlTabSideBar1.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -96,24 +105,15 @@
             this.labelTabName.Text = "Latest Orders";
             this.labelTabName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // userControlTabSideBar1
+            // userControlOrdersTab1
             // 
-            this.userControlTabSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
-            this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
-            this.userControlTabSideBar1.Name = "userControlTabSideBar1";
-            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 695);
-            this.userControlTabSideBar1.TabIndex = 0;
-            // 
-            // userControlAboutTab1
-            // 
-            this.userControlAboutTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlAboutTab1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlAboutTab1.Location = new System.Drawing.Point(0, 0);
-            this.userControlAboutTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.userControlAboutTab1.Name = "userControlAboutTab1";
-            this.userControlAboutTab1.Size = new System.Drawing.Size(859, 634);
-            this.userControlAboutTab1.TabIndex = 0;
+            this.userControlOrdersTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlOrdersTab1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlOrdersTab1.Location = new System.Drawing.Point(0, 0);
+            this.userControlOrdersTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.userControlOrdersTab1.Name = "userControlOrdersTab1";
+            this.userControlOrdersTab1.Size = new System.Drawing.Size(859, 634);
+            this.userControlOrdersTab1.TabIndex = 2;
             // 
             // userControlSettingsTab1
             // 
@@ -125,15 +125,15 @@
             this.userControlSettingsTab1.Size = new System.Drawing.Size(859, 634);
             this.userControlSettingsTab1.TabIndex = 1;
             // 
-            // userControlOrdersTab1
+            // userControlAboutTab1
             // 
-            this.userControlOrdersTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlOrdersTab1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlOrdersTab1.Location = new System.Drawing.Point(0, 0);
-            this.userControlOrdersTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.userControlOrdersTab1.Name = "userControlOrdersTab1";
-            this.userControlOrdersTab1.Size = new System.Drawing.Size(859, 634);
-            this.userControlOrdersTab1.TabIndex = 2;
+            this.userControlAboutTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlAboutTab1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlAboutTab1.Location = new System.Drawing.Point(0, 0);
+            this.userControlAboutTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.userControlAboutTab1.Name = "userControlAboutTab1";
+            this.userControlAboutTab1.Size = new System.Drawing.Size(859, 634);
+            this.userControlAboutTab1.TabIndex = 0;
             // 
             // UserControlMainPage
             // 
