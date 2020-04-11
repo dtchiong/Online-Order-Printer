@@ -13,21 +13,15 @@ using System.Diagnostics;
 namespace OnlineOrderPrinter.UserControls.Main {
     public partial class UserControlMainPage : UserControl {
 
-        public string ActiveTabName = TabNames.Orders;
-        public List<Control> Tabs;
+        public string ActiveTabName { get { return _activeTabName; } set { _activeTabName = value; SetLabelTabName(value); } }
+
+        private List<Control> Tabs;
+        private string _activeTabName = TabNames.Orders;
 
         public UserControlMainPage() {
             InitializeComponent();
             AppState.UserControlMainPage = this;
             SetTabRefs();
-        }
-
-        private void SetTabRefs() {
-            Tabs = new List<Control> {
-                userControlOrdersTab1,
-                userControlSettingsTab1,
-                userControlAboutTab1
-            };
         }
 
         public void NavigateToTab(string nextTabName) {
@@ -42,6 +36,28 @@ namespace OnlineOrderPrinter.UserControls.Main {
                 } else {
                     tab.Hide();
                 }
+            }
+        }
+
+        private void SetTabRefs() {
+            Tabs = new List<Control> {
+                userControlOrdersTab1,
+                userControlSettingsTab1,
+                userControlAboutTab1
+            };
+        }
+
+        private void SetLabelTabName(string tabName) {
+            switch (tabName) {
+                case TabNames.Orders:
+                    labelTabName.Text = "Last Orders";
+                    break;
+                case TabNames.Settings:
+                    labelTabName.Text = "Settings";
+                    break;
+                case TabNames.About:
+                    labelTabName.Text = "About";
+                    break;
             }
         }
     }
