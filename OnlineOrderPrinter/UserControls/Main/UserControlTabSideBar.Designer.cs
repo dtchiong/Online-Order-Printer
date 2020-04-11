@@ -28,9 +28,9 @@
             this.labelRestaurantText = new System.Windows.Forms.Label();
             this.labelRestaurantName = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonOrdersTab = new System.Windows.Forms.Button();
+            this.buttonSettingsTab = new System.Windows.Forms.Button();
+            this.buttonAboutTab = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -112,9 +112,9 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonAboutTab, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSettingsTab, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonOrdersTab, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -126,56 +126,56 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(214, 594);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // buttonOrdersTab
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(22)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 83);
-            this.button1.TabIndex = 0;
-            this.button1.TabStop = false;
-            this.button1.Text = "Orders";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonOrdersTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(22)))));
+            this.buttonOrdersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonOrdersTab.FlatAppearance.BorderSize = 0;
+            this.buttonOrdersTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOrdersTab.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOrdersTab.ForeColor = System.Drawing.Color.White;
+            this.buttonOrdersTab.Location = new System.Drawing.Point(3, 3);
+            this.buttonOrdersTab.Name = "buttonOrdersTab";
+            this.buttonOrdersTab.Size = new System.Drawing.Size(208, 83);
+            this.buttonOrdersTab.TabIndex = 0;
+            this.buttonOrdersTab.TabStop = false;
+            this.buttonOrdersTab.Text = "Orders";
+            this.buttonOrdersTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonOrdersTab.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // buttonSettingsTab
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(3, 92);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(208, 83);
-            this.button2.TabIndex = 1;
-            this.button2.TabStop = false;
-            this.button2.Text = "Settings";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonSettingsTab.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSettingsTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSettingsTab.FlatAppearance.BorderSize = 0;
+            this.buttonSettingsTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettingsTab.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSettingsTab.ForeColor = System.Drawing.Color.White;
+            this.buttonSettingsTab.Location = new System.Drawing.Point(3, 92);
+            this.buttonSettingsTab.Name = "buttonSettingsTab";
+            this.buttonSettingsTab.Size = new System.Drawing.Size(208, 83);
+            this.buttonSettingsTab.TabIndex = 1;
+            this.buttonSettingsTab.TabStop = false;
+            this.buttonSettingsTab.Text = "Settings";
+            this.buttonSettingsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSettingsTab.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // buttonAboutTab
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 181);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(208, 83);
-            this.button3.TabIndex = 2;
-            this.button3.TabStop = false;
-            this.button3.Text = "About";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonAboutTab.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAboutTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAboutTab.FlatAppearance.BorderSize = 0;
+            this.buttonAboutTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAboutTab.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAboutTab.ForeColor = System.Drawing.Color.White;
+            this.buttonAboutTab.Location = new System.Drawing.Point(3, 181);
+            this.buttonAboutTab.Name = "buttonAboutTab";
+            this.buttonAboutTab.Size = new System.Drawing.Size(208, 83);
+            this.buttonAboutTab.TabIndex = 2;
+            this.buttonAboutTab.TabStop = false;
+            this.buttonAboutTab.Text = "About";
+            this.buttonAboutTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAboutTab.UseVisualStyleBackColor = false;
             // 
             // UserControlTabSideBar
             // 
@@ -207,8 +207,8 @@
         private System.Windows.Forms.Label labelRestaurantText;
         private System.Windows.Forms.Label labelRestaurantName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonOrdersTab;
+        private System.Windows.Forms.Button buttonAboutTab;
+        private System.Windows.Forms.Button buttonSettingsTab;
     }
 }
