@@ -46,6 +46,8 @@ namespace OnlineOrderPrinter {
             Control nextControl = Controls[controlName];
             if (nextControl == null) {
                 nextControl = NewControl(controlName);
+                // Newly created controls need to be docked
+                nextControl.Dock = DockStyle.Fill;
                 Controls.Add(nextControl);
             }
             nextControl.Show();
