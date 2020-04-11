@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.Actions;
+﻿using OnlineOrderPrinter.State;
+using OnlineOrderPrinter.Actions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,11 @@ namespace OnlineOrderPrinter.UserControls.Login {
     public partial class UserControlLogin : UserControl {
         public UserControlLogin() {
             InitializeComponent();
+        }
+
+        public void ClearLoginFields() {
+            textBox1.Text = null;
+            textBox2.Text = null;
         }
 
         private void button1_Click(object sender, EventArgs e) {

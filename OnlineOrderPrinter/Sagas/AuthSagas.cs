@@ -22,6 +22,7 @@ namespace OnlineOrderPrinter.Sagas {
                         AuthActions.SetUser(response.User);
                         EventActions.FetchCurrentDayEvents();
                         NavigationActions.NavigateToMainPage();
+                        AuthActions.ClearLoginFields();
                     } else {
                         // TODO: Emit event to show an error on the login control?
                     }

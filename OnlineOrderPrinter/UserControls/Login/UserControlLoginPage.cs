@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineOrderPrinter.State;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -15,6 +16,19 @@ namespace OnlineOrderPrinter.UserControls.Login {
 
         public UserControlLoginPage() {
             InitializeComponent();
+            AppState.UserControlLoginPage = this;
+        }
+
+        public void ClearLoginFieldsSafe() {
+            if (InvokeRequired) {
+                Invoke((MethodInvoker)delegate { ClearLoginFields(); });
+            } else {
+                ClearLoginFields();
+            }
+        }
+
+        private void ClearLoginFields() {
+            userControlLogin1.ClearLoginFields();
         }
     }
 }

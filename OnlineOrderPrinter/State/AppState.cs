@@ -1,4 +1,5 @@
 ﻿using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.UserControls.Login;
 using OnlineOrderPrinter.UserControls.Main;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace OnlineOrderPrinter.State {
         public static User User { get; set; }
 
         public static FormContainer FormContainer { get; set; }
+        public static UserControlLoginPage UserControlLoginPage { get; set; }
         public static UserControlMainPage UserControlMainPage { get; set; }
     }
 }

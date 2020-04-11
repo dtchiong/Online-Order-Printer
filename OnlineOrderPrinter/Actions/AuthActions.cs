@@ -16,5 +16,9 @@ namespace OnlineOrderPrinter.Actions {
         public static void SetUser(User user) {
             AppState.User = user;
         }
+
+        public static void ClearLoginFields() {
+            AppState.UserControlLoginPage.ClearLoginFieldsSafe();
+        }
     }
 }
