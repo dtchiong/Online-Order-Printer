@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.labelTabName = new System.Windows.Forms.Label();
+            this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
             this.userControlOrdersTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlOrdersTab();
             this.userControlSettingsTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlSettingsTab();
             this.userControlAboutTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlAboutTab();
@@ -57,15 +57,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1023, 695);
             this.splitContainer1.SplitterDistance = 160;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // userControlTabSideBar1
-            // 
-            this.userControlTabSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
-            this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
-            this.userControlTabSideBar1.Name = "userControlTabSideBar1";
-            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 695);
-            this.userControlTabSideBar1.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -104,6 +95,15 @@
             this.labelTabName.TabIndex = 0;
             this.labelTabName.Text = "Latest Orders";
             this.labelTabName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // userControlTabSideBar1
+            // 
+            this.userControlTabSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
+            this.userControlTabSideBar1.Name = "userControlTabSideBar1";
+            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 695);
+            this.userControlTabSideBar1.TabIndex = 0;
             // 
             // userControlOrdersTab1
             // 
@@ -162,7 +162,7 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label labelTabName;
         private Tabs.UserControlAboutTab userControlAboutTab1;
-        private Tabs.UserControlOrdersTab userControlOrdersTab1;
         private Tabs.UserControlSettingsTab userControlSettingsTab1;
+        private Tabs.UserControlOrdersTab userControlOrdersTab1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.State;
+﻿using OnlineOrderPrinter.UserControls.Main;
+using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,18 @@ namespace OnlineOrderPrinter.Actions {
 
         public static void NavigateToLoginPage() {
             AppState.FormContainer.NavigateToPageSafe(ControlNames.LoginPage);
+        }
+
+        public static void NavigateToOrdersTab() {
+            AppState.UserControlMainPage.NavigateToTab(TabNames.Orders);
+        }
+
+        public static void NavigateToSettingsTab() {
+            AppState.UserControlMainPage.NavigateToTab(TabNames.Settings);
+        }
+
+        public static void NavigateToAboutTab() {
+            AppState.UserControlMainPage.NavigateToTab(TabNames.About);
         }
     }
 }

@@ -142,6 +142,7 @@
             this.buttonAboutTab.Text = "About";
             this.buttonAboutTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAboutTab.UseVisualStyleBackColor = false;
+            this.buttonAboutTab.Click += new System.EventHandler(this.buttonTab_Click);
             // 
             // buttonSettingsTab
             // 
@@ -159,6 +160,7 @@
             this.buttonSettingsTab.Text = "Settings";
             this.buttonSettingsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettingsTab.UseVisualStyleBackColor = false;
+            this.buttonSettingsTab.Click += new System.EventHandler(this.buttonTab_Click);
             // 
             // buttonOrdersTab
             // 
@@ -166,7 +168,7 @@
             this.buttonOrdersTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonOrdersTab.FlatAppearance.BorderSize = 0;
             this.buttonOrdersTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOrdersTab.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOrdersTab.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOrdersTab.ForeColor = System.Drawing.Color.White;
             this.buttonOrdersTab.Location = new System.Drawing.Point(3, 3);
             this.buttonOrdersTab.Name = "buttonOrdersTab";
@@ -176,7 +178,7 @@
             this.buttonOrdersTab.Text = "Orders";
             this.buttonOrdersTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonOrdersTab.UseVisualStyleBackColor = false;
-            this.buttonOrdersTab.Click += new System.EventHandler(this.buttonOrdersTab_Click);
+            this.buttonOrdersTab.Click += new System.EventHandler(this.buttonTab_Click);
             // 
             // UserControlTabSideBar
             // 

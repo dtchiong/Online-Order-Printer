@@ -1,4 +1,5 @@
 ﻿using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.UserControls.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace OnlineOrderPrinter.State {
     class AppState {
         public static List<Event> Events { get; set; } = new List<Event>();
         public static string LatestEventId { get; set; }
-
         public static User User { get; set; }
 
         public static FormContainer FormContainer { get; set; }
+        public static UserControlMainPage UserControlMainPage { get; set; }
 
         public static void ReceiveEvents(Event[] events) {
             foreach (Event @event in events) {
