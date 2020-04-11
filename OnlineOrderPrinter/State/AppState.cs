@@ -14,22 +14,5 @@ namespace OnlineOrderPrinter.State {
 
         public static FormContainer FormContainer { get; set; }
         public static UserControlMainPage UserControlMainPage { get; set; }
-
-        public static void ReceiveEvents(Event[] events) {
-            foreach (Event @event in events) {
-                Events.Add(@event);
-            }
-            SetLatestEventId(events);
-        }
-
-        public static void ReceiveUser(User user) {
-            User = user;
-        }
-
-        private static void SetLatestEventId(Event[] events) {
-            if (events != null && events.Length > 0) {
-                LatestEventId = events[events.Length - 1].Id;
-            }
-        }
     }
 }

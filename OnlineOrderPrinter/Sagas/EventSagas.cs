@@ -1,6 +1,6 @@
-﻿using OnlineOrderPrinter.Apis;
+﻿using OnlineOrderPrinter.Actions;
+using OnlineOrderPrinter.Apis;
 using OnlineOrderPrinter.Apis.Responses;
-using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,7 +30,7 @@ namespace OnlineOrderPrinter.Sagas {
                         startTime,
                         endTime).Result;
                     if (response.IsSuccessStatusCode()) {
-                        AppState.ReceiveEvents(response.Events);
+                        EventActions.ReceiveEvents(response.Events);
                     }
                     Debug.WriteLine("Ended FetchEvents saga");
                     Interlocked.Exchange(ref FetchingEvents, 0);

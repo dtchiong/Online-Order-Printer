@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.State;
+﻿using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.Sagas;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,20 @@ namespace OnlineOrderPrinter.Actions {
             string latestEventId = AppState.LatestEventId;
 
             EventSagas.FetchEvents(restaurantId, bearerToken, latestEventId);
+        }
+
+        public static void ReceiveEvents(Event[] events) {
+            if (events == null || events.Length == 0) {
+                return;
+            }
+            foreach (Event @event in events) {
+                AppState.Events.Add(@event);
+            }
+            SetLatestEventId(events[events.Length - 1].Id);
+        }
+
+        public static void SetLatestEventId(string latestEventId) {
+            AppState.LatestEventId = latestEventId;
         }
     }
 }

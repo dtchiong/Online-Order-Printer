@@ -1,7 +1,6 @@
 ﻿using OnlineOrderPrinter.Actions;
 using OnlineOrderPrinter.Apis;
 using OnlineOrderPrinter.Apis.Responses;
-using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +19,7 @@ namespace OnlineOrderPrinter.Sagas {
                     Debug.WriteLine("Starting Authenticate saga");
                     AuthResponse response = Api.Authenticate(email, password).Result;
                     if (response.IsSuccessStatusCode()) {
-                        AppState.ReceiveUser(response.User);
+                        AuthActions.SetUser(response.User);
                         EventActions.FetchCurrentDayEvents();
                         NavigationActions.NavigateToMainPage();
                     } else {
