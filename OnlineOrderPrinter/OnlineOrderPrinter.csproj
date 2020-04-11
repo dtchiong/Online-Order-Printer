@@ -83,6 +83,24 @@
     <Compile Include="UserControls\Login\UserControlLoginPage.Designer.cs">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Main\Tabs\UserControlAboutTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Main\Tabs\UserControlAboutTab.Designer.cs">
+      <DependentUpon>UserControlAboutTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Main\Tabs\UserControlOrdersTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Main\Tabs\UserControlOrdersTab.Designer.cs">
+      <DependentUpon>UserControlOrdersTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Main\Tabs\UserControlSettingsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Main\Tabs\UserControlSettingsTab.Designer.cs">
+      <DependentUpon>UserControlSettingsTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Main\UserControlMainPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +130,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Login\UserControlLoginPage.resx">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Main\Tabs\UserControlAboutTab.resx">
+      <DependentUpon>UserControlAboutTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Main\Tabs\UserControlOrdersTab.resx">
+      <DependentUpon>UserControlOrdersTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Main\Tabs\UserControlSettingsTab.resx">
+      <DependentUpon>UserControlSettingsTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Main\UserControlMainPage.resx">
       <DependentUpon>UserControlMainPage.cs</DependentUpon>
