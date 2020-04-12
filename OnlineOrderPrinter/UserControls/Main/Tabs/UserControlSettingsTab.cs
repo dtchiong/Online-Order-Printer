@@ -16,8 +16,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs {
         }
 
         private void buttonLogout_Click(object sender, EventArgs e) {
-            NavigationActions.NavigateToLoginPage();
-            AppActions.ClearState();
+            AuthActions.Logout();
         }
     }
 }

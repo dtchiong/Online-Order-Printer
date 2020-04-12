@@ -13,6 +13,12 @@ namespace OnlineOrderPrinter.Actions {
             AuthSagas.Authenticate(email, password);
         }
 
+        public static void Logout() {
+            // TODO: Should also cancel all running sagas
+            NavigationActions.NavigateToLoginPage();
+            AppActions.ClearState();
+        }
+
         public static void SetUser(User user) {
             AppState.User = user;
         }

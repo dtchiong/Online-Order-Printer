@@ -22,7 +22,7 @@ namespace OnlineOrderPrinter.State {
         private static Restaurant _restaurant;
 
         private static void OnRestaurantChanged(Restaurant restaurant) {
-            UserControlMainPage.SetLabelRestaurantNameSafe(Restaurant.Name);
+            UserControlMainPage.SetLabelRestaurantNameSafe(Restaurant?.Name);
         }
     }
 }
