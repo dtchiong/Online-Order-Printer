@@ -25,9 +25,12 @@
         private void InitializeComponent() {
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewOrderList = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderList)).BeginInit();
             this.SuspendLayout();
             // 
             // fileSystemWatcher1
@@ -44,11 +47,24 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewOrderList);
             this.splitContainer1.Size = new System.Drawing.Size(1038, 608);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
+            // 
+            // dataGridViewOrderList
+            // 
+            this.dataGridViewOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrderList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewOrderList.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewOrderList.Name = "dataGridViewOrderList";
+            this.dataGridViewOrderList.Size = new System.Drawing.Size(1038, 547);
+            this.dataGridViewOrderList.TabIndex = 0;
             // 
             // UserControlOrdersView
             // 
@@ -58,8 +74,10 @@
             this.Name = "UserControlOrdersView";
             this.Size = new System.Drawing.Size(1038, 608);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -68,5 +86,6 @@
 
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView dataGridViewOrderList;
     }
 }
