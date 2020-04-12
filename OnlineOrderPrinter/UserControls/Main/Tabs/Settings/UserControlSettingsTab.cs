@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OnlineOrderPrinter.UserControls.Main.Tabs {
+namespace OnlineOrderPrinter.UserControls.Main.Tabs.Settings {
     public partial class UserControlSettingsTab : UserControl {
         public UserControlSettingsTab() {
             InitializeComponent();
