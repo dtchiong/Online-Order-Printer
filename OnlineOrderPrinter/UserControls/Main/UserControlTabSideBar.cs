@@ -22,6 +22,10 @@ namespace OnlineOrderPrinter.UserControls.Main {
             SetButtonRefs();
         }
 
+        public void SetLabelRestaurantName(string name) {
+            labelRestaurantName.Text = name;
+        }
+
         private void SetButtonRefs() {
             TabButtons = new List<Button> {
                 buttonOrdersTab,

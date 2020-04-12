@@ -39,6 +39,14 @@ namespace OnlineOrderPrinter.UserControls.Main {
             }
         }
 
+        public void SetLabelRestaurantNameSafe(string name) {
+            if (InvokeRequired) {
+                Invoke((MethodInvoker)delegate { userControlTabSideBar1.SetLabelRestaurantName(name); });
+            } else {
+                userControlTabSideBar1.SetLabelRestaurantName(name);
+            }
+        }
+
         private void SetTabRefs() {
             Tabs = new List<Control> {
                 userControlOrdersTab1,
