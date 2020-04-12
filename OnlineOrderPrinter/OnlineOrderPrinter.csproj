@@ -93,10 +93,10 @@
     <Compile Include="UserControls\Main\Tabs\UserControlAboutTab.Designer.cs">
       <DependentUpon>UserControlAboutTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Main\Tabs\UserControlOrdersTab.cs">
+    <Compile Include="UserControls\Main\Tabs\Orders\UserControlOrdersTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Main\Tabs\UserControlOrdersTab.Designer.cs">
+    <Compile Include="UserControls\Main\Tabs\Orders\UserControlOrdersTab.Designer.cs">
       <DependentUpon>UserControlOrdersTab.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Main\Tabs\UserControlSettingsTab.cs">
@@ -138,7 +138,7 @@
     <EmbeddedResource Include="UserControls\Main\Tabs\UserControlAboutTab.resx">
       <DependentUpon>UserControlAboutTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Main\Tabs\UserControlOrdersTab.resx">
+    <EmbeddedResource Include="UserControls\Main\Tabs\Orders\UserControlOrdersTab.resx">
       <DependentUpon>UserControlOrdersTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Main\Tabs\UserControlSettingsTab.resx">
