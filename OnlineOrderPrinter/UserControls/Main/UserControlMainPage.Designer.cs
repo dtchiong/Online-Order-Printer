@@ -29,7 +29,7 @@
             this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
             this.userControlOrdersTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.Orders.UserControlOrdersTab();
             this.userControlSettingsTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.Settings.UserControlSettingsTab();
-            this.userControlAboutTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.UserControlAboutTab();
+            this.userControlAboutTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.About.UserControlAboutTab();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -160,7 +160,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label labelTabName;
-        private Tabs.UserControlAboutTab userControlAboutTab1;
+        private Tabs.About.UserControlAboutTab userControlAboutTab1;
         private Tabs.Settings.UserControlSettingsTab userControlSettingsTab1;
         private Tabs.Orders.UserControlOrdersTab userControlOrdersTab1;
     }

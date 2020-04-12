@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OnlineOrderPrinter.UserControls.Main.Tabs {
+namespace OnlineOrderPrinter.UserControls.Main.Tabs.About {
     public partial class UserControlAboutTab : UserControl {
         public UserControlAboutTab() {
             InitializeComponent();

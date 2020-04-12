@@ -1,4 +1,4 @@
-﻿namespace OnlineOrderPrinter.UserControls.Main.Tabs {
+﻿namespace OnlineOrderPrinter.UserControls.Main.Tabs.About {
     partial class UserControlAboutTab {
         /// <summary> 
         /// Required designer variable.

@@ -87,10 +87,10 @@
     <Compile Include="UserControls\Login\UserControlLoginPage.Designer.cs">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Main\Tabs\UserControlAboutTab.cs">
+    <Compile Include="UserControls\Main\Tabs\About\UserControlAboutTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Main\Tabs\UserControlAboutTab.Designer.cs">
+    <Compile Include="UserControls\Main\Tabs\About\UserControlAboutTab.Designer.cs">
       <DependentUpon>UserControlAboutTab.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Main\Tabs\Orders\UserControlOrdersTab.cs">
@@ -135,7 +135,7 @@
     <EmbeddedResource Include="UserControls\Login\UserControlLoginPage.resx">
       <DependentUpon>UserControlLoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Main\Tabs\UserControlAboutTab.resx">
+    <EmbeddedResource Include="UserControls\Main\Tabs\About\UserControlAboutTab.resx">
       <DependentUpon>UserControlAboutTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Main\Tabs\Orders\UserControlOrdersTab.resx">
