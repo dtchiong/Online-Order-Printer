@@ -53,6 +53,7 @@
     <Compile Include="Actions\AuthActions.cs" />
     <Compile Include="Actions\EventActions.cs" />
     <Compile Include="Actions\NavigationActions.cs" />
+    <Compile Include="Actions\RestaurantActions.cs" />
     <Compile Include="Apis\Api.cs" />
     <Compile Include="Apis\Responses.cs" />
     <Compile Include="FormContainer.cs">
@@ -72,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sagas\AuthSagas.cs" />
     <Compile Include="Sagas\EventSagas.cs" />
+    <Compile Include="Sagas\RestaurantSagas.cs" />
     <Compile Include="State\AppState.cs" />
     <Compile Include="UserControls\Login\UserControlLogin.cs">
       <SubType>UserControl</SubType>

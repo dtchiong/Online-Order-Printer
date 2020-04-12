@@ -43,6 +43,23 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<FetchRestaurantResponse> FetchRestaurant(string restaurantId, string bearerToken) {
+            ConfigureHttpClient(bearerToken);
+
+            HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}");
+            Restaurant restaurant = null;
+            if (response.IsSuccessStatusCode) {
+                restaurant = JsonConvert.DeserializeObject<Restaurant>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            } else {
+                Debug.WriteLine($"Failed to FetchRestaurant - {response.StatusCode}");
+            }
+
+            return new FetchRestaurantResponse() {
+                Restaurant = restaurant,
+                StatusCode = response.StatusCode
+            };
+        }
+
         public static async Task<FetchEventsResponse> FetchEvents(
             string restaurantId,
             string bearerToken,

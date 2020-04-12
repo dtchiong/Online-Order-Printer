@@ -21,6 +21,10 @@ namespace OnlineOrderPrinter.Apis {
             public User User { get; set; }
         }
 
+        class FetchRestaurantResponse : Response {
+            public Restaurant Restaurant { get; set; }
+        }
+
         class FetchEventsResponse : Response {
             public Event[] Events { get; set; }
         }

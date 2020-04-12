@@ -21,6 +21,7 @@ namespace OnlineOrderPrinter.Sagas {
                     if (response.IsSuccessStatusCode()) {
                         AuthActions.SetUser(response.User);
                         EventActions.FetchCurrentDayEvents();
+                        RestaurantActions.FetchRestaurant();
                         NavigationActions.NavigateToMainPage();
                         AuthActions.ClearLoginFields();
                     } else {
