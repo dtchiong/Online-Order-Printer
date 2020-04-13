@@ -74,6 +74,7 @@
             this.eventListDataGridView.AllowUserToDeleteRows = false;
             this.eventListDataGridView.AllowUserToResizeColumns = false;
             this.eventListDataGridView.AllowUserToResizeRows = false;
+            this.eventListDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeReceivedDataGridViewTextBoxColumn,
