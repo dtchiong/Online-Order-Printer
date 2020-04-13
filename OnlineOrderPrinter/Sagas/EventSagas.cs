@@ -1,6 +1,7 @@
 ﻿using OnlineOrderPrinter.Actions;
 using OnlineOrderPrinter.Apis;
 using OnlineOrderPrinter.Apis.Responses;
+using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OnlineOrderPrinter.Sagas {
     class EventSagas {
@@ -29,11 +31,13 @@ namespace OnlineOrderPrinter.Sagas {
                         startEventId,
                         startTime,
                         endTime).Result;
-                    if (response.IsSuccessStatusCode()) {
-                        EventActions.ReceiveEvents(response.Events);
-                    }
-                    Debug.WriteLine("Ended FetchEvents saga");
-                    Interlocked.Exchange(ref FetchingEvents, 0);
+                    AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
+                        if (response.IsSuccessStatusCode()) {
+                            EventActions.ReceiveEvents(response.Events);
+                        }
+                        Debug.WriteLine("Ended FetchEvents saga");
+                        Interlocked.Exchange(ref FetchingEvents, 0);
+                    });
                 });
             }
         }

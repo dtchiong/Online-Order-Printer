@@ -23,14 +23,25 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewOrderList = new System.Windows.Forms.DataGridView();
+            this.eventListDataGridView = new System.Windows.Forms.DataGridView();
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timeReceivedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serviceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pickupTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confirmStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventListDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // fileSystemWatcher1
@@ -50,21 +61,91 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewOrderList);
+            this.splitContainer1.Panel2.Controls.Add(this.eventListDataGridView);
             this.splitContainer1.Size = new System.Drawing.Size(1038, 608);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
-            // dataGridViewOrderList
+            // eventListDataGridView
             // 
-            this.dataGridViewOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrderList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewOrderList.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewOrderList.Name = "dataGridViewOrderList";
-            this.dataGridViewOrderList.Size = new System.Drawing.Size(1038, 547);
-            this.dataGridViewOrderList.TabIndex = 0;
+            this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.timeReceivedDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.serviceDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.pickupTimeDataGridViewTextBoxColumn,
+            this.orderSizeDataGridViewTextBoxColumn,
+            this.confirmStatusDataGridViewTextBoxColumn,
+            this.printStatusDataGridViewTextBoxColumn});
+            this.eventListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eventListDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.eventListDataGridView.Name = "eventListDataGridView";
+            this.eventListDataGridView.Size = new System.Drawing.Size(1038, 547);
+            this.eventListDataGridView.TabIndex = 0;
+            this.eventListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.eventListDataGridView_CellFormatting);
+            // 
+            // eventBindingSource
+            // 
+            this.eventBindingSource.DataSource = typeof(OnlineOrderPrinter.Models.Event);
+            // 
+            // timeReceivedDataGridViewTextBoxColumn
+            // 
+            this.timeReceivedDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
+            this.timeReceivedDataGridViewTextBoxColumn.HeaderText = "Time Received";
+            this.timeReceivedDataGridViewTextBoxColumn.Name = "timeReceivedDataGridViewTextBoxColumn";
+            this.timeReceivedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "EventType";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // serviceDataGridViewTextBoxColumn
+            // 
+            this.serviceDataGridViewTextBoxColumn.DataPropertyName = "Order.Service";
+            this.serviceDataGridViewTextBoxColumn.HeaderText = "Service";
+            this.serviceDataGridViewTextBoxColumn.Name = "serviceDataGridViewTextBoxColumn";
+            this.serviceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Order.CustomerName";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pickupTimeDataGridViewTextBoxColumn
+            // 
+            this.pickupTimeDataGridViewTextBoxColumn.DataPropertyName = "Order.PickupTime";
+            this.pickupTimeDataGridViewTextBoxColumn.HeaderText = "Pickup Time";
+            this.pickupTimeDataGridViewTextBoxColumn.Name = "pickupTimeDataGridViewTextBoxColumn";
+            this.pickupTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // orderSizeDataGridViewTextBoxColumn
+            // 
+            this.orderSizeDataGridViewTextBoxColumn.DataPropertyName = "Order.OrderSize";
+            this.orderSizeDataGridViewTextBoxColumn.HeaderText = "Order Size";
+            this.orderSizeDataGridViewTextBoxColumn.Name = "orderSizeDataGridViewTextBoxColumn";
+            this.orderSizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // confirmStatusDataGridViewTextBoxColumn
+            // 
+            this.confirmStatusDataGridViewTextBoxColumn.DataPropertyName = "Order.ConfirmStatus";
+            this.confirmStatusDataGridViewTextBoxColumn.HeaderText = "Confirm Status";
+            this.confirmStatusDataGridViewTextBoxColumn.Name = "confirmStatusDataGridViewTextBoxColumn";
+            this.confirmStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // printStatusDataGridViewTextBoxColumn
+            // 
+            this.printStatusDataGridViewTextBoxColumn.DataPropertyName = "Order.PrintStatus";
+            this.printStatusDataGridViewTextBoxColumn.HeaderText = "Print Status";
+            this.printStatusDataGridViewTextBoxColumn.Name = "printStatusDataGridViewTextBoxColumn";
+            this.printStatusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // UserControlOrdersView
             // 
@@ -77,7 +158,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventListDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,6 +168,15 @@
 
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dataGridViewOrderList;
+        private System.Windows.Forms.DataGridView eventListDataGridView;
+        private System.Windows.Forms.BindingSource eventBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeReceivedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pickupTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderSizeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn confirmStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn printStatusDataGridViewTextBoxColumn;
     }
 }

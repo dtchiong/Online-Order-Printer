@@ -1,8 +1,10 @@
 ﻿using OnlineOrderPrinter.Models;
 using OnlineOrderPrinter.UserControls.Login;
 using OnlineOrderPrinter.UserControls.Main;
+using OnlineOrderPrinter.UserControls.Main.Tabs.Orders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -10,16 +12,17 @@ using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.State {
     class AppState {
-        public static List<Event> Events { get; set; } = new List<Event>();
+        public static BindingList<Event> Events { get; set; } = new BindingList<Event>();
         public static string LatestEventId { get; set; }
         public static User User { get; set; }
-        public static Restaurant Restaurant { get { return _restaurant; } set { _restaurant = value; OnRestaurantChanged(value); } }
+        public static Restaurant Restaurant { get { return restaurant; } set { restaurant = value; OnRestaurantChanged(value); } }
 
         public static FormContainer FormContainer { get; set; }
         public static UserControlLoginPage UserControlLoginPage { get; set; }
         public static UserControlMainPage UserControlMainPage { get; set; }
+        public static UserControlOrdersView UserControlOrdersView { get; set; }
 
-        private static Restaurant _restaurant;
+        private static Restaurant restaurant;
 
         private static void OnRestaurantChanged(Restaurant restaurant) {
             UserControlMainPage.SetLabelRestaurantNameSafe(Restaurant?.Name);

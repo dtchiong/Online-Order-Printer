@@ -29,10 +29,11 @@ namespace OnlineOrderPrinter.Actions {
             if (events == null || events.Length == 0) {
                 return;
             }
+            SetLatestEventId(events[events.Length - 1].Id);
             foreach (Event @event in events) {
                 AppState.Events.Add(@event);
             }
-            SetLatestEventId(events[events.Length - 1].Id);
+            AppState.UserControlOrdersView.SetEventListBindingList(AppState.Events);
         }
 
         public static void SetLatestEventId(string latestEventId) {
