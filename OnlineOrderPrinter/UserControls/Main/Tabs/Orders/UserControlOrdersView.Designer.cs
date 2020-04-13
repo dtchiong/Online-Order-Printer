@@ -90,10 +90,12 @@
             this.eventListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.eventListDataGridView.EnableHeadersVisualStyles = false;
             this.eventListDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.eventListDataGridView.MultiSelect = false;
             this.eventListDataGridView.Name = "eventListDataGridView";
             this.eventListDataGridView.ReadOnly = true;
             this.eventListDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.eventListDataGridView.RowHeadersVisible = false;
+            this.eventListDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.eventListDataGridView.Size = new System.Drawing.Size(1038, 547);
             this.eventListDataGridView.TabIndex = 0;
             this.eventListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.eventListDataGridView_CellFormatting);
