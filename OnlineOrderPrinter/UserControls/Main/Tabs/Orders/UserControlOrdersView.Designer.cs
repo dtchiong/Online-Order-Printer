@@ -86,7 +86,8 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.eventListDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.eventListDataGridView.ColumnHeadersHeight = 40;
+            this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeReceivedDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
@@ -104,6 +105,7 @@
             this.eventListDataGridView.ReadOnly = true;
             this.eventListDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.eventListDataGridView.RowHeadersVisible = false;
+            this.eventListDataGridView.RowTemplate.Height = 40;
             this.eventListDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.eventListDataGridView.Size = new System.Drawing.Size(1038, 547);
             this.eventListDataGridView.TabIndex = 0;
@@ -116,7 +118,7 @@
             this.timeReceivedDataGridViewTextBoxColumn.HeaderText = "Time Received";
             this.timeReceivedDataGridViewTextBoxColumn.Name = "timeReceivedDataGridViewTextBoxColumn";
             this.timeReceivedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.timeReceivedDataGridViewTextBoxColumn.Width = 115;
+            this.timeReceivedDataGridViewTextBoxColumn.Width = 105;
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -146,6 +148,7 @@
             this.pickupTimeDataGridViewTextBoxColumn.HeaderText = "Pickup Time";
             this.pickupTimeDataGridViewTextBoxColumn.Name = "pickupTimeDataGridViewTextBoxColumn";
             this.pickupTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pickupTimeDataGridViewTextBoxColumn.Width = 92;
             // 
             // orderSizeDataGridViewTextBoxColumn
             // 
@@ -177,6 +180,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UserControlOrdersView";
             this.Size = new System.Drawing.Size(1038, 608);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
