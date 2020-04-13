@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Models {
-    class Order {
+    public class Order {
         public string Id { get; set; }
         public string Service { get; set; }
         public string ServiceOrderId { get; set; }

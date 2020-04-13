@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Models {
-    class OrderItem : OrderItemBase {
+    public class OrderItem : OrderItemBase {
         public int Quantity { get; set; }
         public string SpecialInstructions { get; set; }
         public string LabelName { get; set; }

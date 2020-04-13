@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Models {
-    class User {
+    public class User {
         public string Id { get; set; }
         public string RestaurantId { get; set; }
         public string FirstName { get; set; }
