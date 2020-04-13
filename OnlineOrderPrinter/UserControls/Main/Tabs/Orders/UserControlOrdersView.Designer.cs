@@ -74,7 +74,9 @@
             this.eventListDataGridView.AllowUserToDeleteRows = false;
             this.eventListDataGridView.AllowUserToResizeColumns = false;
             this.eventListDataGridView.AllowUserToResizeRows = false;
+            this.eventListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.eventListDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.eventListDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeReceivedDataGridViewTextBoxColumn,
@@ -86,9 +88,11 @@
             this.confirmStatusDataGridViewTextBoxColumn,
             this.printStatusDataGridViewTextBoxColumn});
             this.eventListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eventListDataGridView.EnableHeadersVisualStyles = false;
             this.eventListDataGridView.Location = new System.Drawing.Point(0, 0);
             this.eventListDataGridView.Name = "eventListDataGridView";
             this.eventListDataGridView.ReadOnly = true;
+            this.eventListDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.eventListDataGridView.RowHeadersVisible = false;
             this.eventListDataGridView.Size = new System.Drawing.Size(1038, 547);
             this.eventListDataGridView.TabIndex = 0;
@@ -96,10 +100,12 @@
             // 
             // timeReceivedDataGridViewTextBoxColumn
             // 
+            this.timeReceivedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.timeReceivedDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
             this.timeReceivedDataGridViewTextBoxColumn.HeaderText = "Time Received";
             this.timeReceivedDataGridViewTextBoxColumn.Name = "timeReceivedDataGridViewTextBoxColumn";
             this.timeReceivedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.timeReceivedDataGridViewTextBoxColumn.Width = 115;
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -124,6 +130,7 @@
             // 
             // pickupTimeDataGridViewTextBoxColumn
             // 
+            this.pickupTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pickupTimeDataGridViewTextBoxColumn.DataPropertyName = "Order.PickupTime";
             this.pickupTimeDataGridViewTextBoxColumn.HeaderText = "Pickup Time";
             this.pickupTimeDataGridViewTextBoxColumn.Name = "pickupTimeDataGridViewTextBoxColumn";
