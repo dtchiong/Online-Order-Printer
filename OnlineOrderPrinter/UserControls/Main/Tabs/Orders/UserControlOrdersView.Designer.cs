@@ -27,7 +27,6 @@
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.eventListDataGridView = new System.Windows.Forms.DataGridView();
-            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timeReceivedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serviceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,6 +35,7 @@
             this.orderSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.confirmStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,6 +70,10 @@
             // 
             // eventListDataGridView
             // 
+            this.eventListDataGridView.AllowUserToAddRows = false;
+            this.eventListDataGridView.AllowUserToDeleteRows = false;
+            this.eventListDataGridView.AllowUserToResizeColumns = false;
+            this.eventListDataGridView.AllowUserToResizeRows = false;
             this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeReceivedDataGridViewTextBoxColumn,
@@ -83,13 +87,11 @@
             this.eventListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.eventListDataGridView.Location = new System.Drawing.Point(0, 0);
             this.eventListDataGridView.Name = "eventListDataGridView";
+            this.eventListDataGridView.ReadOnly = true;
+            this.eventListDataGridView.RowHeadersVisible = false;
             this.eventListDataGridView.Size = new System.Drawing.Size(1038, 547);
             this.eventListDataGridView.TabIndex = 0;
             this.eventListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.eventListDataGridView_CellFormatting);
-            // 
-            // eventBindingSource
-            // 
-            this.eventBindingSource.DataSource = typeof(OnlineOrderPrinter.Models.Event);
             // 
             // timeReceivedDataGridViewTextBoxColumn
             // 
@@ -146,6 +148,10 @@
             this.printStatusDataGridViewTextBoxColumn.HeaderText = "Print Status";
             this.printStatusDataGridViewTextBoxColumn.Name = "printStatusDataGridViewTextBoxColumn";
             this.printStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eventBindingSource
+            // 
+            this.eventBindingSource.DataSource = typeof(OnlineOrderPrinter.Models.Event);
             // 
             // UserControlOrdersView
             // 
