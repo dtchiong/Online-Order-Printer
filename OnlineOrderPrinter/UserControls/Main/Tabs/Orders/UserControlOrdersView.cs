@@ -37,9 +37,9 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
         private void InitializeEventListDataGridViewFormatters() {
             eventListDataGridViewFormatters = new Dictionary<string, Func<object, string>> {
-                { timeReceivedDataGridViewTextBoxColumn.DataPropertyName, FormatEventCreatedAt },
+                { timeReceivedDataGridViewTextBoxColumn.DataPropertyName, FormatColumnDate },
                 { typeDataGridViewTextBoxColumn.DataPropertyName, FormatEventType },
-                { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatOrderPickupTime }
+                { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatColumnDate }
             };
         }
 
@@ -80,12 +80,13 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
         }
 
-        private string FormatEventCreatedAt(object val) {
-            return ((DateTime)val).ToLocalTime().ToString();
-        }
+        private string FormatColumnDate(object val) {
+            DateTime dateTime = ((DateTime)val).ToLocalTime();
+            bool sameDay = dateTime.Date == DateTime.Now.Date;
+            string time = dateTime.ToShortTimeString();
+            string date = dateTime.ToShortDateString();
 
-        private string FormatOrderPickupTime(object val) {
-            return ((DateTime)val).ToLocalTime().ToString();
+            return $"{(sameDay ? "Today " : date),10} {time,8}";
         }
 
         private string FormatEventType(object val) {
