@@ -16,9 +16,11 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
     public partial class UserControlOrdersView : UserControl {
 
         private BindingSource eventListBindingSource = new BindingSource();
+        private Dictionary<string, Func<object, string>> eventListDataGridViewFormatters;
 
         public UserControlOrdersView() {
             InitializeComponent();
+            InitializeEventListDataGridViewFormatters();
             InitializeEventListDataGridView();
             AppState.UserControlOrdersView = this;
         }
@@ -33,11 +35,25 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             eventListDataGridView.DataSource = eventListBindingSource;
         }
 
+        private void InitializeEventListDataGridViewFormatters() {
+            eventListDataGridViewFormatters = new Dictionary<string, Func<object, string>> {
+                { timeReceivedDataGridViewTextBoxColumn.DataPropertyName, FormatEventCreatedAt },
+                { typeDataGridViewTextBoxColumn.DataPropertyName, FormatEventType },
+                { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatOrderPickupTime }
+            };
+        }
+
         private void eventListDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             DataGridView grid = (DataGridView)sender;
             DataGridViewRow row = grid.Rows[e.RowIndex];
             DataGridViewColumn col = grid.Columns[e.ColumnIndex];
-            if (row.DataBoundItem != null && col.DataPropertyName.Contains(".")) {
+            object columnVal = null;
+
+            if (row.DataBoundItem == null) {
+                return;
+            }
+
+            if (col.DataPropertyName.Contains(".")) {
                 string[] props = col.DataPropertyName.Split('.');
                 PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
                 object val = propInfo.GetValue(row.DataBoundItem, null);
@@ -45,7 +61,41 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                     propInfo = val.GetType().GetProperty(props[i]);
                     val = propInfo.GetValue(val, null);
                 }
-                e.Value = val;
+                columnVal = val;
+            } else {
+                PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(col.DataPropertyName);
+                columnVal = propInfo.GetValue(row.DataBoundItem, null);
+            }
+
+            if (columnVal != null) {
+                e.Value = FormatEventListDataGridViewColumn(col.DataPropertyName, columnVal);
+            }
+        }
+
+        private string FormatEventListDataGridViewColumn(string dataPropertyName, object val) {
+            if (eventListDataGridViewFormatters.TryGetValue(dataPropertyName, out Func<object, string> formatter)) {
+                return formatter(val);
+            } else {
+                return val.ToString();
+            }
+        }
+
+        private string FormatEventCreatedAt(object val) {
+            return ((DateTime)val).ToLocalTime().ToString();
+        }
+
+        private string FormatOrderPickupTime(object val) {
+            return ((DateTime)val).ToLocalTime().ToString();
+        }
+
+        private string FormatEventType(object val) {
+            string eventType = val.ToString();
+
+            switch (eventType) {
+                case "new_order":
+                    return "New Order";
+                default:
+                    return eventType;
             }
         }
     }
