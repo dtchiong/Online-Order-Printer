@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Apis {
     class Api {
-        static readonly Uri DEV_API_BASE_URI = new Uri("http://192.168.1.3:3000/");
-        static readonly Uri PROD_API_BASE_URI = new Uri("http://production.eba-ckgxeb6t.us-west-1.elasticbeanstalk.com/");
+        static readonly Uri DevApiBaseUri = new Uri("http://192.168.1.3:3000/");
+        static readonly Uri ProdApiBaseUri = new Uri("http://production.eba-ckgxeb6t.us-west-1.elasticbeanstalk.com/");
 
         static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings {
             ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
@@ -153,9 +153,9 @@ namespace OnlineOrderPrinter.Apis {
 
         private static Uri GetApiBaseUri() {
 #if DEBUG
-            return DEV_API_BASE_URI;
+            return DevApiBaseUri;
 #else
-            return PROD_API_BASE_URI;
+            return ProdApiBaseUri;
 #endif
         }
 
