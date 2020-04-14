@@ -114,12 +114,11 @@
             // 
             // timeReceivedDataGridViewTextBoxColumn
             // 
-            this.timeReceivedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.timeReceivedDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
             this.timeReceivedDataGridViewTextBoxColumn.HeaderText = "Time Received";
+            this.timeReceivedDataGridViewTextBoxColumn.MinimumWidth = 150;
             this.timeReceivedDataGridViewTextBoxColumn.Name = "timeReceivedDataGridViewTextBoxColumn";
             this.timeReceivedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.timeReceivedDataGridViewTextBoxColumn.Width = 107;
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -144,12 +143,11 @@
             // 
             // pickupTimeDataGridViewTextBoxColumn
             // 
-            this.pickupTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.pickupTimeDataGridViewTextBoxColumn.DataPropertyName = "Order.PickupTime";
             this.pickupTimeDataGridViewTextBoxColumn.HeaderText = "Pickup Time";
+            this.pickupTimeDataGridViewTextBoxColumn.MinimumWidth = 150;
             this.pickupTimeDataGridViewTextBoxColumn.Name = "pickupTimeDataGridViewTextBoxColumn";
             this.pickupTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pickupTimeDataGridViewTextBoxColumn.Width = 95;
             // 
             // orderSizeDataGridViewTextBoxColumn
             // 
