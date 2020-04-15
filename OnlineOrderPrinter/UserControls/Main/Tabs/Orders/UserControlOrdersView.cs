@@ -17,9 +17,12 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
         private BindingSource eventListBindingSource = new BindingSource();
         private Dictionary<string, Func<object, string>> eventListDataGridViewFormatters;
+        private bool initialEventsSelectionOccurred = false;
+        private string currentEventsSelection;
 
         public UserControlOrdersView() {
             InitializeComponent();
+            InitializeEventsSelectionAndComboBox();
             InitializeEventListDataGridViewFormatters();
             InitializeEventListDataGridView();
             AppState.UserControlOrdersView = this;
@@ -29,10 +32,13 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             eventListBindingSource.DataSource = bindingList;
         }
 
-        private void InitializeEventListDataGridView() {
-            eventListDataGridView.AutoGenerateColumns = false;
-            eventListBindingSource.DataSource = AppState.Events;
-            eventListDataGridView.DataSource = eventListBindingSource;
+        private void InitializeEventsSelectionAndComboBox() {
+            string[] eventsSelections = new string[] {
+                EventsSelection.Today, EventsSelection.Yesterday, EventsSelection.Last7Days, EventsSelection.Last30Days
+            };
+            currentEventsSelection = eventsSelections[0];
+
+            comboBoxEventsSelector.DataSource = eventsSelections;
         }
 
         private void InitializeEventListDataGridViewFormatters() {
@@ -41,6 +47,12 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 { typeDataGridViewTextBoxColumn.DataPropertyName, FormatEventType },
                 { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatColumnDate }
             };
+        }
+
+        private void InitializeEventListDataGridView() {
+            eventListDataGridView.AutoGenerateColumns = false;
+            eventListBindingSource.DataSource = AppState.Events;
+            eventListDataGridView.DataSource = eventListBindingSource;
         }
 
         private void eventListDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -99,5 +111,40 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                     return eventType;
             }
         }
+
+        private void comboBoxEventsSelector_SelectedValueChanged(object sender, EventArgs e) {
+            if (!initialEventsSelectionOccurred) {
+                initialEventsSelectionOccurred = true;
+                return;
+            }
+
+            string selection = ((ComboBox)sender).SelectedValue.ToString();
+            if (selection == currentEventsSelection) {
+                return;
+            }
+
+            currentEventsSelection = selection;
+            switch (selection) {
+                case EventsSelection.Today:
+                    // TODO
+                    break;
+                case EventsSelection.Yesterday:
+                    // TODO
+                    break;
+                case EventsSelection.Last7Days:
+                    // TODO
+                    break;
+                case EventsSelection.Last30Days:
+                    // TODO
+                    break;
+            }
+        }
+    }
+
+    public static class EventsSelection {
+        public const string Today = "Today";
+        public const string Yesterday = "Yesterday";
+        public const string Last7Days = "Last 7 Days";
+        public const string Last30Days = "Last 30 Days";
     }
 }
