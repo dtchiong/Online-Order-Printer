@@ -33,22 +33,23 @@
             this.userControlLoginPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userControlLoginPage1.Location = new System.Drawing.Point(0, 0);
             this.userControlLoginPage1.Name = "userControlLoginPage1";
-            this.userControlLoginPage1.Size = new System.Drawing.Size(1007, 656);
+            this.userControlLoginPage1.Size = new System.Drawing.Size(1254, 676);
             this.userControlLoginPage1.TabIndex = 0;
             // 
             // userControlMainPage1
             // 
+            this.userControlMainPage1.ActiveTabName = "userControlOrdersTab1";
             this.userControlMainPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userControlMainPage1.Location = new System.Drawing.Point(0, 0);
             this.userControlMainPage1.Name = "userControlMainPage1";
-            this.userControlMainPage1.Size = new System.Drawing.Size(1007, 656);
+            this.userControlMainPage1.Size = new System.Drawing.Size(1254, 676);
             this.userControlMainPage1.TabIndex = 1;
             // 
             // FormContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 656);
+            this.ClientSize = new System.Drawing.Size(1254, 676);
             this.Controls.Add(this.userControlLoginPage1);
             this.Controls.Add(this.userControlMainPage1);
             this.Name = "FormContainer";
