@@ -53,8 +53,8 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(1023, 695);
-            this.splitContainer1.SplitterDistance = 122;
+            this.splitContainer1.Size = new System.Drawing.Size(1023, 800);
+            this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -71,7 +71,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 122);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 140);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -80,7 +80,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(345, 56);
+            this.label1.Location = new System.Drawing.Point(345, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(333, 50);
             this.label1.TabIndex = 0;
@@ -100,16 +100,16 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.430868F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.56913F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1023, 572);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1023, 659);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // userControlLogin1
             // 
             this.userControlLogin1.BackColor = System.Drawing.Color.White;
             this.userControlLogin1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlLogin1.Location = new System.Drawing.Point(258, 36);
+            this.userControlLogin1.Location = new System.Drawing.Point(258, 42);
             this.userControlLogin1.Name = "userControlLogin1";
-            this.userControlLogin1.Size = new System.Drawing.Size(505, 486);
+            this.userControlLogin1.Size = new System.Drawing.Size(505, 567);
             this.userControlLogin1.TabIndex = 0;
             // 
             // UserControlLoginPage
@@ -119,7 +119,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(83)))));
             this.Controls.Add(this.splitContainer1);
             this.Name = "UserControlLoginPage";
-            this.Size = new System.Drawing.Size(1023, 695);
+            this.Size = new System.Drawing.Size(1023, 800);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

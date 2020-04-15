@@ -64,7 +64,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.eventListDataGridView);
             this.splitContainer1.Size = new System.Drawing.Size(1038, 608);
-            this.splitContainer1.SplitterDistance = 60;
+            this.splitContainer1.SplitterDistance = 80;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
@@ -108,7 +108,7 @@
             this.eventListDataGridView.RowHeadersVisible = false;
             this.eventListDataGridView.RowTemplate.Height = 40;
             this.eventListDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.eventListDataGridView.Size = new System.Drawing.Size(1038, 547);
+            this.eventListDataGridView.Size = new System.Drawing.Size(1038, 527);
             this.eventListDataGridView.TabIndex = 0;
             this.eventListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.eventListDataGridView_CellFormatting);
             // 

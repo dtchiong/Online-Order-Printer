@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.labelTabName = new System.Windows.Forms.Label();
-            this.userControlTabSideBar1 = new OnlineOrderPrinter.UserControls.Main.UserControlTabSideBar();
             this.userControlOrdersTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.Orders.UserControlOrdersTab();
             this.userControlSettingsTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.Settings.UserControlSettingsTab();
             this.userControlAboutTab1 = new OnlineOrderPrinter.UserControls.Main.Tabs.About.UserControlAboutTab();
@@ -54,9 +54,18 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1023, 695);
+            this.splitContainer1.Size = new System.Drawing.Size(1023, 800);
             this.splitContainer1.SplitterDistance = 160;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // userControlTabSideBar1
+            // 
+            this.userControlTabSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
+            this.userControlTabSideBar1.Name = "userControlTabSideBar1";
+            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 800);
+            this.userControlTabSideBar1.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -77,8 +86,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.userControlOrdersTab1);
             this.splitContainer2.Panel2.Controls.Add(this.userControlSettingsTab1);
             this.splitContainer2.Panel2.Controls.Add(this.userControlAboutTab1);
-            this.splitContainer2.Size = new System.Drawing.Size(859, 695);
-            this.splitContainer2.SplitterDistance = 60;
+            this.splitContainer2.Size = new System.Drawing.Size(859, 800);
+            this.splitContainer2.SplitterDistance = 69;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.TabStop = false;
@@ -89,21 +98,12 @@
             this.labelTabName.AutoSize = true;
             this.labelTabName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTabName.ForeColor = System.Drawing.Color.Black;
-            this.labelTabName.Location = new System.Drawing.Point(16, 15);
+            this.labelTabName.Location = new System.Drawing.Point(16, 19);
             this.labelTabName.Name = "labelTabName";
             this.labelTabName.Size = new System.Drawing.Size(166, 32);
             this.labelTabName.TabIndex = 0;
             this.labelTabName.Text = "Latest Orders";
             this.labelTabName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // userControlTabSideBar1
-            // 
-            this.userControlTabSideBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
-            this.userControlTabSideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlTabSideBar1.Location = new System.Drawing.Point(0, 0);
-            this.userControlTabSideBar1.Name = "userControlTabSideBar1";
-            this.userControlTabSideBar1.Size = new System.Drawing.Size(160, 695);
-            this.userControlTabSideBar1.TabIndex = 0;
             // 
             // userControlOrdersTab1
             // 
@@ -112,7 +112,7 @@
             this.userControlOrdersTab1.Location = new System.Drawing.Point(0, 0);
             this.userControlOrdersTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.userControlOrdersTab1.Name = "userControlOrdersTab1";
-            this.userControlOrdersTab1.Size = new System.Drawing.Size(859, 634);
+            this.userControlOrdersTab1.Size = new System.Drawing.Size(859, 730);
             this.userControlOrdersTab1.TabIndex = 2;
             // 
             // userControlSettingsTab1
@@ -122,7 +122,7 @@
             this.userControlSettingsTab1.Location = new System.Drawing.Point(0, 0);
             this.userControlSettingsTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.userControlSettingsTab1.Name = "userControlSettingsTab1";
-            this.userControlSettingsTab1.Size = new System.Drawing.Size(859, 634);
+            this.userControlSettingsTab1.Size = new System.Drawing.Size(859, 730);
             this.userControlSettingsTab1.TabIndex = 1;
             // 
             // userControlAboutTab1
@@ -132,7 +132,7 @@
             this.userControlAboutTab1.Location = new System.Drawing.Point(0, 0);
             this.userControlAboutTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.userControlAboutTab1.Name = "userControlAboutTab1";
-            this.userControlAboutTab1.Size = new System.Drawing.Size(859, 634);
+            this.userControlAboutTab1.Size = new System.Drawing.Size(859, 730);
             this.userControlAboutTab1.TabIndex = 0;
             // 
             // UserControlMainPage
@@ -141,7 +141,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "UserControlMainPage";
-            this.Size = new System.Drawing.Size(1023, 695);
+            this.Size = new System.Drawing.Size(1023, 800);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
