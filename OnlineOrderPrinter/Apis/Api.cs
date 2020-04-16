@@ -71,8 +71,8 @@ namespace OnlineOrderPrinter.Apis {
 
             string query = BuildQuery(new (string, string)[] {
                 ("start_event_id", startEventId),
-                ("start_time", startTime.ToString()),
-                ("end_time", endTime.ToString())
+                ("start_time", (startTime != null? startTime.Value.ToUniversalTime().ToString("o") : "")),
+                ("end_time", (endTime != null? endTime.Value.ToUniversalTime().ToString("o") : ""))
             });
 
             HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/events{query}");
