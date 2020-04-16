@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.Models;
+﻿using OnlineOrderPrinter.Actions;
+using OnlineOrderPrinter.Models;
 using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void InitializeEventsSelectionAndComboBox() {
+            comboBoxEventsSelector.MouseWheel += new MouseEventHandler(comboBoxEventsSelector_MouseWheel);
+
             string[] eventsSelections = new string[] {
                 EventsSelection.Today, EventsSelection.Yesterday, EventsSelection.Last7Days, EventsSelection.Last30Days
             };
@@ -98,7 +101,11 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             string time = dateTime.ToShortTimeString();
             string date = dateTime.ToShortDateString();
 
-            return $"{(sameDay ? "Today " : date),10} {time,8}";
+            if (sameDay) {
+                return $"{$" Today {time,8}",-19}";
+            } else {
+                return $"{date,10} {time,8}";
+            }
         }
 
         private string FormatEventType(object val) {
@@ -124,20 +131,25 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             currentEventsSelection = selection;
-            switch (selection) {
-                case EventsSelection.Today:
-                    // TODO
-                    break;
-                case EventsSelection.Yesterday:
-                    // TODO
-                    break;
-                case EventsSelection.Last7Days:
-                    // TODO
-                    break;
-                case EventsSelection.Last30Days:
-                    // TODO
-                    break;
+            if (selection == EventsSelection.Today) {
+                SetEventListBindingList(AppState.Events);
+            } else {
+                // TODO Fix this once we add another state for past orders in AppState
+                AppState.Events.Clear();
+                EventActions.FetchPresetRangeEvents(selection);
             }
+        }
+
+        /**
+         * Change focus back to the event list datagrid for convience, and so that
+         * we lose focus of the combobox
+         */
+        private void comboBoxEventsSelector_DropDownClosed(object sender, EventArgs e) {
+            AppState.UserControlOrdersView.eventListDataGridView.Focus();
+        }
+
+        private void comboBoxEventsSelector_MouseWheel(object sender, MouseEventArgs e) {
+            ((HandledMouseEventArgs)e).Handled = true;
         }
     }
 

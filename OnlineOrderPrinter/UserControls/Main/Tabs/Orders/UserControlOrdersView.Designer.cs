@@ -125,6 +125,7 @@
             this.comboBoxEventsSelector.Size = new System.Drawing.Size(121, 28);
             this.comboBoxEventsSelector.TabIndex = 1;
             this.comboBoxEventsSelector.TabStop = false;
+            this.comboBoxEventsSelector.DropDownClosed += new System.EventHandler(this.comboBoxEventsSelector_DropDownClosed);
             this.comboBoxEventsSelector.SelectedValueChanged += new System.EventHandler(this.comboBoxEventsSelector_SelectedValueChanged);
             // 
             // eventListDataGridView
