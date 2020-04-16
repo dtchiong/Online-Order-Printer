@@ -12,6 +12,6 @@ namespace OnlineOrderPrinter.Models {
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Token { get; set; }
-        public string UserType { get; set; }
+        public UserType UserType { get; set; }
     }
 }

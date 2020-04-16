@@ -102,13 +102,13 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private string FormatEventType(object val) {
-            string eventType = val.ToString();
+            EventType eventType = (EventType)val;
 
             switch (eventType) {
-                case "new_order":
+                case EventType.NewOrder:
                     return "New Order";
                 default:
-                    return eventType;
+                    return eventType.ToString();
             }
         }
 

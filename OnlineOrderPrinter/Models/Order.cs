@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace OnlineOrderPrinter.Models {
     public class Order {
         public string Id { get; set; }
-        public string Service { get; set; }
+        public ServiceType Service { get; set; }
         public string ServiceOrderId { get; set; }
         public string CustomerName { get; set; }
         public string ContactNumber { get; set; }
