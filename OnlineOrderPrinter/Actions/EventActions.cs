@@ -1,4 +1,5 @@
 ﻿using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.UserControls.Main.Tabs.Orders;
 using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.Sagas;
 using System;
@@ -14,7 +15,7 @@ namespace OnlineOrderPrinter.Actions {
             string restaurantId = AppState.User?.RestaurantId;
             string bearerToken = AppState.User?.Token;
 
-            EventSagas.FetchEvents(restaurantId, bearerToken);
+            EventSagas.FetchCurrentEvents(restaurantId, bearerToken);
         }
 
         public static void FetchLatestEvents() {
@@ -22,7 +23,24 @@ namespace OnlineOrderPrinter.Actions {
             string bearerToken = AppState.User?.Token;
             string latestEventId = AppState.LatestEventId;
 
-            EventSagas.FetchEvents(restaurantId, bearerToken, latestEventId);
+            EventSagas.FetchCurrentEvents(restaurantId, bearerToken, latestEventId);
+        }
+
+        public static void FetchPresetRangeEvents(string eventsSelection) {
+            string restaurantId = AppState.User?.RestaurantId;
+            string bearerToken = AppState.User?.Token;
+
+            switch (eventsSelection) {
+                case EventsSelection.Yesterday:
+                    EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-1), DateTime.Today);
+                    break;
+                case EventsSelection.Last7Days:
+                    EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
+                    break;
+                case EventsSelection.Last30Days:
+                    EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-30), DateTime.Today.AddDays(1));
+                    break;
+            }
         }
 
         public static void ReceiveEvents(Event[] events) {
@@ -31,9 +49,9 @@ namespace OnlineOrderPrinter.Actions {
             }
             SetLatestEventId(events[events.Length - 1].Id);
             foreach (Event @event in events) {
-                AppState.Events.Add(@event);
+                AppState.CurrentEvents.Add(@event);
             }
-            AppState.UserControlOrdersView.SetEventListBindingList(AppState.Events);
+            AppState.UserControlOrdersView.SetEventListBindingList(AppState.CurrentEvents);
         }
 
         public static void SetLatestEventId(string latestEventId) {
@@ -41,7 +59,7 @@ namespace OnlineOrderPrinter.Actions {
         }
 
         public static void ClearEvents() {
-            AppState.Events.Clear();
+            AppState.CurrentEvents.Clear();
         }
     }
 }

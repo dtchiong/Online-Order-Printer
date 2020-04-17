@@ -16,10 +16,10 @@ using System.Reflection;
 namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
     public partial class UserControlOrdersView : UserControl {
 
+        private BindingList<Event> eventListBindingList = new BindingList<Event>();
         private BindingSource eventListBindingSource = new BindingSource();
         private Dictionary<string, Func<object, string>> eventListDataGridViewFormatters;
         private bool initialEventsSelectionOccurred = false;
-        private string currentEventsSelection;
 
         public UserControlOrdersView() {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             string[] eventsSelections = new string[] {
                 EventsSelection.Today, EventsSelection.Yesterday, EventsSelection.Last7Days, EventsSelection.Last30Days
             };
-            currentEventsSelection = eventsSelections[0];
+            AppState.CurrentEventsSelection = eventsSelections[0];
 
             comboBoxEventsSelector.DataSource = eventsSelections;
         }
@@ -54,7 +54,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
         private void InitializeEventListDataGridView() {
             eventListDataGridView.AutoGenerateColumns = false;
-            eventListBindingSource.DataSource = AppState.Events;
+            eventListBindingSource.DataSource = eventListBindingList;
             eventListDataGridView.DataSource = eventListBindingSource;
         }
 
@@ -126,16 +126,16 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             string selection = ((ComboBox)sender).SelectedValue.ToString();
-            if (selection == currentEventsSelection) {
+            if (selection == AppState.CurrentEventsSelection) {
                 return;
             }
 
-            currentEventsSelection = selection;
+            AppState.CurrentEventsSelection = selection;
             if (selection == EventsSelection.Today) {
-                SetEventListBindingList(AppState.Events);
+                SetEventListBindingList(AppState.CurrentEvents);
             } else {
                 // TODO Fix this once we add another state for past orders in AppState
-                AppState.Events.Clear();
+                AppState.CurrentEvents.Clear();
                 EventActions.FetchPresetRangeEvents(selection);
             }
         }

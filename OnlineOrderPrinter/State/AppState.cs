@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.State {
     class AppState {
-        public static BindingList<Event> Events { get; set; } = new BindingList<Event>();
+        public static BindingList<Event> CurrentEvents { get; set; } = new BindingList<Event>();
         public static string LatestEventId { get; set; }
+        public static string CurrentEventsSelection { get; set; }
         public static User User { get; set; }
         public static Restaurant Restaurant { get { return restaurant; } set { restaurant = value; OnRestaurantChanged(value); } }
 
