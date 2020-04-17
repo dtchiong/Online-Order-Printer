@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Apis {
@@ -65,7 +66,8 @@ namespace OnlineOrderPrinter.Apis {
             string bearerToken,
             string startEventId,
             DateTime? startTime,
-            DateTime? endTime) {
+            DateTime? endTime,
+            CancellationToken ct) {
 
             ConfigureHttpClient(bearerToken);
 
@@ -75,7 +77,7 @@ namespace OnlineOrderPrinter.Apis {
                 ("end_time", (endTime != null? endTime.Value.ToUniversalTime().ToString("o") : ""))
             });
 
-            HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/events{query}");
+            HttpResponseMessage response = await client.GetAsync($"api/v1/restaurants/{restaurantId}/events{query}", ct);
             Event[] events = null;
             if (response.IsSuccessStatusCode) {
                 events = JsonConvert.DeserializeObject<Event[]>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
