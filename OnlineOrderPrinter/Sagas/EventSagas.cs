@@ -47,7 +47,7 @@ namespace OnlineOrderPrinter.Sagas {
                     currentFetchCurrentEventsCTS.Token).Result;
                 AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
                     if (response.IsSuccessStatusCode()) {
-                        EventActions.ReceiveEvents(response.Events);
+                        EventActions.ReceiveEvents(response.Events, "current");
                     }
                     Debug.WriteLine("Ended FetchCurrentEvents saga");
                     fetchingCurrentEvents = false;
@@ -85,7 +85,7 @@ namespace OnlineOrderPrinter.Sagas {
                         currentFetchPastEventsCTS.Token).Result;
                     AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
                         if (response.IsSuccessStatusCode()) {
-                            EventActions.ReceiveEvents(response.Events);
+                            EventActions.ReceiveEvents(response.Events, "past");
                         }
                     });
                 } catch (AggregateException e) {

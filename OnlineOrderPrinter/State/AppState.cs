@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.State {
     class AppState {
-        public static BindingList<Event> CurrentEvents { get; set; } = new BindingList<Event>();
+        public static List<Event> CurrentEvents { get; set; } = new List<Event>();
+        public static List<Event> PastEvents { get; set; } = new List<Event>();
         public static string LatestEventId { get; set; }
         public static string CurrentEventsSelection { get; set; }
         public static User User { get; set; }

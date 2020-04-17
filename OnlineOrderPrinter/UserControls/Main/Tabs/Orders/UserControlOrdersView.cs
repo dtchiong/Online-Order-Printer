@@ -29,8 +29,25 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             AppState.UserControlOrdersView = this;
         }
 
-        public void SetEventListBindingList(BindingList<Event> bindingList) {
-            eventListBindingSource.DataSource = bindingList;
+        public void UpdateEventList(List<Event> eventList, bool clearRequired) {
+            comboBoxEventsSelector.Enabled = false;
+
+            if (clearRequired) {
+                eventListBindingList.Clear();
+            }
+
+            foreach (Event @event in eventList) {
+                eventListBindingList.Add(@event);
+            }
+
+            // Workaround for bug where changing the selection to "Today" just before the list updates  desyncs
+            // the AppState's selection from the combobox's selection. Maybe just disable combo boxes right after selection.
+            // But pagination should be impemented before that to prevent long running fetches from holding the combobox hostage
+            if (comboBoxEventsSelector.SelectedValue.ToString() == EventsSelection.Today && AppState.CurrentEventsSelection != EventsSelection.Today) {
+                AppState.CurrentEventsSelection = EventsSelection.Today;
+                UpdateEventList(AppState.CurrentEvents, true);
+            }
+            comboBoxEventsSelector.Enabled = true;
         }
 
         private void InitializeEventsSelectionAndComboBox() {
@@ -131,17 +148,20 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             AppState.CurrentEventsSelection = selection;
+
+            eventListBindingList.Clear();
+            // If the selection is Today's events, then just update the list with the AppState's 
+            // CurrentEvents, since we never clear that, otherwise we have to fetch the past events
             if (selection == EventsSelection.Today) {
-                SetEventListBindingList(AppState.CurrentEvents);
+                UpdateEventList(AppState.CurrentEvents, true);
             } else {
-                // TODO Fix this once we add another state for past orders in AppState
-                AppState.CurrentEvents.Clear();
+                AppState.PastEvents.Clear();
                 EventActions.FetchPresetRangeEvents(selection);
             }
         }
 
         /**
-         * Change focus back to the event list datagrid for convience, and so that
+         * Change focus back to the event list datagrid for convienience, and so that
          * we lose focus of the combobox
          */
         private void comboBoxEventsSelector_DropDownClosed(object sender, EventArgs e) {

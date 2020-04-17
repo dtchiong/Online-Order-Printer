@@ -43,15 +43,29 @@ namespace OnlineOrderPrinter.Actions {
             }
         }
 
-        public static void ReceiveEvents(Event[] events) {
+        // TODO: Maybe use enum instead of string for eventsContext
+        public static void ReceiveEvents(Event[] events, string eventsContext) {
             if (events == null || events.Length == 0) {
                 return;
             }
-            SetLatestEventId(events[events.Length - 1].Id);
-            foreach (Event @event in events) {
-                AppState.CurrentEvents.Add(@event);
+
+            List<Event> eventList;
+            if (eventsContext == "current") {
+                eventList = AppState.CurrentEvents;
+                SetLatestEventId(events[events.Length - 1].Id);
+            } else {
+                eventList = AppState.PastEvents;
             }
-            AppState.UserControlOrdersView.SetEventListBindingList(AppState.CurrentEvents);
+
+            foreach (Event @event in events) {
+                eventList.Add(@event);
+            }
+
+            if (eventsContext == "current" && AppState.CurrentEventsSelection == EventsSelection.Today) {
+                AppState.UserControlOrdersView.UpdateEventList(eventList, true);
+            } else if (eventsContext == "past" && AppState.CurrentEventsSelection != EventsSelection.Today) {
+                AppState.UserControlOrdersView.UpdateEventList(eventList, true);
+            }
         }
 
         public static void SetLatestEventId(string latestEventId) {
