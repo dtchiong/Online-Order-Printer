@@ -37,7 +37,8 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             foreach (Event @event in eventList) {
-                eventListBindingList.Add(@event);
+                // Add new elements to the beginning of the list because we want the latest events to be at the top
+                eventListBindingList.Insert(0, @event);
             }
 
             // Workaround for bug where changing the selection to "Today" just before the list updates  desyncs
