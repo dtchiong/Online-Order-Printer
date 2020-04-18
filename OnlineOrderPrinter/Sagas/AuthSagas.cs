@@ -24,6 +24,7 @@ namespace OnlineOrderPrinter.Sagas {
                         RestaurantActions.FetchRestaurant();
                         NavigationActions.NavigateToMainPage();
                         AuthActions.ClearLoginFields();
+                        EventActions.StartPollingEvents();
                     } else {
                         // TODO: Emit event to show an error on the login control?
                     }

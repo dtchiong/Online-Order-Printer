@@ -23,7 +23,9 @@ namespace OnlineOrderPrinter.Actions {
             string bearerToken = AppState.User?.Token;
             string latestEventId = AppState.LatestEventId;
 
-            EventSagas.FetchCurrentEvents(restaurantId, bearerToken, latestEventId);
+            if (latestEventId != null) {
+                EventSagas.FetchCurrentEvents(restaurantId, bearerToken, latestEventId);
+            }
         }
 
         public static void FetchPresetRangeEvents(string eventsSelection) {
@@ -74,6 +76,14 @@ namespace OnlineOrderPrinter.Actions {
 
         public static void ClearEvents() {
             AppState.CurrentEvents.Clear();
+        }
+
+        public static void StartPollingEvents() {
+            UserControlOrdersTab.StartPollingEvents();
+        }
+
+        public static void StopPollingEvents() {
+            UserControlOrdersTab.StopPollingEvents();
         }
     }
 }
