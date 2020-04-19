@@ -23,9 +23,7 @@ namespace OnlineOrderPrinter.Actions {
             string bearerToken = AppState.User?.Token;
             string latestEventId = AppState.LatestEventId;
 
-            if (latestEventId != null) {
-                EventSagas.FetchCurrentEvents(restaurantId, bearerToken, latestEventId);
-            }
+            EventSagas.FetchCurrentEvents(restaurantId, bearerToken, latestEventId);
         }
 
         public static void FetchPresetRangeEvents(string eventsSelection) {

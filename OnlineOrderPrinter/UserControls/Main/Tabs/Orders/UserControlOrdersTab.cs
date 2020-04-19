@@ -40,7 +40,11 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         private static void PollingTimerEventProcessor(object myObject, EventArgs myEventArgs) {
             // TODO: Maybe only fetch if the restaurant is open or within open hours to save costs.
             // Maybe only apply the above rule is logged in as a restaurant user.
-            EventActions.FetchLatestEvents();
+            if (AppState.LatestEventId != null) {
+                EventActions.FetchLatestEvents();
+            } else {
+                EventActions.FetchCurrentDayEvents();
+            }
         }
     }
 }
