@@ -44,6 +44,23 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<FetchUserResponse> FetchUser(string userId, string bearerToken) {
+            ConfigureHttpClient(bearerToken);
+
+            HttpResponseMessage response = await client.GetAsync($"api/v1/users/{userId}");
+            User user = null;
+            if (response.IsSuccessStatusCode) {
+                user = JsonConvert.DeserializeObject<User>(await response.Content.ReadAsStringAsync(), jsonSerializerSettings);
+            } else {
+                Debug.WriteLine($"Failed to FetchUser - {response.StatusCode}");
+            }
+
+            return new FetchUserResponse() {
+                User = user,
+                StatusCode = response.StatusCode
+            };
+        }
+
         public static async Task<FetchRestaurantResponse> FetchRestaurant(string restaurantId, string bearerToken) {
             ConfigureHttpClient(bearerToken);
 
@@ -184,6 +201,8 @@ namespace OnlineOrderPrinter.Apis {
 
         private static void SetBearerToken(string bearerToken) {
             if (bearerToken != null) {
+                // There's a bug with trying to add this authorization header when it exists, after
+                // we already check that it doesn't exist. It's probably due to multiple changing the value
                 if (!client.DefaultRequestHeaders.Contains("Authorization")) {
                     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
                 }
