@@ -30,7 +30,7 @@ namespace OnlineOrderPrinter.Sagas {
                         RestaurantActions.FetchRestaurant();
                         NavigationActions.NavigateToMainPage();
                         AuthActions.ClearLoginFields();
-                        EventActions.StartPollingEvents();
+                        EventPollingService.Start();
                     } else {
                         // TODO: Emit event to show an error on the login control?
                     }
@@ -52,7 +52,7 @@ namespace OnlineOrderPrinter.Sagas {
                             EventActions.FetchCurrentDayEvents();
                             RestaurantActions.FetchRestaurant();
                             NavigationActions.NavigateToMainPage();
-                            EventActions.StartPollingEvents();
+                            EventPollingService.Start();
                         } else {
                             NavigationActions.NavigateToLoginPage();
                         }

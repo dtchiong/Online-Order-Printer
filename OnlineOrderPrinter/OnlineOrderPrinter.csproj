@@ -78,6 +78,7 @@
     <Compile Include="Sagas\EventSagas.cs" />
     <Compile Include="Sagas\RestaurantSagas.cs" />
     <Compile Include="Services\CredentialManager.cs" />
+    <Compile Include="Services\EventPollingService.cs" />
     <Compile Include="State\AppState.cs" />
     <Compile Include="UserControls\Login\UserControlLogin.cs">
       <SubType>UserControl</SubType>

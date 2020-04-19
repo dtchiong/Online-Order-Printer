@@ -75,13 +75,5 @@ namespace OnlineOrderPrinter.Actions {
         public static void ClearEvents() {
             AppState.CurrentEvents.Clear();
         }
-
-        public static void StartPollingEvents() {
-            UserControlOrdersTab.StartPollingEvents();
-        }
-
-        public static void StopPollingEvents() {
-            UserControlOrdersTab.StopPollingEvents();
-        }
     }
 }

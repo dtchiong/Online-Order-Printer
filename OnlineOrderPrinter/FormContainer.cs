@@ -1,4 +1,5 @@
 ﻿using OnlineOrderPrinter.Actions;
+using OnlineOrderPrinter.Services;
 using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.UserControls.Login;
 using OnlineOrderPrinter.UserControls.Main;
@@ -24,6 +25,7 @@ namespace OnlineOrderPrinter {
         public FormContainer() {
             InitializeComponent();
             InitializeDirectories();
+            EventPollingService.InitializeTimer();
             AppState.ActivePage = userControlSplashPage1;
             AppState.FormContainer = this;
             AuthActions.AuthenticateWithStoredCredentials();
