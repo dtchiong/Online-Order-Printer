@@ -20,6 +20,7 @@ namespace OnlineOrderPrinter.UserControls.Main {
 
         public UserControlMainPage() {
             InitializeComponent();
+            Visible = false;
             AppState.UserControlMainPage = this;
             SetTabRefs();
         }

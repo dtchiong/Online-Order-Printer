@@ -127,6 +127,12 @@
     <Compile Include="UserControls\Main\UserControlTabSideBar.Designer.cs">
       <DependentUpon>UserControlTabSideBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Splash\UserControlSplashPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Splash\UserControlSplashPage.Designer.cs">
+      <DependentUpon>UserControlSplashPage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Main\UserControlTabSideBar.resx">
       <DependentUpon>UserControlTabSideBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Splash\UserControlSplashPage.resx">
+      <DependentUpon>UserControlSplashPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OnlineOrderPrinter.Models.Event.datasource" />

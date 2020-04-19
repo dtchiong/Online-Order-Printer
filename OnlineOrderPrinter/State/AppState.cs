@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OnlineOrderPrinter.State {
     class AppState {
@@ -18,6 +19,7 @@ namespace OnlineOrderPrinter.State {
         public static string CurrentEventsSelection { get; set; }
         public static User User { get; set; }
         public static Restaurant Restaurant { get { return restaurant; } set { restaurant = value; OnRestaurantChanged(value); } }
+        public static Control ActivePage { get; set; }
 
         public static FormContainer FormContainer { get; set; }
         public static UserControlLoginPage UserControlLoginPage { get; set; }

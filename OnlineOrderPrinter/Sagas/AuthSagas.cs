@@ -54,8 +54,10 @@ namespace OnlineOrderPrinter.Sagas {
                             NavigationActions.NavigateToMainPage();
                             EventActions.StartPollingEvents();
                         } else {
-                            // TODO: Handle error
+                            NavigationActions.NavigateToLoginPage();
                         }
+                    } else {
+                        NavigationActions.NavigateToLoginPage();
                     }
                     Debug.WriteLine("Ended AuthenticateWithStoredCredentials saga");
                     Interlocked.Exchange(ref authenticatingWithStoredCredentials, 0);

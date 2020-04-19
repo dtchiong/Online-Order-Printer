@@ -24,9 +24,8 @@ namespace OnlineOrderPrinter {
         public FormContainer() {
             InitializeComponent();
             InitializeDirectories();
+            AppState.ActivePage = userControlSplashPage1;
             AppState.FormContainer = this;
-            // TODO: Need to disable the login button or show a different screen
-            // while we check if the user can authenticate with the stored credentials
             AuthActions.AuthenticateWithStoredCredentials();
         }
 
@@ -46,11 +45,9 @@ namespace OnlineOrderPrinter {
          * Navigates to the specified control and sets it as the active control
          */
         private void NavigateToPage(string controlName) {
-            if (ActiveControl == Controls[controlName]) {
+            if (AppState.ActivePage == Controls[controlName]) {
                 return;
             }
-
-            ActiveControl.Hide();
 
             Control nextControl = Controls[controlName];
             if (nextControl == null) {
@@ -59,8 +56,10 @@ namespace OnlineOrderPrinter {
                 nextControl.Dock = DockStyle.Fill;
                 Controls.Add(nextControl);
             }
+
+            AppState.ActivePage.Hide();
             nextControl.Show();
-            ActiveControl = nextControl;
+            AppState.ActivePage = nextControl;
         }
 
         private Control NewControl(string controlName) {
@@ -84,6 +83,7 @@ namespace OnlineOrderPrinter {
     }
 
     public static class ControlNames {
+        public const string SplashPage = "userControlSplashPage1";
         public const string LoginPage = "userControlLoginPage1";
         public const string MainPage = "userControlMainPage1";
     }

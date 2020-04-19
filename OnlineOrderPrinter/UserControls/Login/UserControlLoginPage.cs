@@ -16,6 +16,7 @@ namespace OnlineOrderPrinter.UserControls.Login {
 
         public UserControlLoginPage() {
             InitializeComponent();
+            Visible = false;
             AppState.UserControlLoginPage = this;
         }
 
