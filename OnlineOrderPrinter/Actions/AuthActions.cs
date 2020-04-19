@@ -1,5 +1,6 @@
 ﻿using OnlineOrderPrinter.Models;
 using OnlineOrderPrinter.Sagas;
+using OnlineOrderPrinter.Services;
 using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,14 @@ namespace OnlineOrderPrinter.Actions {
             AuthSagas.Authenticate(email, password);
         }
 
+        public static void AuthenticateWithStoredCredentials() {
+            AuthSagas.AuthenticateWithStoredCredentials();
+        }
+
         public static void Logout() {
             // TODO: Should also cancel all running sagas
             EventActions.StopPollingEvents();
+            CredentialManager.DeleteCredentials();
             NavigationActions.NavigateToLoginPage();
             AppActions.ClearState();
         }

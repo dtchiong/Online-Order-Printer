@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.State;
+﻿using OnlineOrderPrinter.Actions;
+using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.UserControls.Login;
 using OnlineOrderPrinter.UserControls.Main;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +18,16 @@ namespace OnlineOrderPrinter {
 
     public partial class FormContainer : Form {
 
+        public static string AppDataDirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data");
+        public static string UserDataPath = Path.Combine(AppDataDirPath, "user_data.dat");
+
         public FormContainer() {
             InitializeComponent();
+            InitializeDirectories();
             AppState.FormContainer = this;
+            // TODO: Need to disable the login button or show a different screen
+            // while we check if the user can authenticate with the stored credentials
+            AuthActions.AuthenticateWithStoredCredentials();
         }
 
         /**
@@ -62,6 +71,14 @@ namespace OnlineOrderPrinter {
                     return new UserControlLoginPage();
                 default:
                     return null;
+            }
+        }
+
+        private void InitializeDirectories() {
+            try {
+                Directory.CreateDirectory(AppDataDirPath);
+            } catch (Exception e) {
+                Debug.WriteLine(e.Message);
             }
         }
     }
