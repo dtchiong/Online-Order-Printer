@@ -134,6 +134,7 @@
     <Compile Include="UserControls\Splash\UserControlSplashPage.Designer.cs">
       <DependentUpon>UserControlSplashPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility\SortableBindingList.cs" />
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </EmbeddedResource>

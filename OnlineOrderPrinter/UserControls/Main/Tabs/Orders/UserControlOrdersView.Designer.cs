@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxEventsSelector = new System.Windows.Forms.ComboBox();
             this.eventListDataGridView = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeReceivedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serviceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -149,6 +150,7 @@
             this.eventListDataGridView.ColumnHeadersHeight = 40;
             this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
             this.timeReceivedDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
             this.serviceDataGridViewTextBoxColumn,
@@ -170,6 +172,15 @@
             this.eventListDataGridView.Size = new System.Drawing.Size(1038, 527);
             this.eventListDataGridView.TabIndex = 0;
             this.eventListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.eventListDataGridView_CellFormatting);
+            this.eventListDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.eventListDataGridView_RowsAdded);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // timeReceivedDataGridViewTextBoxColumn
             // 
@@ -281,6 +292,11 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView eventListDataGridView;
         private System.Windows.Forms.BindingSource eventBindingSource;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxEventsSelector;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeReceivedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn serviceDataGridViewTextBoxColumn;
@@ -289,9 +305,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderSizeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn confirmStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn printStatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxEventsSelector;
-        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

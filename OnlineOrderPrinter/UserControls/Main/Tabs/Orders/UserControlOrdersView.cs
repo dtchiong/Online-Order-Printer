@@ -1,6 +1,7 @@
 ﻿using OnlineOrderPrinter.Actions;
 using OnlineOrderPrinter.Models;
 using OnlineOrderPrinter.State;
+using OnlineOrderPrinter.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ using System.Reflection;
 namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
     public partial class UserControlOrdersView : UserControl {
 
-        private BindingList<Event> eventListBindingList = new BindingList<Event>();
+        private SortableBindingList<Event> eventListBindingList = new SortableBindingList<Event>();
         private BindingSource eventListBindingSource = new BindingSource();
         private Dictionary<string, Func<object, string>> eventListDataGridViewFormatters;
         private bool initialEventsSelectionOccurred = false;
@@ -37,13 +38,12 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             foreach (Event @event in eventList) {
-                // Add new elements to the beginning of the list because we want the latest events to be at the top
-                eventListBindingList.Insert(0, @event);
+                eventListBindingList.Add(@event);
             }
 
             // Workaround for bug where changing the selection to "Today" just before the list updates  desyncs
             // the AppState's selection from the combobox's selection. Maybe just disable combo boxes right after selection.
-            // But pagination should be impemented before that to prevent long running fetches from holding the combobox hostage
+            // But pagination should be implemented before that to prevent long running fetches from holding the combobox hostage
             if (comboBoxEventsSelector.SelectedValue.ToString() == EventsSelection.Today && AppState.CurrentEventsSelection != EventsSelection.Today) {
                 AppState.CurrentEventsSelection = EventsSelection.Today;
                 UpdateEventList(AppState.CurrentEvents, true);
@@ -138,6 +138,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void comboBoxEventsSelector_SelectedValueChanged(object sender, EventArgs e) {
+            // When the comboBox is initialized, this is triggered, so ignore the first event
             if (!initialEventsSelectionOccurred) {
                 initialEventsSelectionOccurred = true;
                 return;
@@ -172,6 +173,14 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         private void comboBoxEventsSelector_MouseWheel(object sender, MouseEventArgs e) {
             ((HandledMouseEventArgs)e).Handled = true;
         }
+
+        private void eventListDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
+            SortEventList(EventListColumn.Id, ListSortDirection.Descending);
+        }
+
+        private void SortEventList(string columnName, ListSortDirection sortDirection) {
+            eventListDataGridView.Sort(eventListDataGridView.Columns[columnName], sortDirection);
+        }
     }
 
     public static class EventsSelection {
@@ -179,5 +188,19 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         public const string Yesterday = "Yesterday";
         public const string Last7Days = "Last 7 Days";
         public const string Last30Days = "Last 30 Days";
+    }
+
+    public static class EventListColumn {
+        // Sortable
+        public const string Id = "idDataGridViewTextBoxColumn";
+        public const string Type = "typeDataGridViewTextBoxColumn";
+        public const string TimeReceived = "timeReceivedDataGridViewTextBoxColumn";
+        // Non-sortable since these properties are in Event.Order
+        public const string Service = "serviceDataGridViewTextBoxColumn";
+        public const string Name = "nameDataGridViewTextBoxColumn";
+        public const string PickupTime = "pickupTimeDataGridViewTextBoxColumn";
+        public const string OrderSize = "orderSizeDataGridViewTextBoxColumn";
+        public const string ConfirmStatus = "confirmStatusDataGridViewTextBoxColumn";
+        public const string PrintStatus = "printStatusDataGridViewTextBoxColumn";
     }
 }
