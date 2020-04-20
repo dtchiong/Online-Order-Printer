@@ -77,6 +77,7 @@
     <Compile Include="Sagas\AuthSagas.cs" />
     <Compile Include="Sagas\EventSagas.cs" />
     <Compile Include="Sagas\RestaurantSagas.cs" />
+    <Compile Include="Sagas\CancellableSaga.cs" />
     <Compile Include="Services\CredentialManager.cs" />
     <Compile Include="Services\EventPollingService.cs" />
     <Compile Include="State\AppState.cs" />
