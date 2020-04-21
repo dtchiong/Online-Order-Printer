@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace OnlineOrderPrinter.Sagas {
     class EventSagas : CancellableSaga {
 
-        public static bool FetchingCurrentEvents = false;
+        public static int FetchingCurrentEvents = 0;
         public static int FetchPastEventsTaskCount = 0;
 
         public static CancellationTokenSource CurrentFetchCurrentEventsCTS;
@@ -26,30 +26,40 @@ namespace OnlineOrderPrinter.Sagas {
             string bearerToken,
             string startEventId = null) {
 
-            if (FetchingCurrentEvents) {
-                return;
-            }
-            Debug.WriteLine("Starting FetchCurrentEvents saga");
-            FetchingCurrentEvents = true;
-            CurrentFetchCurrentEventsCTS = new CancellationTokenSource();
+            if (Interlocked.Exchange(ref FetchingCurrentEvents, 1) == 0) {
+                Debug.WriteLine("Starting FetchCurrentEvents saga");
 
-            Task.Run(() => {
-                FetchEventsResponse response = Api.FetchEvents(
-                    restaurantId,
-                    bearerToken,
-                    startEventId,
-                    null,
-                    null,
-                    CurrentFetchCurrentEventsCTS.Token).Result;
-                AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
-                    if (response.IsSuccessStatusCode()) {
-                        EventActions.ReceiveEvents(response.Events, "current");
+                CurrentFetchCurrentEventsCTS = new CancellationTokenSource();
+                CtsPairMap.TryAdd(CurrentFetchCurrentEventsCTS.Token, CurrentFetchCurrentEventsCTS);
+
+                Task.Run(() => {
+                    CancellationToken cancellationToken = CurrentFetchCurrentEventsCTS.Token;
+                    try {
+                        FetchEventsResponse response = Api.FetchEvents(
+                            restaurantId,
+                            bearerToken,
+                            startEventId,
+                            null,
+                            null,
+                            cancellationToken).Result;
+                        AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
+                            if (response.IsSuccessStatusCode()) {
+                                EventActions.ReceiveEvents(response.Events, "current");
+                            }
+                        });
+                    } catch (AggregateException e) {
+                        Debug.WriteLine(e.Message);
                     }
-                    Debug.WriteLine("Ended FetchCurrentEvents saga");
-                    FetchingCurrentEvents = false;
+                    finally {
+                        // Use the cancellation token to retrieve the cancellation token source so that we can dispose
+                        if (CtsPairMap.TryRemove(cancellationToken, out CancellationTokenSource cancellationTokenSource)) {
+                            cancellationTokenSource.Dispose();
+                        }
+                        Debug.WriteLine("Ended FetchCurrentEvents saga");
+                        Interlocked.Exchange(ref FetchingCurrentEvents, 0);
+                    }
                 });
-                CurrentFetchCurrentEventsCTS.Dispose();
-            });
+            }
         }
 
         public static void FetchPastEvents(
@@ -95,8 +105,8 @@ namespace OnlineOrderPrinter.Sagas {
                     if (CtsPairMap.TryRemove(cancellationToken, out CancellationTokenSource cancellationTokenSource)) {
                         cancellationTokenSource.Dispose();
                     }
-                    Interlocked.Decrement(ref FetchPastEventsTaskCount);
                     Debug.WriteLine("Ended FetchPastEvents saga");
+                    Interlocked.Decrement(ref FetchPastEventsTaskCount);
                 }
             });
         }

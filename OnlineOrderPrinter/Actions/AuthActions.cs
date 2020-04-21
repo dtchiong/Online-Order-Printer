@@ -19,11 +19,12 @@ namespace OnlineOrderPrinter.Actions {
         }
 
         public static void Logout() {
-            // TODO: Should also cancel all running sagas
+            NavigationActions.NavigateToSplashPage();
             EventPollingService.Stop();
             CredentialManager.DeleteCredentials();
-            NavigationActions.NavigateToLoginPage();
+            AppActions.CancelAllSagasAndWait();
             AppActions.ClearState();
+            NavigationActions.NavigateToLoginPage();
         }
 
         public static void SetUser(User user) {

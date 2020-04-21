@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace OnlineOrderPrinter.Actions {
     class EventActions {
@@ -41,6 +42,16 @@ namespace OnlineOrderPrinter.Actions {
                     EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-30), DateTime.Today.AddDays(1));
                     break;
             }
+        }
+
+        public static void CancelFetchCurrentEventsSaga() {
+            CancellationTokenSource cts = EventSagas.CurrentFetchCurrentEventsCTS;
+            CancellableSaga.Cancel(cts);
+        }
+
+        public static void CancelFetchPastEventsSaga() {
+            CancellationTokenSource cts = EventSagas.CurrentFetchPastEventsCTS;
+            CancellableSaga.Cancel(cts);
         }
 
         // TODO: Maybe use enum instead of string for eventsContext
