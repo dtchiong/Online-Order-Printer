@@ -6,20 +6,43 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Sagas {
-    class RestaurantSagas {
+    class RestaurantSagas : CancellableSaga {
+
+        public static int FetchingRestaurant = 0;
+
+        public static CancellationTokenSource CurrentFetchRestaurantCTS;
 
         public static void FetchRestaurant(string restaurantId, string bearerToken) {
-            Debug.WriteLine("Starting FetchRestaurant saga");
-            Task.Run(() => {
-                FetchRestaurantResponse response = Api.FetchRestaurant(restaurantId, bearerToken).Result;
-                if (response.IsSuccessStatusCode()) {
-                    RestaurantActions.SetRestaurant(response.Restaurant);
-                }
-                Debug.WriteLine("Ended FetchRestaurant saga");
-            });
+            if (Interlocked.Exchange(ref FetchingRestaurant, 1) == 0) {
+                Debug.WriteLine("Starting FetchRestaurant saga");
+
+                CurrentFetchRestaurantCTS = new CancellationTokenSource();
+                CtsPairMap.TryAdd(CurrentFetchRestaurantCTS.Token, CurrentFetchRestaurantCTS);
+
+                Task.Run(() => {
+                    CancellationToken cancellationToken = CurrentFetchRestaurantCTS.Token;
+
+                    try {
+                        FetchRestaurantResponse response = Api.FetchRestaurant(restaurantId, bearerToken).Result;
+                        if (response.IsSuccessStatusCode()) {
+                            RestaurantActions.SetRestaurant(response.Restaurant);
+                        }
+                    } catch (AggregateException e) {
+                        Debug.WriteLine(e.Message);
+                    }
+                    finally {
+                        if (CtsPairMap.TryRemove(cancellationToken, out CancellationTokenSource cancellationTokenSource)) {
+                            cancellationTokenSource.Dispose();
+                        }
+                        Debug.WriteLine("Ended FetchRestaurant saga");
+                        Interlocked.Exchange(ref FetchingRestaurant, 0);
+                    }
+                });
+            }
         }
     }
 }

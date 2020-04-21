@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Actions {
@@ -14,6 +15,11 @@ namespace OnlineOrderPrinter.Actions {
             string bearerToken = AppState.User?.Token;
 
             RestaurantSagas.FetchRestaurant(restaurantId, bearerToken);
+        }
+
+        public static void CancelFetchRestaurant() {
+            CancellationTokenSource cts = RestaurantSagas.CurrentFetchRestaurantCTS;
+            CancellableSaga.Cancel(cts);
         }
 
         public static void SetRestaurant(Restaurant restaurant) {

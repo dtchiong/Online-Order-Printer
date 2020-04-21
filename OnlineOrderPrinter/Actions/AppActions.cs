@@ -19,13 +19,18 @@ namespace OnlineOrderPrinter.Actions {
             AppState.UserControlMainPage.Dispose();
         }
 
-        // TODO: Add more sagas that should be cancelled
+        /**
+         * Cancels all potentially running sagas in the app, and polls for their
+         * respective fetching status to be false before returning
+         */
         public static void CancelAllSagasAndWait() {
             EventActions.CancelFetchCurrentEventsSaga();
             EventActions.CancelFetchPastEventsSaga();
+            RestaurantActions.CancelFetchRestaurant();
 
             while (EventSagas.FetchingCurrentEvents == 1) { }
             while (EventSagas.FetchPastEventsTaskCount > 0) { }
+            while (RestaurantSagas.FetchingRestaurant == 1) { }
 
             Debug.WriteLine("Cancelled all Sagas!");
         }
