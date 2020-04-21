@@ -25,8 +25,10 @@
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.userControlOrdersView1 = new OnlineOrderPrinter.UserControls.Main.Tabs.Orders.UserControlOrdersView();
+            this.userControlDetailedOrderView1 = new OnlineOrderPrinter.UserControls.Main.Tabs.Orders.UserControlDetailedOrderView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +44,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.userControlOrdersView1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.userControlDetailedOrderView1);
             this.splitContainer1.Size = new System.Drawing.Size(1038, 802);
             this.splitContainer1.SplitterDistance = 608;
             this.splitContainer1.SplitterWidth = 1;
@@ -58,6 +64,15 @@
             this.userControlOrdersView1.Size = new System.Drawing.Size(1038, 608);
             this.userControlOrdersView1.TabIndex = 0;
             // 
+            // userControlDetailedOrderView1
+            // 
+            this.userControlDetailedOrderView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlDetailedOrderView1.Location = new System.Drawing.Point(0, 0);
+            this.userControlDetailedOrderView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.userControlDetailedOrderView1.Name = "userControlDetailedOrderView1";
+            this.userControlDetailedOrderView1.Size = new System.Drawing.Size(1038, 193);
+            this.userControlDetailedOrderView1.TabIndex = 0;
+            // 
             // UserControlOrdersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -68,6 +83,7 @@
             this.Name = "UserControlOrdersTab";
             this.Size = new System.Drawing.Size(1038, 802);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -78,5 +94,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private UserControlOrdersView userControlOrdersView1;
+        private UserControlDetailedOrderView userControlDetailedOrderView1;
     }
 }
