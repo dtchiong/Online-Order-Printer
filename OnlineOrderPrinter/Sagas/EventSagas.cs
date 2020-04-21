@@ -89,9 +89,6 @@ namespace OnlineOrderPrinter.Sagas {
                         startTime,
                         endTime,
                         CurrentFetchPastEventsCTS.Token).Result;
-                    // TODO: Need to cancel all fetches before we log out or else this will throw
-                    // an error when the fetch finishes and it tries to invoke this method
-                    // on the disposed form
                     AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
                         if (response.IsSuccessStatusCode()) {
                             EventActions.ReceiveEvents(response.Events, "past");
