@@ -173,6 +173,7 @@
             this.eventListDataGridView.TabIndex = 0;
             this.eventListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.eventListDataGridView_CellFormatting);
             this.eventListDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.eventListDataGridView_RowsAdded);
+            this.eventListDataGridView.SelectionChanged += new System.EventHandler(this.eventListDataGridView_SelectionChanged);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -290,7 +291,6 @@
 
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView eventListDataGridView;
         private System.Windows.Forms.BindingSource eventBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label1;
@@ -305,5 +305,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderSizeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn confirmStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn printStatusDataGridViewTextBoxColumn;
+        public System.Windows.Forms.DataGridView eventListDataGridView;
     }
 }

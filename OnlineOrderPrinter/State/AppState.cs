@@ -25,6 +25,7 @@ namespace OnlineOrderPrinter.State {
         public static UserControlLoginPage UserControlLoginPage { get; set; }
         public static UserControlMainPage UserControlMainPage { get; set; }
         public static UserControlOrdersView UserControlOrdersView { get; set; }
+        public static UserControlDetailedOrderView UserControlDetailedOrderView { get; set; }
 
         private static Restaurant restaurant;
 

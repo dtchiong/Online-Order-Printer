@@ -51,6 +51,11 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             comboBoxEventsSelector.Enabled = true;
         }
 
+        public Event GetCurrentSelectedEvent() {
+            return eventListDataGridView.SelectedRows.Count > 0 ?
+                (Event)eventListDataGridView.SelectedRows[0].DataBoundItem : null;
+        }
+
         private void InitializeEventsSelectionAndComboBox() {
             comboBoxEventsSelector.MouseWheel += new MouseEventHandler(comboBoxEventsSelector_MouseWheel);
 
@@ -174,12 +179,27 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             ((HandledMouseEventArgs)e).Handled = true;
         }
 
+        private void eventListDataGridView_SelectionChanged(object sender, EventArgs e) {
+            DataGridViewSelectedRowCollection selectedRows = eventListDataGridView.SelectedRows;
+            Event @event = null;
+
+            if (selectedRows.Count > 0) {
+                @event = (Event)selectedRows[0].DataBoundItem;
+            }
+            AppState.UserControlDetailedOrderView.HandleSelectedEventChanged(@event);
+        }
+
         private void eventListDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
             SortEventList(EventListColumn.Id, ListSortDirection.Descending);
         }
 
         private void SortEventList(string columnName, ListSortDirection sortDirection) {
             eventListDataGridView.Sort(eventListDataGridView.Columns[columnName], sortDirection);
+
+            // Updating the ui to the latest selected row after sorting because there's a weird issue
+            // where on the initial list load, the order details only get updated to the 1st row inserted.
+            Event @event = GetCurrentSelectedEvent();
+            AppState.UserControlDetailedOrderView.HandleSelectedEventChanged(@event);
         }
     }
 
