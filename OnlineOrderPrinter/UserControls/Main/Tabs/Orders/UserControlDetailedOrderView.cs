@@ -18,6 +18,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         public UserControlDetailedOrderView() {
             InitializeComponent();
             ConfigureItemListDataGridView();
+            ConfigureModifierListDataGridView();
             AppState.UserControlDetailedOrderView = this;
         }
 
@@ -28,6 +29,10 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
         private void ConfigureItemListDataGridView() {
             dataGridViewItemList.AutoGenerateColumns = false;
+        }
+
+        private void ConfigureModifierListDataGridView() {
+            modifierListDataGridView.AutoGenerateColumns = false;
         }
 
         private void UpdateOrderDetails(Event @event) {
@@ -71,6 +76,63 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                         return orderItem.GrubhubName;
                     case ServiceType.UberEats:
                         return orderItem.UbereatsName;
+                }
+            }
+            return "";
+        }
+
+        private void dataGridViewItemList_SelectionChanged(object sender, EventArgs e) {
+            DataGridViewSelectedRowCollection selectedRows = dataGridViewItemList.SelectedRows;
+            OrderItem orderItem = null;
+
+            if (selectedRows.Count > 0) {
+                orderItem = (OrderItem)selectedRows[0].DataBoundItem;
+            }
+            HandleSelectedItemChanged(orderItem);
+        }
+
+        private void HandleSelectedItemChanged(OrderItem orderItem) {
+            UpdateModifierList(orderItem);
+            UpdateSpecialInstructions(orderItem);
+        }
+
+        private void UpdateModifierList(OrderItem orderItem) {
+            modifierListDataGridView.DataSource = orderItem?.OrderItemModifiers;
+        }
+
+        private void UpdateSpecialInstructions(OrderItem orderItem) {
+            textBoxSpecialInstructions.Text = orderItem?.SpecialInstructions;
+        }
+
+        private void modifierListDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewColumn col = grid.Columns[e.ColumnIndex];
+
+            if (row.DataBoundItem == null) {
+                return;
+            }
+
+            if (col.DataPropertyName == modifierNameDataGridViewTextBoxColumn.DataPropertyName) {
+                e.Value = FormatModifierItemName((OrderItemModifier)row.DataBoundItem);
+            }
+        }
+
+        private string FormatModifierItemName(OrderItemModifier orderItemModifier) {
+            if (orderItemModifier.Name != null) {
+                return orderItemModifier.Name;
+            }
+
+            Order order = AppState.UserControlOrdersView.GetCurrentSelectedEvent()?.Order;
+
+            if (order != null) {
+                switch (order.Service) {
+                    case ServiceType.DoorDash:
+                        return orderItemModifier.DoordashName;
+                    case ServiceType.Grubhub:
+                        return orderItemModifier.GrubhubName;
+                    case ServiceType.UberEats:
+                        return orderItemModifier.UbereatsName;
                 }
             }
             return "";
