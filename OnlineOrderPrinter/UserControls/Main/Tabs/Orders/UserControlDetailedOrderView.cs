@@ -57,28 +57,8 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             if (col.DataPropertyName == itemNameDataGridViewTextBoxColumn.DataPropertyName) {
-                e.Value = FormatItemName((OrderItem)row.DataBoundItem);
+                e.Value = FormatItemName((OrderItemBase)row.DataBoundItem);
             }
-        }
-
-        private string FormatItemName(OrderItem orderItem) {
-            if (orderItem.Name != null) {
-                return orderItem.Name;
-            }
-
-            Order order = AppState.UserControlOrdersView.GetCurrentSelectedEvent()?.Order;
-
-            if (order != null) {
-                switch (order.Service) {
-                    case ServiceType.DoorDash:
-                        return orderItem.DoordashName;
-                    case ServiceType.Grubhub:
-                        return orderItem.GrubhubName;
-                    case ServiceType.UberEats:
-                        return orderItem.UbereatsName;
-                }
-            }
-            return "";
         }
 
         private void dataGridViewItemList_SelectionChanged(object sender, EventArgs e) {
@@ -114,28 +94,32 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
 
             if (col.DataPropertyName == modifierNameDataGridViewTextBoxColumn.DataPropertyName) {
-                e.Value = FormatModifierItemName((OrderItemModifier)row.DataBoundItem);
+                e.Value = FormatItemName((OrderItemBase)row.DataBoundItem);
             }
         }
 
-        private string FormatModifierItemName(OrderItemModifier orderItemModifier) {
-            if (orderItemModifier.Name != null) {
-                return orderItemModifier.Name;
+        /**
+         * Formats names for items or modifiers, since they're both derived from OrderItemBase
+         * Prioritizes returning the item's set name, otherwise it returns the parsed name that's 
+         * associated with the service that the order is from.
+         */
+        private string FormatItemName(OrderItemBase orderItemBase) {
+            if (orderItemBase.Name != null) {
+                return orderItemBase.Name;
             }
 
             Order order = AppState.UserControlOrdersView.GetCurrentSelectedEvent()?.Order;
 
-            if (order != null) {
-                switch (order.Service) {
-                    case ServiceType.DoorDash:
-                        return orderItemModifier.DoordashName;
-                    case ServiceType.Grubhub:
-                        return orderItemModifier.GrubhubName;
-                    case ServiceType.UberEats:
-                        return orderItemModifier.UbereatsName;
-                }
+            switch (order?.Service) {
+                case ServiceType.DoorDash:
+                    return orderItemBase.DoordashName;
+                case ServiceType.Grubhub:
+                    return orderItemBase.GrubhubName;
+                case ServiceType.UberEats:
+                    return orderItemBase.UbereatsName;
+                default:
+                    return "";
             }
-            return "";
         }
     }
 }
