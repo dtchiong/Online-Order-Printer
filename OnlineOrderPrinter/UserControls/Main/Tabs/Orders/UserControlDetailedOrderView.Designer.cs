@@ -50,8 +50,10 @@
             this.labelSpecialInstructions = new System.Windows.Forms.Label();
             this.textBoxSpecialInstructions = new System.Windows.Forms.TextBox();
             this.modifierListDataGridView = new System.Windows.Forms.DataGridView();
-            this.labelModifiers = new System.Windows.Forms.Label();
             this.modifierNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelModifiers = new System.Windows.Forms.Label();
+            this.tableLayoutPanelActionsContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.labelActions = new System.Windows.Forms.Label();
             this.tableLayoutPanelComponentContainer.SuspendLayout();
             this.tableLayoutPanelOrderDetails.SuspendLayout();
             this.tableLayoutPanelItemListContainer.SuspendLayout();
@@ -59,6 +61,7 @@
             this.tableLayoutPanelItemDetailsContainer.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modifierListDataGridView)).BeginInit();
+            this.tableLayoutPanelActionsContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelComponentContainer
@@ -71,6 +74,7 @@
             this.tableLayoutPanelComponentContainer.Controls.Add(this.tableLayoutPanelOrderDetails, 0, 0);
             this.tableLayoutPanelComponentContainer.Controls.Add(this.tableLayoutPanelItemListContainer, 1, 0);
             this.tableLayoutPanelComponentContainer.Controls.Add(this.tableLayoutPanelItemDetailsContainer, 2, 0);
+            this.tableLayoutPanelComponentContainer.Controls.Add(this.tableLayoutPanelActionsContainer, 3, 0);
             this.tableLayoutPanelComponentContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelComponentContainer.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelComponentContainer.Margin = new System.Windows.Forms.Padding(0);
@@ -442,6 +446,13 @@
             this.modifierListDataGridView.TabIndex = 0;
             this.modifierListDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.modifierListDataGridView_CellFormatting);
             // 
+            // modifierNameDataGridViewTextBoxColumn
+            // 
+            this.modifierNameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.modifierNameDataGridViewTextBoxColumn.HeaderText = "Modifier";
+            this.modifierNameDataGridViewTextBoxColumn.Name = "modifierNameDataGridViewTextBoxColumn";
+            this.modifierNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // labelModifiers
             // 
             this.labelModifiers.AutoSize = true;
@@ -454,12 +465,33 @@
             this.labelModifiers.Text = "Modifiers";
             this.labelModifiers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // modifierNameDataGridViewTextBoxColumn
+            // tableLayoutPanelActionsContainer
             // 
-            this.modifierNameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.modifierNameDataGridViewTextBoxColumn.HeaderText = "Modifier";
-            this.modifierNameDataGridViewTextBoxColumn.Name = "modifierNameDataGridViewTextBoxColumn";
-            this.modifierNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tableLayoutPanelActionsContainer.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanelActionsContainer.ColumnCount = 1;
+            this.tableLayoutPanelActionsContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelActionsContainer.Controls.Add(this.labelActions, 0, 0);
+            this.tableLayoutPanelActionsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelActionsContainer.Location = new System.Drawing.Point(777, 0);
+            this.tableLayoutPanelActionsContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelActionsContainer.Name = "tableLayoutPanelActionsContainer";
+            this.tableLayoutPanelActionsContainer.RowCount = 2;
+            this.tableLayoutPanelActionsContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelActionsContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelActionsContainer.Size = new System.Drawing.Size(261, 193);
+            this.tableLayoutPanelActionsContainer.TabIndex = 3;
+            // 
+            // labelActions
+            // 
+            this.labelActions.AutoSize = true;
+            this.labelActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelActions.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.labelActions.Location = new System.Drawing.Point(4, 1);
+            this.labelActions.Name = "labelActions";
+            this.labelActions.Size = new System.Drawing.Size(253, 40);
+            this.labelActions.TabIndex = 0;
+            this.labelActions.Text = "Actions";
+            this.labelActions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UserControlDetailedOrderView
             // 
@@ -479,6 +511,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modifierListDataGridView)).EndInit();
+            this.tableLayoutPanelActionsContainer.ResumeLayout(false);
+            this.tableLayoutPanelActionsContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -511,5 +545,7 @@
         private System.Windows.Forms.TextBox textBoxSpecialInstructions;
         private System.Windows.Forms.Label labelModifiers;
         private System.Windows.Forms.DataGridViewTextBoxColumn modifierNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelActionsContainer;
+        private System.Windows.Forms.Label labelActions;
     }
 }
