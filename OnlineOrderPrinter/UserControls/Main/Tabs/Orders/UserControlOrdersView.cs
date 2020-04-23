@@ -108,6 +108,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             if (columnVal != null) {
                 e.Value = FormatEventListDataGridViewColumn(col.DataPropertyName, columnVal);
             }
+            FormatEventListDataGridViewCell(e, col.DataPropertyName, columnVal);
         }
 
         private string FormatEventListDataGridViewColumn(string dataPropertyName, object val) {
@@ -115,6 +116,39 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 return formatter(val);
             } else {
                 return val.ToString();
+            }
+        }
+
+        private void FormatEventListDataGridViewCell(DataGridViewCellFormattingEventArgs e, string dataPropertyName, object cellValue) {
+            switch (dataPropertyName) {
+                case "Order.ConfirmStatus":
+                    switch ((bool)cellValue) {
+                        case true:
+                            e.CellStyle.ForeColor = Color.FromArgb(255, 21, 189, 0);
+                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 21, 189, 0);
+                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                            break;
+                        case false:
+                            e.CellStyle.ForeColor = Color.FromArgb(255, 196, 13, 0);
+                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 196, 13, 0);
+                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                            break;
+                    }
+                    break;
+                case "Order.PrintStatus":
+                    switch ((bool)cellValue) {
+                        case true:
+                            e.CellStyle.ForeColor = Color.FromArgb(255, 21, 189, 0);
+                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 21, 189, 0);
+                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                            break;
+                        case false:
+                            e.CellStyle.ForeColor = Color.FromArgb(255, 196, 13, 0);
+                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 196, 13, 0);
+                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                            break;
+                    }
+                    break;
             }
         }
 
