@@ -54,6 +54,8 @@
             this.labelModifiers = new System.Windows.Forms.Label();
             this.tableLayoutPanelActionsContainer = new System.Windows.Forms.TableLayoutPanel();
             this.labelActions = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonPrint = new System.Windows.Forms.Button();
             this.tableLayoutPanelComponentContainer.SuspendLayout();
             this.tableLayoutPanelOrderDetails.SuspendLayout();
             this.tableLayoutPanelItemListContainer.SuspendLayout();
@@ -62,6 +64,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modifierListDataGridView)).BeginInit();
             this.tableLayoutPanelActionsContainer.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelComponentContainer
@@ -471,6 +474,7 @@
             this.tableLayoutPanelActionsContainer.ColumnCount = 1;
             this.tableLayoutPanelActionsContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelActionsContainer.Controls.Add(this.labelActions, 0, 0);
+            this.tableLayoutPanelActionsContainer.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanelActionsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelActionsContainer.Location = new System.Drawing.Point(777, 0);
             this.tableLayoutPanelActionsContainer.Margin = new System.Windows.Forms.Padding(0);
@@ -493,6 +497,36 @@
             this.labelActions.Text = "Actions";
             this.labelActions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonPrint, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 42);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 150);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // buttonPrint
+            // 
+            this.buttonPrint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.Location = new System.Drawing.Point(41, 18);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(175, 114);
+            this.buttonPrint.TabIndex = 0;
+            this.buttonPrint.Text = "Print";
+            this.buttonPrint.UseVisualStyleBackColor = true;
+            // 
             // UserControlDetailedOrderView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,6 +547,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.modifierListDataGridView)).EndInit();
             this.tableLayoutPanelActionsContainer.ResumeLayout(false);
             this.tableLayoutPanelActionsContainer.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -547,5 +582,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn modifierNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelActionsContainer;
         private System.Windows.Forms.Label labelActions;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button buttonPrint;
     }
 }
