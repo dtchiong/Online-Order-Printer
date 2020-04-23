@@ -23,6 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTabSideBar));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.labelRestaurantText = new System.Windows.Forms.Label();
@@ -31,6 +33,7 @@
             this.buttonAboutTab = new System.Windows.Forms.Button();
             this.buttonSettingsTab = new System.Windows.Forms.Button();
             this.buttonOrdersTab = new System.Windows.Forms.Button();
+            this.imageListTabIcons = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -134,13 +137,19 @@
             this.buttonAboutTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAboutTab.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAboutTab.ForeColor = System.Drawing.Color.White;
-            this.buttonAboutTab.Location = new System.Drawing.Point(3, 163);
+            this.buttonAboutTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAboutTab.ImageIndex = 2;
+            this.buttonAboutTab.ImageList = this.imageListTabIcons;
+            this.buttonAboutTab.Location = new System.Drawing.Point(0, 160);
+            this.buttonAboutTab.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAboutTab.Name = "buttonAboutTab";
-            this.buttonAboutTab.Size = new System.Drawing.Size(208, 74);
+            this.buttonAboutTab.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.buttonAboutTab.Size = new System.Drawing.Size(214, 80);
             this.buttonAboutTab.TabIndex = 2;
             this.buttonAboutTab.TabStop = false;
-            this.buttonAboutTab.Text = "About";
+            this.buttonAboutTab.Text = " About";
             this.buttonAboutTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAboutTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonAboutTab.UseVisualStyleBackColor = false;
             this.buttonAboutTab.Click += new System.EventHandler(this.buttonTab_Click);
             // 
@@ -152,13 +161,19 @@
             this.buttonSettingsTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettingsTab.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSettingsTab.ForeColor = System.Drawing.Color.White;
-            this.buttonSettingsTab.Location = new System.Drawing.Point(3, 83);
+            this.buttonSettingsTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSettingsTab.ImageIndex = 1;
+            this.buttonSettingsTab.ImageList = this.imageListTabIcons;
+            this.buttonSettingsTab.Location = new System.Drawing.Point(0, 80);
+            this.buttonSettingsTab.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSettingsTab.Name = "buttonSettingsTab";
-            this.buttonSettingsTab.Size = new System.Drawing.Size(208, 74);
+            this.buttonSettingsTab.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.buttonSettingsTab.Size = new System.Drawing.Size(214, 80);
             this.buttonSettingsTab.TabIndex = 1;
             this.buttonSettingsTab.TabStop = false;
-            this.buttonSettingsTab.Text = "Settings";
+            this.buttonSettingsTab.Text = " Settings";
             this.buttonSettingsTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSettingsTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSettingsTab.UseVisualStyleBackColor = false;
             this.buttonSettingsTab.Click += new System.EventHandler(this.buttonTab_Click);
             // 
@@ -170,15 +185,29 @@
             this.buttonOrdersTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOrdersTab.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOrdersTab.ForeColor = System.Drawing.Color.White;
-            this.buttonOrdersTab.Location = new System.Drawing.Point(3, 3);
+            this.buttonOrdersTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonOrdersTab.ImageIndex = 0;
+            this.buttonOrdersTab.ImageList = this.imageListTabIcons;
+            this.buttonOrdersTab.Location = new System.Drawing.Point(0, 0);
+            this.buttonOrdersTab.Margin = new System.Windows.Forms.Padding(0);
             this.buttonOrdersTab.Name = "buttonOrdersTab";
-            this.buttonOrdersTab.Size = new System.Drawing.Size(208, 74);
+            this.buttonOrdersTab.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.buttonOrdersTab.Size = new System.Drawing.Size(214, 80);
             this.buttonOrdersTab.TabIndex = 0;
             this.buttonOrdersTab.TabStop = false;
-            this.buttonOrdersTab.Text = "Orders";
+            this.buttonOrdersTab.Text = " Orders";
             this.buttonOrdersTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonOrdersTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonOrdersTab.UseVisualStyleBackColor = false;
             this.buttonOrdersTab.Click += new System.EventHandler(this.buttonTab_Click);
+            // 
+            // imageListTabIcons
+            // 
+            this.imageListTabIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTabIcons.ImageStream")));
+            this.imageListTabIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListTabIcons.Images.SetKeyName(0, "home-white2.png");
+            this.imageListTabIcons.Images.SetKeyName(1, "settings-5-white.png");
+            this.imageListTabIcons.Images.SetKeyName(2, "information.png");
             // 
             // UserControlTabSideBar
             // 
@@ -213,5 +242,6 @@
         private System.Windows.Forms.Button buttonOrdersTab;
         private System.Windows.Forms.Button buttonAboutTab;
         private System.Windows.Forms.Button buttonSettingsTab;
+        private System.Windows.Forms.ImageList imageListTabIcons;
     }
 }
