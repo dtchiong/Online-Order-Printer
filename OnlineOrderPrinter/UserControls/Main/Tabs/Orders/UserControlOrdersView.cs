@@ -19,7 +19,8 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
         private SortableBindingList<Event> eventListBindingList = new SortableBindingList<Event>();
         private BindingSource eventListBindingSource = new BindingSource();
-        private Dictionary<string, Func<object, string>> eventListDataGridViewFormatters;
+        private Dictionary<string, Action<DataGridViewCellFormattingEventArgs, object>> eventListDataGridViewFormatters;
+
         private bool initialEventsSelectionOccurred = false;
 
         public UserControlOrdersView() {
@@ -68,10 +69,12 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void InitializeEventListDataGridViewFormatters() {
-            eventListDataGridViewFormatters = new Dictionary<string, Func<object, string>> {
-                { timeReceivedDataGridViewTextBoxColumn.DataPropertyName, FormatColumnDate },
-                { typeDataGridViewTextBoxColumn.DataPropertyName, FormatEventType },
-                { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatColumnDate }
+            eventListDataGridViewFormatters = new Dictionary<string, Action<DataGridViewCellFormattingEventArgs, object>> {
+                { timeReceivedDataGridViewTextBoxColumn.DataPropertyName, FormatDateCell },
+                { typeDataGridViewTextBoxColumn.DataPropertyName, FormatEventTypeCell },
+                { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatDateCell },
+                { confirmStatusDataGridViewTextBoxColumn.DataPropertyName, FormatConfirmStatusCell },
+                { printStatusDataGridViewTextBoxColumn.DataPropertyName, FormatPrintStatusCell }
             };
         }
 
@@ -105,75 +108,89 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 columnVal = propInfo.GetValue(row.DataBoundItem, null);
             }
 
-            if (columnVal != null) {
-                e.Value = FormatEventListDataGridViewColumn(col.DataPropertyName, columnVal);
-            }
             FormatEventListDataGridViewCell(e, col.DataPropertyName, columnVal);
         }
 
-        private string FormatEventListDataGridViewColumn(string dataPropertyName, object val) {
-            if (eventListDataGridViewFormatters.TryGetValue(dataPropertyName, out Func<object, string> formatter)) {
-                return formatter(val);
-            } else {
-                return val.ToString();
-            }
-        }
-
         private void FormatEventListDataGridViewCell(DataGridViewCellFormattingEventArgs e, string dataPropertyName, object cellValue) {
-            switch (dataPropertyName) {
-                case "Order.ConfirmStatus":
-                    switch ((bool)cellValue) {
-                        case true:
-                            e.CellStyle.ForeColor = Color.FromArgb(255, 21, 189, 0);
-                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 21, 189, 0);
-                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                            break;
-                        case false:
-                            e.CellStyle.ForeColor = Color.FromArgb(255, 196, 13, 0);
-                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 196, 13, 0);
-                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                            break;
-                    }
-                    break;
-                case "Order.PrintStatus":
-                    switch ((bool)cellValue) {
-                        case true:
-                            e.CellStyle.ForeColor = Color.FromArgb(255, 21, 189, 0);
-                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 21, 189, 0);
-                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                            break;
-                        case false:
-                            e.CellStyle.ForeColor = Color.FromArgb(255, 196, 13, 0);
-                            e.CellStyle.SelectionForeColor = Color.FromArgb(255, 196, 13, 0);
-                            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                            break;
-                    }
-                    break;
+            if (eventListDataGridViewFormatters.TryGetValue(dataPropertyName, out Action<DataGridViewCellFormattingEventArgs, object> formatter)) {
+                formatter(e, cellValue);
+            } else {
+                e.Value = cellValue?.ToString();
             }
         }
 
-        private string FormatColumnDate(object val) {
+        private void FormatDateCell(DataGridViewCellFormattingEventArgs e, object val) {
             DateTime dateTime = ((DateTime)val).ToLocalTime();
             bool sameDay = dateTime.Date == DateTime.Now.Date;
             string time = dateTime.ToShortTimeString();
             string date = dateTime.ToShortDateString();
 
+            string formattedVal;
             if (sameDay) {
-                return $"{$" Today {time,8}",-19}";
+                formattedVal = $"{$" Today {time,8}",-19}";
             } else {
-                return $"{date,10} {time,8}";
+                formattedVal = $"{date,10} {time,8}";
             }
+            e.Value = formattedVal;
         }
 
-        private string FormatEventType(object val) {
+        private void FormatEventTypeCell(DataGridViewCellFormattingEventArgs e, object val) {
             EventType eventType = (EventType)val;
+            string formattedVal;
 
             switch (eventType) {
                 case EventType.NewOrder:
-                    return "New Order";
+                    formattedVal = "New Order";
+                    break;
                 default:
-                    return eventType.ToString();
+                    formattedVal = eventType.ToString();
+                    break;
             }
+            e.Value = formattedVal;
+        }
+
+        private void FormatConfirmStatusCell(DataGridViewCellFormattingEventArgs e, object val) {
+            string formattedVal = "";
+
+            switch ((bool)val) {
+                case true:
+                    StyleSuccessCell(e);
+                    formattedVal = "Confirmed!";
+                    break;
+                case false:
+                    StyleErrorCell(e);
+                    formattedVal = "Not Confirmed";
+                    break;
+            }
+            e.Value = formattedVal;
+        }
+
+        private void FormatPrintStatusCell(DataGridViewCellFormattingEventArgs e, object val) {
+            string formattedVal = "";
+
+            switch ((bool)val) {
+                case true:
+                    StyleSuccessCell(e);
+                    formattedVal = "Printed!";
+                    break;
+                case false:
+                    StyleErrorCell(e);
+                    formattedVal = "Not Printed";
+                    break;
+            }
+            e.Value = formattedVal;
+        }
+
+        private void StyleSuccessCell(DataGridViewCellFormattingEventArgs e) {
+            e.CellStyle.ForeColor = Colors.SuccessGreen;
+            e.CellStyle.SelectionForeColor = Colors.SuccessGreen;
+            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        }
+
+        private void StyleErrorCell(DataGridViewCellFormattingEventArgs e) {
+            e.CellStyle.ForeColor = Colors.ErrorRed;
+            e.CellStyle.SelectionForeColor = Colors.ErrorRed;
+            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
         }
 
         private void comboBoxEventsSelector_SelectedValueChanged(object sender, EventArgs e) {
@@ -256,5 +273,10 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         public const string OrderSize = "orderSizeDataGridViewTextBoxColumn";
         public const string ConfirmStatus = "confirmStatusDataGridViewTextBoxColumn";
         public const string PrintStatus = "printStatusDataGridViewTextBoxColumn";
+    }
+
+    public static class Colors {
+        public static Color SuccessGreen = Color.FromArgb(255, 21, 189, 0);
+        public static Color ErrorRed = Color.FromArgb(255, 196, 13, 0);
     }
 }
