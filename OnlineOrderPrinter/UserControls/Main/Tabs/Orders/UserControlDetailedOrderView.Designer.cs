@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlDetailedOrderView));
             this.tableLayoutPanelComponentContainer = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelOrderDetails = new System.Windows.Forms.TableLayoutPanel();
@@ -57,8 +57,8 @@
             this.tableLayoutPanelActionsContainer = new System.Windows.Forms.TableLayoutPanel();
             this.labelActions = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.imageListPrintImages = new System.Windows.Forms.ImageList(this.components);
             this.buttonPrint = new System.Windows.Forms.Button();
+            this.imageListPrintImages = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanelComponentContainer.SuspendLayout();
             this.tableLayoutPanelOrderDetails.SuspendLayout();
             this.tableLayoutPanelItemListContainer.SuspendLayout();
@@ -290,27 +290,27 @@
             this.dataGridViewItemList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItemList.ColumnHeadersVisible = false;
             this.dataGridViewItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.quantityDataGridViewTextBoxColumn,
             this.itemNameDataGridViewTextBoxColumn});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewItemList.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewItemList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewItemList.EnableHeadersVisualStyles = false;
             this.dataGridViewItemList.Location = new System.Drawing.Point(1, 42);
@@ -431,14 +431,14 @@
             this.modifierListDataGridView.ColumnHeadersVisible = false;
             this.modifierListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.modifierNameDataGridViewTextBoxColumn});
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.modifierListDataGridView.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.modifierListDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.modifierListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modifierListDataGridView.Location = new System.Drawing.Point(1, 22);
             this.modifierListDataGridView.Margin = new System.Windows.Forms.Padding(0);
@@ -515,12 +515,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 150);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // imageListPrintImages
-            // 
-            this.imageListPrintImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPrintImages.ImageStream")));
-            this.imageListPrintImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListPrintImages.Images.SetKeyName(0, "print-white.png");
-            // 
             // buttonPrint
             // 
             this.buttonPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
@@ -535,6 +529,12 @@
             this.buttonPrint.Size = new System.Drawing.Size(253, 144);
             this.buttonPrint.TabIndex = 0;
             this.buttonPrint.UseVisualStyleBackColor = false;
+            // 
+            // imageListPrintImages
+            // 
+            this.imageListPrintImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPrintImages.ImageStream")));
+            this.imageListPrintImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListPrintImages.Images.SetKeyName(0, "print-white.png");
             // 
             // UserControlDetailedOrderView
             // 
