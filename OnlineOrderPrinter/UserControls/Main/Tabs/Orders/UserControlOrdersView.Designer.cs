@@ -32,16 +32,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxEventsSelector = new System.Windows.Forms.ComboBox();
             this.eventListDataGridView = new System.Windows.Forms.DataGridView();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeReceivedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serviceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeReceivedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pickupTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.confirmStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -152,10 +152,10 @@
             this.eventListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.eventListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.timeReceivedDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn,
             this.serviceDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
+            this.timeReceivedDataGridViewTextBoxColumn,
             this.pickupTimeDataGridViewTextBoxColumn,
             this.orderSizeDataGridViewTextBoxColumn,
             this.confirmStatusDataGridViewTextBoxColumn,
@@ -184,6 +184,24 @@
             this.eventListDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.eventListDataGridView_RowsAdded);
             this.eventListDataGridView.SelectionChanged += new System.EventHandler(this.eventListDataGridView_SelectionChanged);
             // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.IntegralHeight = false;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Today",
+            "Yesterday",
+            "Last 7 Days",
+            "Last 30 Days"});
+            this.comboBox3.Location = new System.Drawing.Point(81, 3);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 28);
+            this.comboBox3.TabIndex = 1;
+            this.comboBox3.TabStop = false;
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -191,14 +209,6 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // timeReceivedDataGridViewTextBoxColumn
-            // 
-            this.timeReceivedDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
-            this.timeReceivedDataGridViewTextBoxColumn.HeaderText = "Time Received";
-            this.timeReceivedDataGridViewTextBoxColumn.MinimumWidth = 150;
-            this.timeReceivedDataGridViewTextBoxColumn.Name = "timeReceivedDataGridViewTextBoxColumn";
-            this.timeReceivedDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -220,6 +230,14 @@
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeReceivedDataGridViewTextBoxColumn
+            // 
+            this.timeReceivedDataGridViewTextBoxColumn.DataPropertyName = "CreatedAt";
+            this.timeReceivedDataGridViewTextBoxColumn.HeaderText = "Time Received";
+            this.timeReceivedDataGridViewTextBoxColumn.MinimumWidth = 150;
+            this.timeReceivedDataGridViewTextBoxColumn.Name = "timeReceivedDataGridViewTextBoxColumn";
+            this.timeReceivedDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pickupTimeDataGridViewTextBoxColumn
             // 
@@ -249,24 +267,6 @@
             this.printStatusDataGridViewTextBoxColumn.HeaderText = "Print Status";
             this.printStatusDataGridViewTextBoxColumn.Name = "printStatusDataGridViewTextBoxColumn";
             this.printStatusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.IntegralHeight = false;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Today",
-            "Yesterday",
-            "Last 7 Days",
-            "Last 30 Days"});
-            this.comboBox3.Location = new System.Drawing.Point(81, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 28);
-            this.comboBox3.TabIndex = 1;
-            this.comboBox3.TabStop = false;
             // 
             // eventBindingSource
             // 
@@ -305,15 +305,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxEventsSelector;
         private System.Windows.Forms.ComboBox comboBox3;
+        public System.Windows.Forms.DataGridView eventListDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeReceivedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn serviceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeReceivedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pickupTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderSizeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn confirmStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn printStatusDataGridViewTextBoxColumn;
-        public System.Windows.Forms.DataGridView eventListDataGridView;
     }
 }
