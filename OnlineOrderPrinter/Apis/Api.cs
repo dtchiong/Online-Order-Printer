@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using OnlineOrderPrinter.Models;
 using OnlineOrderPrinter.Apis.Responses;
+using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -190,6 +191,7 @@ namespace OnlineOrderPrinter.Apis {
         private static void ConfigureHttpClient(string bearerToken = null) {
             SetHttpClientBaseProperties();
             SetBearerToken(bearerToken);
+            SetApiKey();
         }
 
         private static void SetHttpClientBaseProperties() {
@@ -201,13 +203,24 @@ namespace OnlineOrderPrinter.Apis {
 
         private static void SetBearerToken(string bearerToken) {
             if (bearerToken != null) {
-                // There's a bug with trying to add this authorization header when it exists, after
-                // we already check that it doesn't exist. It's probably due to multiple changing the value
+                // TODO: Fix bug with trying to add this authorization header when it exists, after
+                // we already check that it doesn't exist. It's probably due to multiple threads changing the value
+                // after we check it.
                 if (!client.DefaultRequestHeaders.Contains("Authorization")) {
                     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
                 }
             } else {
                 client.DefaultRequestHeaders.Remove("Authorization");
+            }
+        }
+
+        private static void SetApiKey() {
+            try {
+                if (!client.DefaultRequestHeaders.Contains("Api-Key")) {
+                    client.DefaultRequestHeaders.Add("Api-Key", AppState.ApiKey);
+                }
+            } catch (Exception e) {
+                Debug.WriteLine(e.Message);
             }
         }
     }

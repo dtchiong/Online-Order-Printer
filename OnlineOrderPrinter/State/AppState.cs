@@ -20,6 +20,7 @@ namespace OnlineOrderPrinter.State {
         public static User User { get; set; }
         public static Restaurant Restaurant { get { return restaurant; } set { restaurant = value; OnRestaurantChanged(value); } }
         public static Control ActivePage { get; set; }
+        public static string ApiKey { get; set; }
 
         public static FormContainer FormContainer { get; set; }
         public static UserControlLoginPage UserControlLoginPage { get; set; }

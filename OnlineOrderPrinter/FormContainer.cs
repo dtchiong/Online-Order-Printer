@@ -21,10 +21,12 @@ namespace OnlineOrderPrinter {
 
         public static string AppDataDirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data");
         public static string UserDataPath = Path.Combine(AppDataDirPath, "user_data.dat");
+        public static string ApiKeyPath = Path.Combine(AppDataDirPath, "api_key.txt");
 
         public FormContainer() {
             InitializeComponent();
             InitializeDirectories();
+            AppActions.ReadAndSetApiKey();
             EventPollingService.InitializeTimer();
             AppState.ActivePage = userControlSplashPage1;
             AppState.FormContainer = this;

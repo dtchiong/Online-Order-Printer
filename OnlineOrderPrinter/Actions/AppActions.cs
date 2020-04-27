@@ -1,5 +1,6 @@
 ﻿using OnlineOrderPrinter.Actions;
 using OnlineOrderPrinter.Sagas;
+using OnlineOrderPrinter.Services;
 using OnlineOrderPrinter.State;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,15 @@ namespace OnlineOrderPrinter.Actions {
             while (RestaurantSagas.FetchingRestaurant == 1) { }
 
             Debug.WriteLine("Cancelled all Sagas!");
+        }
+
+        public static void ReadAndSetApiKey() {
+            string key = ApiKeyManager.Retrieve();
+            SetApiKey(key);
+        }
+
+        public static void SetApiKey(string key) {
+            AppState.ApiKey = key;
         }
     }
 }
