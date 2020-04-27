@@ -21,6 +21,8 @@ namespace OnlineOrderPrinter.Apis {
             ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() }
         };
 
+        // TODO: Maybe separate this instance into it's own class so that we can configure setting the 
+        // default headers on class instantiation instead of checking if default headers need to be set on each request. 
         static readonly HttpClient client = new HttpClient();
 
         public static async Task<AuthResponse> Authenticate(string email, string password) {
@@ -203,11 +205,15 @@ namespace OnlineOrderPrinter.Apis {
 
         private static void SetBearerToken(string bearerToken) {
             if (bearerToken != null) {
-                // TODO: Fix bug with trying to add this authorization header when it exists, after
-                // we already check that it doesn't exist. It's probably due to multiple threads changing the value
-                // after we check it.
-                if (!client.DefaultRequestHeaders.Contains("Authorization")) {
-                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+                // TODO: There seems to be a bug where the header tries to added even though it already exists. 
+                // Might be related to multiple threads reading .Contains(). The bearer token should be set
+                // per request, instead of of added to the default request headers.
+                try {
+                    if (!client.DefaultRequestHeaders.Contains("Authorization")) {
+                        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {bearerToken}");
+                    }
+                } catch (Exception e) {
+                    Debug.WriteLine(e.Message);
                 }
             } else {
                 client.DefaultRequestHeaders.Remove("Authorization");
