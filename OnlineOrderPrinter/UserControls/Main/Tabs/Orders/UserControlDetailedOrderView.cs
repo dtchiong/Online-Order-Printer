@@ -121,5 +121,10 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                     return "";
             }
         }
+
+        // TODO: Implement to print the selected order
+        private void buttonPrint_Click(object sender, EventArgs e) {
+
+        }
     }
 }
