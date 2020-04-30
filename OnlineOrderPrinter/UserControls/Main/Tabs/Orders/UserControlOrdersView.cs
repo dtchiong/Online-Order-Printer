@@ -61,7 +61,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             comboBoxEventsSelector.MouseWheel += new MouseEventHandler(comboBoxEventsSelector_MouseWheel);
 
             string[] eventsSelections = new string[] {
-                EventsSelection.Today, EventsSelection.Yesterday, EventsSelection.Last7Days, EventsSelection.Last30Days
+                EventsSelection.Today, EventsSelection.Yesterday, EventsSelection.Last7Days, EventsSelection.Last14Days
             };
             AppState.CurrentEventsSelection = eventsSelections[0];
 
@@ -258,7 +258,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         public const string Today = "Today";
         public const string Yesterday = "Yesterday";
         public const string Last7Days = "Last 7 Days";
-        public const string Last30Days = "Last 30 Days";
+        public const string Last14Days = "Last 14 Days";
     }
 
     public static class EventListColumn {

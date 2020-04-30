@@ -38,8 +38,8 @@ namespace OnlineOrderPrinter.Actions {
                 case EventsSelection.Last7Days:
                     EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
                     break;
-                case EventsSelection.Last30Days:
-                    EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-30), DateTime.Today.AddDays(1));
+                case EventsSelection.Last14Days:
+                    EventSagas.FetchPastEvents(restaurantId, bearerToken, null, DateTime.Today.AddDays(-14), DateTime.Today.AddDays(1));
                     break;
             }
         }
