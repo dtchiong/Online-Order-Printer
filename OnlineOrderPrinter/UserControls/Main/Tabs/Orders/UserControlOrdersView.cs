@@ -32,7 +32,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         public void UpdateEventList(List<Event> eventList, bool clearRequired) {
-            comboBoxEventsSelector.Enabled = false;
+            SetComboBoxEnabled(false);
 
             if (clearRequired) {
                 eventListBindingList.Clear();
@@ -49,7 +49,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 AppState.CurrentEventsSelection = EventsSelection.Today;
                 UpdateEventList(AppState.CurrentEvents, true);
             }
-            comboBoxEventsSelector.Enabled = true;
+            SetComboBoxEnabled(true);
         }
 
         public Event GetCurrentSelectedEvent() {
@@ -57,7 +57,16 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 (Event)eventListDataGridView.SelectedRows[0].DataBoundItem : null;
         }
 
+        public void SetComboBoxEnabledSafe(bool enabled) {
+            if (InvokeRequired) {
+                Invoke((MethodInvoker)delegate { SetComboBoxEnabled(enabled); });
+            } else {
+                SetComboBoxEnabled(enabled);
+            }
+        }
+
         private void InitializeEventsSelectionAndComboBox() {
+            comboBoxEventsSelector.Enabled = false;
             comboBoxEventsSelector.MouseWheel += new MouseEventHandler(comboBoxEventsSelector_MouseWheel);
 
             string[] eventsSelections = new string[] {
@@ -82,6 +91,12 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             eventListDataGridView.AutoGenerateColumns = false;
             eventListBindingSource.DataSource = eventListBindingList;
             eventListDataGridView.DataSource = eventListBindingSource;
+        }
+
+        private void SetComboBoxEnabled(bool enabled) {
+            if (AppState.User?.UserType > UserType.RestaurantUser) {
+                comboBoxEventsSelector.Enabled = enabled;
+            }
         }
 
         private void eventListDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {

@@ -32,6 +32,7 @@ namespace OnlineOrderPrinter.State {
 
         private static void OnRestaurantChanged(Restaurant restaurant) {
             UserControlMainPage.SetLabelRestaurantNameSafe(Restaurant?.Name);
+            UserControlOrdersView.SetComboBoxEnabledSafe(true);
         }
     }
 }
