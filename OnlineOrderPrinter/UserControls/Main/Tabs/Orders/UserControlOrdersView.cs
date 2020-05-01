@@ -94,7 +94,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void SetComboBoxEnabled(bool enabled) {
-            if (AppState.User?.UserType > UserType.RestaurantUser) {
+            if (AppState.User?.UserType > UserType.Restaurant) {
                 comboBoxEventsSelector.Enabled = enabled;
             }
         }

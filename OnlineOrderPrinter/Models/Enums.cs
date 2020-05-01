@@ -31,8 +31,8 @@ namespace OnlineOrderPrinter.Models {
 
     [JsonConverter(typeof(StringEnumConverter))]
     public enum UserType {
-        [EnumMember(Value = "restaurant_user")]
-        RestaurantUser,
+        [EnumMember(Value = "restaurant")]
+        Restaurant,
         [EnumMember(Value = "manager")]
         Manager,
         [EnumMember(Value = "owner")]
