@@ -64,6 +64,12 @@
     <Compile Include="FormContainer.Designer.cs">
       <DependentUpon>FormContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAuthorizationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAuthorizationBox.Designer.cs">
+      <DependentUpon>FormAuthorizationBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Order.cs" />
@@ -145,6 +151,9 @@
     <Compile Include="Utility\SortableBindingList.cs" />
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAuthorizationBox.resx">
+      <DependentUpon>FormAuthorizationBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
