@@ -155,7 +155,6 @@
             this.labelErrorStatus.Name = "labelErrorStatus";
             this.labelErrorStatus.Size = new System.Drawing.Size(331, 18);
             this.labelErrorStatus.TabIndex = 4;
-            this.labelErrorStatus.Text = "Unauthorized user!";
             this.labelErrorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel3
@@ -192,6 +191,7 @@
             this.buttonConfirm.TabIndex = 0;
             this.buttonConfirm.Text = "Confirm";
             this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonCancel
             // 
@@ -206,6 +206,7 @@
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // FormAuthorizationBox
             // 
