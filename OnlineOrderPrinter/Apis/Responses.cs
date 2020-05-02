@@ -15,6 +15,11 @@ namespace OnlineOrderPrinter.Apis {
                 int code = (int)StatusCode;
                 return (code >= 200 && code < 300);
             }
+
+            public bool IsServerErrorStatusCode() {
+                int code = (int)StatusCode;
+                return (code >= 500);
+            }
         }
 
         class AuthResponse : Response {

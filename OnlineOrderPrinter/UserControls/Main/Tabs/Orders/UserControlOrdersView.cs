@@ -293,5 +293,6 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
     public static class Colors {
         public static Color SuccessGreen = Color.FromArgb(255, 21, 189, 0);
         public static Color ErrorRed = Color.FromArgb(255, 196, 13, 0);
+        public static Color LoadingGray = Color.DimGray;
     }
 }
