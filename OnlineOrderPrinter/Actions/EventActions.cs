@@ -54,14 +54,13 @@ namespace OnlineOrderPrinter.Actions {
             CancellableSaga.Cancel(cts);
         }
 
-        // TODO: Maybe use enum instead of string for eventsContext
-        public static void ReceiveEvents(Event[] events, string eventsContext) {
+        public static void ReceiveEvents(Event[] events, EventsContext eventsContext) {
             if (events == null || events.Length == 0) {
                 return;
             }
 
             List<Event> eventList;
-            if (eventsContext == "current") {
+            if (eventsContext == EventsContext.CurrentDay || eventsContext == EventsContext.Latest) {
                 eventList = AppState.CurrentEvents;
                 SetLatestEventId(events[events.Length - 1].Id);
             } else {
@@ -72,9 +71,9 @@ namespace OnlineOrderPrinter.Actions {
                 eventList.Add(@event);
             }
 
-            if (eventsContext == "current" && AppState.CurrentEventsSelection == EventsSelection.Today) {
+            if (eventsContext == EventsContext.CurrentDay || eventsContext == EventsContext.Latest && AppState.CurrentEventsSelection == EventsSelection.Today) {
                 AppState.UserControlOrdersView.UpdateEventList(eventList, true);
-            } else if (eventsContext == "past" && AppState.CurrentEventsSelection != EventsSelection.Today) {
+            } else if (eventsContext == EventsContext.Past && AppState.CurrentEventsSelection != EventsSelection.Today) {
                 AppState.UserControlOrdersView.UpdateEventList(eventList, true);
             }
         }
@@ -86,5 +85,11 @@ namespace OnlineOrderPrinter.Actions {
         public static void ClearEvents() {
             AppState.CurrentEvents.Clear();
         }
+    }
+
+    enum EventsContext {
+        CurrentDay,
+        Latest,
+        Past
     }
 }

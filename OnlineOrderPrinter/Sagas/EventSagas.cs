@@ -44,7 +44,8 @@ namespace OnlineOrderPrinter.Sagas {
                             cancellationToken).Result;
                         AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
                             if (response.IsSuccessStatusCode()) {
-                                EventActions.ReceiveEvents(response.Events, "current");
+                                EventsContext eventsContext = startEventId != null ? EventsContext.Latest : EventsContext.CurrentDay;
+                                EventActions.ReceiveEvents(response.Events, eventsContext);
                             }
                         });
                     } catch (AggregateException e) {
@@ -91,7 +92,7 @@ namespace OnlineOrderPrinter.Sagas {
                         CurrentFetchPastEventsCTS.Token).Result;
                     AppState.UserControlMainPage.Invoke((MethodInvoker)delegate {
                         if (response.IsSuccessStatusCode()) {
-                            EventActions.ReceiveEvents(response.Events, "past");
+                            EventActions.ReceiveEvents(response.Events, EventsContext.Past);
                         }
                     });
                 } catch (AggregateException e) {
