@@ -2,6 +2,7 @@
 using OnlineOrderPrinter.Apis;
 using OnlineOrderPrinter.Apis.Responses;
 using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.Sagas.AuthSagaResponses;
 using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.Services;
 using System;
@@ -11,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 
 namespace OnlineOrderPrinter.Sagas {
     class AuthSagas {
@@ -63,6 +63,29 @@ namespace OnlineOrderPrinter.Sagas {
                     Interlocked.Exchange(ref authenticatingWithStoredCredentials, 0);
                 });
             }
+        }
+
+        public static async Task<AuthorizeActionSagaResponse> AuthorizeAction(string username, string password, UserType minimumLevel) {
+            string restaurantId = AppState.User?.RestaurantId;
+            string bearerToken = AppState.User?.Token;
+
+            AuthorizeActionSagaResponse returnResponse;
+            try {
+                Debug.WriteLine("Started AuthorizeAction saga");
+                AuthorizeActionResponse response = await Api.AuthorizeAction(
+                    restaurantId,
+                    bearerToken,
+                    username,
+                    password,
+                    minimumLevel);
+
+                returnResponse = new AuthorizeActionSagaResponse(response.StatusCode);
+            } catch (Exception e) {
+                returnResponse = new AuthorizeActionSagaResponse(e);
+            }
+
+            Debug.WriteLine("Ended AuthorizeAction saga");
+            return returnResponse;
         }
     }
 }

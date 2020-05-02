@@ -80,7 +80,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sagas\AuthSagaResponses.cs" />
     <Compile Include="Sagas\AuthSagas.cs" />
+    <Compile Include="Sagas\ErrorType.cs" />
     <Compile Include="Sagas\EventSagas.cs" />
     <Compile Include="Sagas\RestaurantSagas.cs" />
     <Compile Include="Sagas\CancellableSaga.cs" />
