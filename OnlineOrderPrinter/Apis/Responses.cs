@@ -43,5 +43,8 @@ namespace OnlineOrderPrinter.Apis {
 
         class SyncOrderPrintedResponse : Response {
         }
+
+        class AuthorizeActionResponse : Response {
+        }
     }
 }

@@ -47,6 +47,30 @@ namespace OnlineOrderPrinter.Apis {
             };
         }
 
+        public static async Task<AuthorizeActionResponse> AuthorizeAction(
+            string restaurantId,
+            string bearerToken,
+            string username,
+            string password,
+            UserType userType) {
+
+            ConfigureHttpClient(bearerToken);
+
+            object data = new {
+                email = username,
+                password,
+                minimum_level = JsonConvert.SerializeObject(userType).Replace("\"", "")
+            };
+
+            HttpResponseMessage response = await client.PostAsync("api/v1/authorize_action/", CreateByteArrayContent(data));
+            if (!response.IsSuccessStatusCode) {
+                Debug.WriteLine("Failed to AuthorizeAction");
+            }
+            return new AuthorizeActionResponse() {
+                StatusCode = response.StatusCode
+            };
+        }
+
         public static async Task<FetchUserResponse> FetchUser(string userId, string bearerToken) {
             ConfigureHttpClient(bearerToken);
 
