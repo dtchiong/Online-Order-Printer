@@ -89,6 +89,7 @@
     <Compile Include="Services\ApiKeyManager.cs" />
     <Compile Include="Services\CredentialManager.cs" />
     <Compile Include="Services\EventPollingService.cs" />
+    <Compile Include="Services\SoundPlayer.cs" />
     <Compile Include="State\AppState.cs" />
     <Compile Include="UserControls\Login\UserControlLogin.cs">
       <SubType>UserControl</SubType>
@@ -165,6 +166,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\Login\UserControlLogin.resx">
       <DependentUpon>UserControlLogin.cs</DependentUpon>
@@ -213,6 +215,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\cancel_order.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_order.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
