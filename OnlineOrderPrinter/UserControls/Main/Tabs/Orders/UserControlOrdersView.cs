@@ -1,5 +1,6 @@
 ﻿using OnlineOrderPrinter.Actions;
 using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.Services;
 using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.Utility;
 using System;
@@ -31,7 +32,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             AppState.UserControlOrdersView = this;
         }
 
-        public void UpdateEventList(List<Event> eventList, bool clearRequired) {
+        public void UpdateEventList(List<Event> eventList, bool clearRequired, EventsContext eventsContext) {
             SetComboBoxEnabled(false);
 
             if (clearRequired) {
@@ -40,6 +41,10 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
             foreach (Event @event in eventList) {
                 eventListBindingList.Add(@event);
+
+                if (eventsContext == EventsContext.Latest) {
+                    PlayEventSound(@event);
+                }
             }
 
             // Workaround for bug where changing the selection to "Today" just before the list updates  desyncs
@@ -47,7 +52,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             // But pagination should be implemented before that to prevent long running fetches from holding the combobox hostage
             if (comboBoxEventsSelector.SelectedValue.ToString() == EventsSelection.Today && AppState.CurrentEventsSelection != EventsSelection.Today) {
                 AppState.CurrentEventsSelection = EventsSelection.Today;
-                UpdateEventList(AppState.CurrentEvents, true);
+                UpdateEventList(AppState.CurrentEvents, true, eventsContext);
             }
             SetComboBoxEnabled(true);
         }
@@ -96,6 +101,19 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         private void SetComboBoxEnabled(bool enabled) {
             if (AppState.User?.UserType > UserType.Restaurant) {
                 comboBoxEventsSelector.Enabled = enabled;
+            }
+        }
+
+        // TODO: Play a different sound for updated orders
+        private void PlayEventSound(Event @event) {
+            switch (@event.EventType) {
+                case EventType.NewOrder:
+                case EventType.UpdateOrder:
+                    SoundPlayer.Play(Sound.NewOrder);
+                    break;
+                case EventType.CancelOrder:
+                    SoundPlayer.Play(Sound.CancelOrder);
+                    break;
             }
         }
 
@@ -226,7 +244,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             // If the selection is Today's events, then just update the list with the AppState's 
             // CurrentEvents, since we never clear that, otherwise we have to fetch the past events
             if (selection == EventsSelection.Today) {
-                UpdateEventList(AppState.CurrentEvents, true);
+                UpdateEventList(AppState.CurrentEvents, true, EventsContext.CurrentDay);
             } else {
                 AppState.PastEvents.Clear();
                 EventActions.FetchPresetRangeEvents(selection);

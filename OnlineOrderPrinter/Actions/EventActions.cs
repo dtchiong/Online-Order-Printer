@@ -72,9 +72,9 @@ namespace OnlineOrderPrinter.Actions {
             }
 
             if (eventsContext == EventsContext.CurrentDay || eventsContext == EventsContext.Latest && AppState.CurrentEventsSelection == EventsSelection.Today) {
-                AppState.UserControlOrdersView.UpdateEventList(eventList, true);
+                AppState.UserControlOrdersView.UpdateEventList(eventList, true, eventsContext);
             } else if (eventsContext == EventsContext.Past && AppState.CurrentEventsSelection != EventsSelection.Today) {
-                AppState.UserControlOrdersView.UpdateEventList(eventList, true);
+                AppState.UserControlOrdersView.UpdateEventList(eventList, true, eventsContext);
             }
         }
 
@@ -87,7 +87,10 @@ namespace OnlineOrderPrinter.Actions {
         }
     }
 
-    enum EventsContext {
+    /**
+     * Latest events will trigger a sound notification
+     */
+    public enum EventsContext {
         CurrentDay,
         Latest,
         Past
