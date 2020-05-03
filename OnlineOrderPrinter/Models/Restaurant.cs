@@ -12,5 +12,7 @@ namespace OnlineOrderPrinter.Models {
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
+        public DateTime PollingStartTime { get; set; }
+        public DateTime PollingEndTime { get; set; }
     }
 }
