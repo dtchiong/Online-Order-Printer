@@ -89,6 +89,7 @@
     <Compile Include="Services\ApiKeyManager.cs" />
     <Compile Include="Services\CredentialManager.cs" />
     <Compile Include="Services\EventPollingService.cs" />
+    <Compile Include="Services\EventPollingServiceSupervisor.cs" />
     <Compile Include="Services\SoundPlayer.cs" />
     <Compile Include="State\AppState.cs" />
     <Compile Include="UserControls\Login\UserControlLogin.cs">

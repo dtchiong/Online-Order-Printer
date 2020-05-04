@@ -1,6 +1,7 @@
 ﻿using OnlineOrderPrinter.Actions;
 using OnlineOrderPrinter.Apis;
 using OnlineOrderPrinter.Apis.Responses;
+using OnlineOrderPrinter.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,6 +31,7 @@ namespace OnlineOrderPrinter.Sagas {
                         FetchRestaurantResponse response = Api.FetchRestaurant(restaurantId, bearerToken).Result;
                         if (response.IsSuccessStatusCode()) {
                             RestaurantActions.SetRestaurant(response.Restaurant);
+                            EventPollingServiceSupervisor.Start();
                         }
                     } catch (AggregateException e) {
                         Debug.WriteLine(e.Message);
