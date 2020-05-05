@@ -50,19 +50,22 @@ namespace OnlineOrderPrinter.Services {
          */
         private static void ClearOldEvents() {
             UserControlOrdersView userControlOrdersView = AppState.UserControlOrdersView;
-            List<Event> currentEvents = AppState.CurrentEvents;
 
             userControlOrdersView.SetComboBoxEnabledSafe(false);
 
-            foreach (Event @event in currentEvents) {
-                // TODO: Refactor method to check if an event is from the current day into a utility classs
-                DateTime eventCreationDate = @event.CreatedAt.ToLocalTime();
-                if (eventCreationDate != DateTime.Now.Date) {
-                    currentEvents.Remove(@event);
+            List<Event> filteredCurrentEvents = new List<Event>();
+
+            foreach (Event @event in AppState.CurrentEvents) {
+                // TODO: Refactor method to check if an event is from the current day into a utility class
+                DateTime eventCreationDate = @event.CreatedAt.ToLocalTime().Date;
+                if (eventCreationDate == DateTime.Now.Date) {
+                    filteredCurrentEvents.Add(@event);
                 }
             }
+            AppState.CurrentEvents = filteredCurrentEvents;
+
             if (AppState.CurrentEventsSelection == EventsSelection.Today) {
-                userControlOrdersView.UpdateEventList(currentEvents, true, EventsContext.CurrentDay);
+                userControlOrdersView.UpdateEventList(filteredCurrentEvents, true, EventsContext.CurrentDay);
             }
 
             userControlOrdersView.SetComboBoxEnabledSafe(true);
