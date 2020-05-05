@@ -20,7 +20,7 @@ namespace OnlineOrderPrinter.Actions {
 
         public static void Logout() {
             NavigationActions.NavigateToSplashPage();
-            EventPollingService.Stop();
+            EventPollingServiceSupervisor.Stop();
             CredentialManager.DeleteCredentials();
             AppActions.CancelAllSagasAndWait();
             AppActions.ClearState();
