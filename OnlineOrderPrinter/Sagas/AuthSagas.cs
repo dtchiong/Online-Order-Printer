@@ -28,6 +28,7 @@ namespace OnlineOrderPrinter.Sagas {
                         CredentialManager.SaveCredentials(AppState.User.Id, AppState.User.Token);
                         EventActions.FetchCurrentDayEvents();
                         RestaurantActions.FetchRestaurant();
+                        EventListMaintenanceService.Start();
                         NavigationActions.NavigateToMainPage();
                         AuthActions.ClearLoginFields();
                     } else {
@@ -50,6 +51,7 @@ namespace OnlineOrderPrinter.Sagas {
                             AuthActions.SetUser(response.User);
                             EventActions.FetchCurrentDayEvents();
                             RestaurantActions.FetchRestaurant();
+                            EventListMaintenanceService.Start();
                             NavigationActions.NavigateToMainPage();
                         } else {
                             NavigationActions.NavigateToLoginPage();

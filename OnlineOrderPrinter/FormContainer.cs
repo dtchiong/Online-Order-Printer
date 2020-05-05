@@ -28,6 +28,7 @@ namespace OnlineOrderPrinter {
             InitializeDirectories();
             AppActions.ReadAndSetApiKey();
             EventPollingService.InitializeTimer();
+            EventListMaintenanceService.Initialize();
             AppState.ActivePage = userControlSplashPage1;
             AppState.FormContainer = this;
             AuthActions.AuthenticateWithStoredCredentials();
