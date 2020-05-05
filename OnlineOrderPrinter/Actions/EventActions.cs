@@ -72,7 +72,7 @@ namespace OnlineOrderPrinter.Actions {
             }
 
             if (eventsContext == EventsContext.CurrentDay || eventsContext == EventsContext.Latest && AppState.CurrentEventsSelection == EventsSelection.Today) {
-                AppState.UserControlOrdersView.UpdateEventList(eventList, true, eventsContext);
+                AppState.UserControlOrdersView.UpdateEventList(new List<Event>(events), false, eventsContext);
             } else if (eventsContext == EventsContext.Past && AppState.CurrentEventsSelection != EventsSelection.Today) {
                 AppState.UserControlOrdersView.UpdateEventList(eventList, true, eventsContext);
             }
