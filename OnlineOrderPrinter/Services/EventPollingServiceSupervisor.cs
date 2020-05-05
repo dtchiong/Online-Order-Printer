@@ -75,13 +75,18 @@ namespace OnlineOrderPrinter.Services {
             stoppingTimer.Start();
         }
 
+        // TODO: Refactor this method into a utility class
         private static int CalculateMillisecondsUntilTime(DateTime dateTime) {
             TimeSpan endTime = dateTime.ToLocalTime().TimeOfDay;
             TimeSpan currentTime = DateTime.Now.TimeOfDay;
 
-            int msDiff = (int)Math.Abs((endTime - currentTime).TotalMilliseconds);
+            if (endTime < currentTime) {
+                endTime = endTime.Add(TimeSpan.FromDays(1));
+            }
 
-            return msDiff;
+            int millisconds = (int)(endTime - currentTime).TotalMilliseconds;
+
+            return millisconds;
         }
 
         private static bool TimeIsWithinTimeSpan(TimeSpan time, TimeSpan startTime, TimeSpan endTime) {
