@@ -89,6 +89,8 @@ namespace OnlineOrderPrinter.Actions {
 
     /**
      * Latest events will trigger a sound notification
+     * 
+     * TODO: Maybe move this to a separate file
      */
     public enum EventsContext {
         CurrentDay,
