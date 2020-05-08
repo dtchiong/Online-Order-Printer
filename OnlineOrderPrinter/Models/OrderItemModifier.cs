@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace OnlineOrderPrinter.Models {
     public class OrderItemModifier : OrderItemBase {
         public string ModifierType { get; set; }
+        public int PrintPriority { get; set; }
     }
 }
