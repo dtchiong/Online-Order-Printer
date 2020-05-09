@@ -108,7 +108,7 @@ namespace OnlineOrderPrinter.Apis {
         public static async Task<FetchEventsResponse> FetchEvents(
             string restaurantId,
             string bearerToken,
-            string startEventId,
+            long? startEventId,
             DateTime? startTime,
             DateTime? endTime,
             CancellationToken ct) {
@@ -116,7 +116,7 @@ namespace OnlineOrderPrinter.Apis {
             ConfigureHttpClient(bearerToken);
 
             string query = BuildQuery(new (string, string)[] {
-                ("start_event_id", startEventId),
+                ("start_event_id", startEventId.ToString()),
                 ("start_time", (startTime != null? startTime.Value.ToUniversalTime().ToString("o") : "")),
                 ("end_time", (endTime != null? endTime.Value.ToUniversalTime().ToString("o") : ""))
             });

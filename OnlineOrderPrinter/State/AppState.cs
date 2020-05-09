@@ -15,7 +15,7 @@ namespace OnlineOrderPrinter.State {
     class AppState {
         public static List<Event> CurrentEvents { get; set; } = new List<Event>();
         public static List<Event> PastEvents { get; set; } = new List<Event>();
-        public static string LatestEventId { get; set; }
+        public static long? LatestEventId { get; set; }
         public static string CurrentEventsSelection { get; set; }
         public static User User { get; set; }
         public static Restaurant Restaurant { get { return restaurant; } set { restaurant = value; OnRestaurantChanged(value); } }

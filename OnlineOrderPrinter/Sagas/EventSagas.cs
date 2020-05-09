@@ -24,7 +24,7 @@ namespace OnlineOrderPrinter.Sagas {
         public static void FetchCurrentEvents(
             string restaurantId,
             string bearerToken,
-            string startEventId = null) {
+            long? startEventId = null) {
 
             if (Interlocked.Exchange(ref FetchingCurrentEvents, 1) == 0) {
                 Debug.WriteLine("Starting FetchCurrentEvents saga");
@@ -66,7 +66,7 @@ namespace OnlineOrderPrinter.Sagas {
         public static void FetchPastEvents(
             string restaurantId,
             string bearerToken,
-            string startEventId = null,
+            long? startEventId = null,
             DateTime? startTime = null,
             DateTime? endTime = null) {
 

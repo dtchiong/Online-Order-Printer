@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineOrderPrinter.Models {
     public class Event {
-        public string Id { get; set; }
+        public long Id { get; set; }
         public EventType EventType { get; set; }
         public DateTime CreatedAt { get; set; }
         public string RestaurantId { get; set; }

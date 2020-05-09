@@ -22,7 +22,7 @@ namespace OnlineOrderPrinter.Actions {
         public static void FetchLatestEvents() {
             string restaurantId = AppState.User?.RestaurantId;
             string bearerToken = AppState.User?.Token;
-            string latestEventId = AppState.LatestEventId;
+            long? latestEventId = AppState.LatestEventId;
 
             EventSagas.FetchCurrentEvents(restaurantId, bearerToken, latestEventId);
         }
@@ -78,7 +78,7 @@ namespace OnlineOrderPrinter.Actions {
             }
         }
 
-        public static void SetLatestEventId(string latestEventId) {
+        public static void SetLatestEventId(long? latestEventId) {
             AppState.LatestEventId = latestEventId;
         }
 
