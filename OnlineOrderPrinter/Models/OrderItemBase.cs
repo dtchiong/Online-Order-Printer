@@ -9,7 +9,7 @@ namespace OnlineOrderPrinter.Models {
         public string Id { get; set; }
         public string ItemId { get; set; }
         public string Name { get; set; }
-        public string ShortName { get; set; }
+        public string PrintName { get; set; }
         public ItemType ItemType { get; set; }
         public string DoordashName { get; set; }
         public string GrubhubName { get; set; }
