@@ -212,6 +212,8 @@
       <DependentUpon>UserControlSplashPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\PrinterHelper.cs" />
+    <Compile Include="Utility\PrintErrorType.cs" />
+    <Compile Include="Utility\PrintResult.cs" />
     <Compile Include="Utility\SortableBindingList.cs" />
     <EmbeddedResource Include="FormContainer.resx">
       <DependentUpon>FormContainer.cs</DependentUpon>
