@@ -21,8 +21,8 @@ namespace OnlineOrderPrinter.Actions {
         }
 
         /**
-         * Cancels all potentially running sagas in the app, and polls for their
-         * respective fetching status to be false before returning
+         * Cancels all potentially running sagas in the app that access potentially disposed resources,
+         * and polls for their respective fetching status to be false before returning
          */
         public static void CancelAllSagasAndWait() {
             EventActions.CancelFetchCurrentEventsSaga();

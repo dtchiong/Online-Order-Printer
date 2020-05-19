@@ -112,6 +112,7 @@
     <Compile Include="Actions\AuthActions.cs" />
     <Compile Include="Actions\EventActions.cs" />
     <Compile Include="Actions\NavigationActions.cs" />
+    <Compile Include="Actions\OrderActions.cs" />
     <Compile Include="Actions\RestaurantActions.cs" />
     <Compile Include="Apis\Api.cs" />
     <Compile Include="Apis\Responses.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Sagas\AuthSagas.cs" />
     <Compile Include="Sagas\ErrorType.cs" />
     <Compile Include="Sagas\EventSagas.cs" />
+    <Compile Include="Sagas\OrderSagas.cs" />
     <Compile Include="Sagas\RestaurantSagas.cs" />
     <Compile Include="Sagas\CancellableSaga.cs" />
     <Compile Include="Services\ApiKeyManager.cs" />

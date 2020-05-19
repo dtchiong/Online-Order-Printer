@@ -1,4 +1,5 @@
-﻿using OnlineOrderPrinter.Models;
+﻿using OnlineOrderPrinter.Actions;
+using OnlineOrderPrinter.Models;
 using OnlineOrderPrinter.Services;
 using OnlineOrderPrinter.State;
 using OnlineOrderPrinter.Utility;
@@ -140,7 +141,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 if (printResult.Success) {
                     order.PrintStatus = true;
                     order.PrintErrorMessage = null;
-                    // TODO: Make api call to update print status to true
+                    OrderActions.SyncOrderPrinted(order.Id);
                 } else {
                     order.PrintErrorMessage = printResult.PrintErrorMessage;
                 }
