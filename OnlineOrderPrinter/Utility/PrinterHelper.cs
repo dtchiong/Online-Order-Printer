@@ -19,7 +19,7 @@ namespace OnlineOrderPrinter.Utility {
         }
 
         // TODO: Ideally, these character limits would be configured through app settings/be dynamic,
-        // so that they can be customized for different label sizes. (Currently this is designed for 2.25w 1.25h inch labels)
+        // so that they can be optimized for different label sizes. (Currently this is optimized for 2.25w 1.25h inch labels)
         private static Dictionary<OrderTemplateLocation, int> orderTemplateCharLimits = new Dictionary<OrderTemplateLocation, int>() {
             { OrderTemplateLocation.ServiceName, 8 },
             { OrderTemplateLocation.CustomerName, 17 },

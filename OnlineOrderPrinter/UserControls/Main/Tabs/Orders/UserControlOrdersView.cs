@@ -20,7 +20,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
         private SortableBindingList<Event> eventListBindingList = new SortableBindingList<Event>();
         private BindingSource eventListBindingSource = new BindingSource();
-        private Dictionary<string, Action<DataGridViewCellFormattingEventArgs, object>> eventListDataGridViewFormatters;
+        private Dictionary<string, Action<DataGridViewCellFormattingEventArgs, Event, object>> eventListDataGridViewFormatters;
 
         private bool initialEventsSelectionOccurred = false;
 
@@ -62,6 +62,10 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 (Event)eventListDataGridView.SelectedRows[0].DataBoundItem : null;
         }
 
+        public void RefreshEventList() {
+            eventListDataGridView.Refresh();
+        }
+
         public void SetComboBoxEnabledSafe(bool enabled) {
             if (InvokeRequired) {
                 Invoke((MethodInvoker)delegate { SetComboBoxEnabled(enabled); });
@@ -83,7 +87,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void InitializeEventListDataGridViewFormatters() {
-            eventListDataGridViewFormatters = new Dictionary<string, Action<DataGridViewCellFormattingEventArgs, object>> {
+            eventListDataGridViewFormatters = new Dictionary<string, Action<DataGridViewCellFormattingEventArgs, Event, object>> {
                 { timeReceivedDataGridViewTextBoxColumn.DataPropertyName, FormatDateCell },
                 { typeDataGridViewTextBoxColumn.DataPropertyName, FormatEventTypeCell },
                 { pickupTimeDataGridViewTextBoxColumn.DataPropertyName, FormatDateCell },
@@ -141,18 +145,18 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 columnVal = propInfo.GetValue(row.DataBoundItem, null);
             }
 
-            FormatEventListDataGridViewCell(e, col.DataPropertyName, columnVal);
+            FormatEventListDataGridViewCell(e, col.DataPropertyName, row.DataBoundItem, columnVal);
         }
 
-        private void FormatEventListDataGridViewCell(DataGridViewCellFormattingEventArgs e, string dataPropertyName, object cellValue) {
-            if (eventListDataGridViewFormatters.TryGetValue(dataPropertyName, out Action<DataGridViewCellFormattingEventArgs, object> formatter)) {
-                formatter(e, cellValue);
+        private void FormatEventListDataGridViewCell(DataGridViewCellFormattingEventArgs e, string dataPropertyName, object dataBoundItem, object cellValue) {
+            if (eventListDataGridViewFormatters.TryGetValue(dataPropertyName, out Action<DataGridViewCellFormattingEventArgs, Event, object> formatter)) {
+                formatter(e, (Event)dataBoundItem, cellValue);
             } else {
                 e.Value = cellValue?.ToString();
             }
         }
 
-        private void FormatDateCell(DataGridViewCellFormattingEventArgs e, object val) {
+        private void FormatDateCell(DataGridViewCellFormattingEventArgs e, Event @event, object val) {
             DateTime dateTime = ((DateTime)val).ToLocalTime();
             bool sameDay = dateTime.Date == DateTime.Now.Date;
             string time = dateTime.ToShortTimeString();
@@ -167,7 +171,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             e.Value = formattedVal;
         }
 
-        private void FormatEventTypeCell(DataGridViewCellFormattingEventArgs e, object val) {
+        private void FormatEventTypeCell(DataGridViewCellFormattingEventArgs e, Event @event, object val) {
             EventType eventType = (EventType)val;
             string formattedVal;
 
@@ -182,7 +186,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             e.Value = formattedVal;
         }
 
-        private void FormatConfirmStatusCell(DataGridViewCellFormattingEventArgs e, object val) {
+        private void FormatConfirmStatusCell(DataGridViewCellFormattingEventArgs e, Event @event, object val) {
             string formattedVal = "";
 
             switch ((bool)val) {
@@ -198,7 +202,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             e.Value = formattedVal;
         }
 
-        private void FormatPrintStatusCell(DataGridViewCellFormattingEventArgs e, object val) {
+        private void FormatPrintStatusCell(DataGridViewCellFormattingEventArgs e, Event @event, object val) {
             string formattedVal = "";
 
             switch ((bool)val) {
@@ -208,7 +212,11 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                     break;
                 case false:
                     StyleErrorCell(e);
-                    formattedVal = "Not Printed";
+                    if (@event.Order?.PrintErrorMessage != null) {
+                        formattedVal = @event.Order.PrintErrorMessage;
+                    } else {
+                        formattedVal = "Not Printed";
+                    }
                     break;
             }
             e.Value = formattedVal;

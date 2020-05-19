@@ -1,5 +1,7 @@
 ﻿using OnlineOrderPrinter.Models;
+using OnlineOrderPrinter.Services;
 using OnlineOrderPrinter.State;
+using OnlineOrderPrinter.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,9 +124,25 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             }
         }
 
-        // TODO: Implement to print the selected order
         private void buttonPrint_Click(object sender, EventArgs e) {
+            Event @event = AppState.UserControlOrdersView.GetCurrentSelectedEvent();
+            Order order = @event?.Order;
 
+
+            if (order != null && (@event.EventType == EventType.NewOrder || @event.EventType == EventType.UpdateOrder)) {
+                // TODO: Disable print button
+                PrintResult printResult = PrinterService.Print(order);
+
+                if (printResult.Success) {
+                    order.PrintStatus = true;
+                    order.PrintErrorMessage = null;
+                    // TODO: Make api call to update print status to true
+                } else {
+                    order.PrintErrorMessage = printResult.PrintErrorMessage;
+                }
+                AppState.UserControlOrdersView.RefreshEventList();
+                // TODO: Enable print button
+            }
         }
     }
 }

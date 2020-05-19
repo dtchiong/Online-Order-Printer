@@ -23,5 +23,7 @@ namespace OnlineOrderPrinter.Models {
         public string GmailMessageId { get; set; }
         public string Error { get; set; }
         public OrderItem[] OrderItems { get; set; }
+        // Client only attribute
+        public string PrintErrorMessage { get; set; }
     }
 }
