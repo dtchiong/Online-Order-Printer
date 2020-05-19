@@ -29,6 +29,10 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
             UpdateItemList(@event?.Order);
         }
 
+        public void SetPrintButtonEnabled(bool enabled) {
+            buttonPrint.Enabled = enabled;
+        }
+
         private void ConfigureItemListDataGridView() {
             dataGridViewItemList.AutoGenerateColumns = false;
         }
@@ -130,7 +134,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
 
             if (order != null && (@event.EventType == EventType.NewOrder || @event.EventType == EventType.UpdateOrder)) {
-                // TODO: Disable print button
+                SetPrintButtonEnabled(false);
                 PrintResult printResult = PrinterService.Print(order);
 
                 if (printResult.Success) {
@@ -141,7 +145,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                     order.PrintErrorMessage = printResult.PrintErrorMessage;
                 }
                 AppState.UserControlOrdersView.RefreshEventList();
-                // TODO: Enable print button
+                SetPrintButtonEnabled(true);
             }
         }
     }
