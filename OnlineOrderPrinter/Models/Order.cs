@@ -12,7 +12,7 @@ namespace OnlineOrderPrinter.Models {
         public string CustomerName { get; set; }
         public string ContactNumber { get; set; }
         public DateTime PlacedAtTime { get; set; }
-        public DateTime PickupTime { get; set; }
+        public DateTime? PickupTime { get; set; }
         public int OrderSize { get; set; }
         public int UniqueItemCount { get; set; }
         public int? DrinkCount { get; set; }

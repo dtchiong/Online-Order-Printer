@@ -157,16 +157,23 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void FormatDateCell(DataGridViewCellFormattingEventArgs e, Event @event, object val) {
-            DateTime dateTime = ((DateTime)val).ToLocalTime();
-            bool sameDay = dateTime.Date == DateTime.Now.Date;
-            string time = dateTime.ToShortTimeString();
-            string date = dateTime.ToShortDateString();
+            DateTime? dateTime = ((DateTime?)val)?.ToLocalTime();
 
-            string formattedVal;
-            if (sameDay) {
-                formattedVal = $"{$" Today {time,8}",-19}";
+            string formattedVal = "";
+            if (dateTime != null) {
+                bool sameDay = dateTime.Value.Date == DateTime.Now.Date;
+                string time = dateTime.Value.ToShortTimeString();
+                string date = dateTime.Value.ToShortDateString();
+
+                if (sameDay) {
+                    formattedVal = $"{$" Today {time,8}",-19}";
+                } else {
+                    formattedVal = $"{date,10} {time,8}";
+                }
+                e.Value = formattedVal;
             } else {
-                formattedVal = $"{date,10} {time,8}";
+                StyleErrorCell(e);
+                formattedVal = " Failed to Parse";
             }
             e.Value = formattedVal;
         }
