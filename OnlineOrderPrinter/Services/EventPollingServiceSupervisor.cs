@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace OnlineOrderPrinter.Services {
     class EventPollingServiceSupervisor {
+
+        private const int MillisecondsIn1Hour = 3600000;
+
         private static Timer startingTimer = new Timer();
         private static Timer stoppingTimer = new Timer();
 
@@ -66,12 +69,18 @@ namespace OnlineOrderPrinter.Services {
         }
 
         private static void SetAlarmToStartPolling(DateTime dateTime) {
-            startingTimer.Interval = CalculateMillisecondsUntilTime(dateTime);
+            int ms = CalculateMillisecondsUntilTime(dateTime);
+            Debug.WriteLine($"Starting polling service in: {(float)ms / MillisecondsIn1Hour} hours");
+
+            startingTimer.Interval = ms;
             startingTimer.Start();
         }
 
         private static void SetAlarmToStopPolling(DateTime dateTime) {
-            stoppingTimer.Interval = CalculateMillisecondsUntilTime(dateTime);
+            int ms = CalculateMillisecondsUntilTime(dateTime);
+            Debug.WriteLine($"Stopping polling service in: {(float)ms / MillisecondsIn1Hour} hours");
+
+            stoppingTimer.Interval = ms;
             stoppingTimer.Start();
         }
 
