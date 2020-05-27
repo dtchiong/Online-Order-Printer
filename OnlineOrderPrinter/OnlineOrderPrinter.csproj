@@ -146,6 +146,7 @@
     <Compile Include="Sagas\RestaurantSagas.cs" />
     <Compile Include="Sagas\CancellableSaga.cs" />
     <Compile Include="Services\ApiKeyManager.cs" />
+    <Compile Include="Services\AudioManager.cs" />
     <Compile Include="Services\CredentialManager.cs" />
     <Compile Include="Services\EventListMaintenanceService.cs" />
     <Compile Include="Services\EventPollingService.cs" />
