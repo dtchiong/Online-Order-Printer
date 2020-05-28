@@ -36,6 +36,7 @@
             this.userControlLoginPage1.Name = "userControlLoginPage1";
             this.userControlLoginPage1.Size = new System.Drawing.Size(1254, 761);
             this.userControlLoginPage1.TabIndex = 0;
+            this.userControlLoginPage1.Visible = false;
             // 
             // userControlMainPage1
             // 
@@ -45,6 +46,7 @@
             this.userControlMainPage1.Name = "userControlMainPage1";
             this.userControlMainPage1.Size = new System.Drawing.Size(1254, 761);
             this.userControlMainPage1.TabIndex = 1;
+            this.userControlMainPage1.Visible = false;
             // 
             // userControlSplashPage1
             // 
@@ -65,6 +67,7 @@
             this.Controls.Add(this.userControlMainPage1);
             this.Name = "FormContainer";
             this.Text = "FormContainer";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
