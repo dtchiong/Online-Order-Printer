@@ -13,6 +13,7 @@ using Zebra.Sdk.Printer.Discovery;
 namespace OnlineOrderPrinter.Services {
     class PrinterService {
 
+        private const string DriverNameZD410 = "ZDesigner ZD410-203dpi ZPL";
         private const string OrderTemplatePath = "E:ORDERTEMP.ZPL";
         private const string MissingDriverErrorString = "Missing Zebra printing driver";
 
@@ -66,14 +67,18 @@ namespace OnlineOrderPrinter.Services {
         }
 
         private static Connection FindConnection() {
-            List<DiscoveredPrinterDriver> drivers = UsbDiscoverer.GetZebraDriverPrinters();
+            List<DiscoveredPrinterDriver> printerDrivers = UsbDiscoverer.GetZebraDriverPrinters();
 
-            if (drivers.Count == 0) {
+            DiscoveredPrinterDriver printerDriver;
+
+            // TODO: We should select the driver for the user's selected printer instead of having it only choose ZD410
+            try {
+                printerDriver = printerDrivers.First(driver => HasDriverName(driver, DriverNameZD410));
+            } catch (Exception e) {
                 throw new Exception(MissingDriverErrorString);
             }
-            // TODO: Make sure to select the correct printer driver if there are multiple
-            DiscoveredPrinterDriver driver = drivers[0];
-            return driver.GetConnection();
+
+            return printerDriver.GetConnection();
         }
 
         private static void OpenConnection() {
@@ -90,6 +95,13 @@ namespace OnlineOrderPrinter.Services {
             } catch (ConnectionException e) {
                 Debug.WriteLine($"Failed to close printer connection: {e.Message}");
             }
+        }
+
+        private static bool HasDriverName(DiscoveredPrinterDriver printerDriver, string driverName) {
+            if (printerDriver.DiscoveryDataMap.TryGetValue("DRIVER_NAME", out string val)) {
+                return val == driverName;
+            }
+            return false;
         }
     }
 }
