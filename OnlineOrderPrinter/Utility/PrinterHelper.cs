@@ -121,6 +121,10 @@ namespace OnlineOrderPrinter.Utility {
                 .Where(modifier => modifier.PrintName != "")
                 .OrderByDescending(modifier => modifier.PrintPriority).ToArray();
 
+            if (modifiers.Length == 0) {
+                return "";
+            }
+
             StringBuilder sb = new StringBuilder(ResolveItemPrintName(modifiers[0], serviceType));
             for (int i = 1; i < modifiers.Length; i++) {
                 sb.Append(", ");
