@@ -84,7 +84,8 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         }
 
         private void UpdateModifierList(OrderItem orderItem) {
-            modifierListDataGridView.DataSource = orderItem?.OrderItemModifiers;
+            modifierListDataGridView.DataSource = orderItem?.OrderItemModifiers
+                .OrderByDescending(modifier => modifier.PrintPriority).ToArray();
         }
 
         private void UpdateSpecialInstructions(OrderItem orderItem) {
