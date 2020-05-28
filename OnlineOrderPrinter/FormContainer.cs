@@ -26,6 +26,7 @@ namespace OnlineOrderPrinter {
         public FormContainer() {
             InitializeComponent();
             InitializeDirectories();
+            SetFormName();
             AppActions.ReadAndSetApiKey();
             EventPollingService.InitializeTimer();
             EventListMaintenanceService.Initialize();
@@ -84,6 +85,10 @@ namespace OnlineOrderPrinter {
             } catch (Exception e) {
                 Debug.WriteLine(e.Message);
             }
+        }
+
+        private void SetFormName() {
+            Text = $"{Application.ProductName} v{Application.ProductVersion}";
         }
     }
 
