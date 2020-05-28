@@ -56,7 +56,7 @@ namespace OnlineOrderPrinter.Utility {
                 { (int)OrderTemplateLocation.ItemCounter, FormatItemCounter(currentItemCount, order.OrderSize) },
                 { (int)OrderTemplateLocation.ItemName, ResolveItemPrintName(orderItem, order.Service) },
                 { (int)OrderTemplateLocation.ModifierList, CreateModifierListString(orderItem.OrderItemModifiers, order.Service) },
-                { (int)OrderTemplateLocation.SpecialInstructions, TruncateValue(OrderTemplateLocation.SpecialInstructions, orderItem.SpecialInstructions) }
+                { (int)OrderTemplateLocation.SpecialInstructions, FormatSpecialInstructions(orderItem.SpecialInstructions) }
             };
         }
 
@@ -131,6 +131,20 @@ namespace OnlineOrderPrinter.Utility {
                 sb.Append(ResolveItemPrintName(modifiers[i], serviceType));
             }
             return sb.ToString();
+        }
+
+        private static string FormatSpecialInstructions(string instructions) {
+            if (string.IsNullOrEmpty(instructions)) {
+                return "";
+            }
+
+            instructions = $"\"{instructions}\"";
+            if (orderTemplateCharLimits.TryGetValue(OrderTemplateLocation.SpecialInstructions, out int characterLimit)) {
+                if (instructions.Length > characterLimit) {
+                    return instructions.Substring(0, characterLimit);
+                }
+            }
+            return instructions;
         }
     }
 }
