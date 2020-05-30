@@ -186,6 +186,14 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
                 case EventType.NewOrder:
                     formattedVal = "New Order";
                     break;
+                case EventType.UpdateOrder:
+                    StyleWarningCell(e);
+                    formattedVal = "Updated Order";
+                    break;
+                case EventType.CancelOrder:
+                    StyleErrorCell(e);
+                    formattedVal = "Canceled Order";
+                    break;
                 default:
                     formattedVal = eventType.ToString();
                     break;
@@ -232,6 +240,12 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
         private void StyleSuccessCell(DataGridViewCellFormattingEventArgs e) {
             e.CellStyle.ForeColor = Colors.SuccessGreen;
             e.CellStyle.SelectionForeColor = Colors.SuccessGreen;
+            e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        }
+
+        private void StyleWarningCell(DataGridViewCellFormattingEventArgs e) {
+            e.CellStyle.ForeColor = Colors.WarningOrange;
+            e.CellStyle.SelectionForeColor = Colors.WarningOrange;
             e.CellStyle.Font = Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
         }
 
@@ -325,6 +339,7 @@ namespace OnlineOrderPrinter.UserControls.Main.Tabs.Orders {
 
     public static class Colors {
         public static Color SuccessGreen = Color.FromArgb(255, 21, 189, 0);
+        public static Color WarningOrange = Color.FromArgb(255, 191, 141, 48);
         public static Color ErrorRed = Color.FromArgb(255, 196, 13, 0);
         public static Color LoadingGray = Color.DimGray;
     }
